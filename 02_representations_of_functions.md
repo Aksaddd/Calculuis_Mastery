@@ -45,6 +45,32 @@ The graph of a function $f$ is shown in Figure 6.
 
 > **Figure 6.** Curve defined on $0 \leq x \leq 7$. It passes through the point $(1, 3)$, reaches a local max near $x = 1$, dips below the $x$-axis with a minimum near $x = 5$ at $y \approx -0.7$, then rises again toward $y \approx 4$ at $x = 7$.
 
+```plot
+{
+  "title": "Figure 6 — graph of f on [0, 7]",
+  "width": 520, "height": 340,
+  "xRange": [-0.5, 7.5], "yRange": [-3, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "fn": "3 * exp(-pow(x - 1, 2)) - 2.3 * exp(-pow((x - 4)/0.9, 2)) + 4 * exp(-pow((x - 7)/0.7, 2))",
+      "domain": [0, 7],
+      "color": "#b04a2f", "width": 2.2
+    }
+  ],
+  "points": [
+    {"x": 1, "y": 3, "style": "filled", "color": "#1f2430", "label": "(1, 3)", "labelDx": 8, "labelDy": -8},
+    {"x": 5, "y": -0.7, "style": "filled", "color": "#1f2430", "label": "(5, −0.7)", "labelDx": 8, "labelDy": 14}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 1, "yRange": [0, 3], "color": "#888", "dash": "3 3"},
+    {"type": "vertical", "x": 5, "yRange": [-0.7, 0], "color": "#888", "dash": "3 3"}
+  ],
+  "caption": "Smooth curve hand-fit to match described control points (1, 3) and (5, −0.7); range ≈ [−2, 4]."
+}
+```
+
 ***Solution.***
 
 (a) From Figure 6, the point $(1, 3)$ lies on the graph of $f$, so $f(1) = 3$. (The point above $x = 1$ is 3 units above the $x$-axis.) At $x = 5$, the graph lies about $0.7$ unit below the $x$-axis, so
@@ -72,11 +98,47 @@ Sketch the graph and find the domain and range of each function:
 
 > **Figure 7.** A straight line of slope $2$ crossing the $y$-axis at $-1$, passing through $(1/2, 0)$ and $(1, 1)$.
 
+```plot
+{
+  "title": "Figure 7 — y = 2x − 1",
+  "width": 460, "height": 320,
+  "xRange": [-3, 3], "yRange": [-5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2*x - 1", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": -1, "style": "filled", "label": "(0, −1)", "labelDx": 8, "labelDy": 14},
+    {"x": 0.5, "y": 0, "style": "filled", "label": "(½, 0)", "labelDx": 8, "labelDy": -8},
+    {"x": 1, "y": 1, "style": "filled", "label": "(1, 1)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
 **(b)** Since $g(2) = 2^2 = 4$ and $g(-1) = (-1)^2 = 1$, plotting $(2, 4)$ and $(-1, 1)$ together with a few more points and joining them gives a parabola. The equation $y = x^2$ represents a parabola (Appendix C). The domain of $g$ is $\mathbb{R}$. Since $x^2 \geq 0$ for all $x$ and every nonnegative number $y$ is a square, the range is
 
 $$\{y \mid y \geq 0\} = [0, \infty)$$
 
 > **Figure 8.** A parabola $y = x^2$ opening upward with vertex at the origin, passing through $(-1, 1)$ and $(2, 4)$.
+
+```plot
+{
+  "title": "Figure 8 — y = x²",
+  "width": 460, "height": 340,
+  "xRange": [-3, 3], "yRange": [-1, 9],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "filled", "label": "(0, 0)", "labelDx": 8, "labelDy": 14},
+    {"x": -1, "y": 1, "style": "filled", "label": "(−1, 1)", "labelDx": -8, "labelDy": -8},
+    {"x": 2, "y": 4, "style": "filled", "label": "(2, 4)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
 
 ---
 
@@ -124,7 +186,58 @@ This is the exponential model fit to the data. The function $f$ is called a **ma
 
 > **Figure 9 — Scatter plot.** Axes: horizontal $t$ spanning 1900 to 2000 in 20-year ticks, vertical $P$ reaching $6 \times 10^9$. Eleven dots, one per decade from 1900 to 2000, tracing an upward-curving trend (slow early, accelerating through mid-century, steep by 2000).
 
+```plot
+{
+  "title": "Figure 9 — World population scatter plot",
+  "width": 520, "height": 340,
+  "xRange": [1895, 2005], "yRange": [0, 7000],
+  "xStep": 20, "yStep": 1000,
+  "xLabel": "t (year)", "yLabel": "P (millions)",
+  "curves": [
+    {
+      "data": [
+        [1900, 1650], [1910, 1750], [1920, 1860], [1930, 2070],
+        [1940, 2300], [1950, 2560], [1960, 3040], [1970, 3710],
+        [1980, 4450], [1990, 5280], [2000, 6080]
+      ],
+      "mode": "scatter",
+      "color": "#b04a2f",
+      "r": 4
+    }
+  ]
+}
+```
+
 > **Figure 10 — Fitted model.** Same axes as Figure 9. The same eleven data points, now overlaid with a smooth continuous curve — the exponential fit $f(t) = (0.008079266)(1.013731)^t$ — passing closely through them.
+
+```plot
+{
+  "title": "Figure 10 — Population data with exponential fit",
+  "width": 520, "height": 340,
+  "xRange": [1895, 2005], "yRange": [0, 7000],
+  "xStep": 20, "yStep": 1000,
+  "xLabel": "t (year)", "yLabel": "P (millions)",
+  "curves": [
+    {
+      "fn": "0.008079266 * pow(1.013731, x) / 1e6",
+      "color": "#2867b2", "width": 2
+    },
+    {
+      "data": [
+        [1900, 1650], [1910, 1750], [1920, 1860], [1930, 2070],
+        [1940, 2300], [1950, 2560], [1960, 3040], [1970, 3710],
+        [1980, 4450], [1990, 5280], [2000, 6080]
+      ],
+      "mode": "scatter",
+      "color": "#b04a2f",
+      "r": 4
+    }
+  ],
+  "annotations": [
+    {"x": 1958, "y": 4500, "text": "f(t) = 0.008·(1.0137)^t", "color": "#2867b2", "size": 11}
+  ]
+}
+```
 
 **C. Cost of mailing a letter.** Described in words: $C(w)$ is the cost of mailing a first-class letter of weight $w$. The rule the US Postal Service used as of 2007: **39 cents for up to one ounce, plus 24 cents for each successive ounce up to 13 ounces.** The table of values is the most convenient representation:
 
@@ -158,6 +271,23 @@ When you turn on a hot-water faucet, the temperature $T$ of the water depends on
 4. **Cooling:** when the tank drains, $T$ decreases back toward the temperature of the water supply.
 
 > **Figure 11.** $T$ vs. $t$ curve. Starts at a low-to-mid $T$ value, rises steeply to a high plateau, holds flat across the middle of the graph, then descends gently back toward the starting $T$.
+
+```plot
+{
+  "title": "Figure 11 — Hot-water temperature vs. time (qualitative)",
+  "width": 520, "height": 320,
+  "xRange": [0, 12], "yRange": [0, 60],
+  "xStep": 1, "yStep": 10,
+  "xLabel": "t (min)", "yLabel": "T (°C)",
+  "curves": [
+    {
+      "fn": "20 + 30 / (1 + exp(-3*(x - 2))) * (1 - 1 / (1 + exp(-2*(x - 10))))",
+      "color": "#b04a2f", "width": 2.2
+    }
+  ],
+  "caption": "Stylized: room-temp start, sharp rise as hot-tank water arrives, plateau, then decline as tank empties."
+}
+```
 
 ---
 

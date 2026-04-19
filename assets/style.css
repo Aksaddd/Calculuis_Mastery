@@ -385,6 +385,55 @@ a:hover { text-decoration: underline; }
 #article blockquote.definition,
 #article blockquote.note { position: relative; padding-top: 18px; }
 
+/* Plot figures rendered from ```plot fenced blocks */
+.plot-figure {
+  margin: 6px 0 22px;
+  padding: 14px 16px 12px;
+  background: #fffdf6;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.plot-figure svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.plot-figure figcaption {
+  margin-top: 8px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+/* When a figure description blockquote is immediately followed by a plot,
+   visually fold the plot into the same card. */
+#article blockquote.figure.with-plot {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  padding-bottom: 6px;
+}
+#article blockquote.figure.with-plot + .plot-figure {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+  background: var(--fig-bg);
+}
+.plot-error {
+  background: #fbe2e0;
+  border-left: 4px solid #b03030;
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  font-family: 'JetBrains Mono', Menlo, monospace;
+  font-size: 0.85em;
+  color: #5a1313;
+  margin: 12px 0;
+}
+
 /* KaTeX display block */
 #article .katex-display {
   margin: 14px 0;

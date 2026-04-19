@@ -187,6 +187,50 @@ function classifyBlockquotes(root) {
   });
 }
 
+/* Render ```plot fenced blocks as inline SVG figures */
+function renderPlots(root) {
+  const blocks = root.querySelectorAll('pre > code.language-plot');
+  blocks.forEach(code => {
+    const pre = code.parentElement;
+    const raw = code.textContent;
+    let spec;
+    try {
+      spec = JSON.parse(raw);
+    } catch (err) {
+      const errEl = document.createElement('div');
+      errEl.className = 'plot-error';
+      errEl.textContent = 'Plot JSON parse error: ' + err.message;
+      pre.replaceWith(errEl);
+      return;
+    }
+    let svg;
+    try {
+      svg = window.CalcPlot.render(spec);
+    } catch (err) {
+      const errEl = document.createElement('div');
+      errEl.className = 'plot-error';
+      errEl.textContent = 'Plot render error: ' + err.message;
+      pre.replaceWith(errEl);
+      return;
+    }
+    const figure = document.createElement('figure');
+    figure.className = 'plot-figure';
+    figure.innerHTML = svg;
+    if (spec.caption) {
+      const cap = document.createElement('figcaption');
+      cap.textContent = spec.caption;
+      figure.appendChild(cap);
+    }
+    // If the previous sibling is a figure-blockquote, fold the plot
+    // visually into the same card by adding a class to it.
+    const prev = pre.previousElementSibling;
+    if (prev && prev.tagName === 'BLOCKQUOTE' && prev.classList.contains('figure')) {
+      prev.classList.add('with-plot');
+    }
+    pre.replaceWith(figure);
+  });
+}
+
 /* Wrap raw <table> in scroll container for narrow viewports */
 function wrapTables(root) {
   root.querySelectorAll("table").forEach(t => {
@@ -310,6 +354,7 @@ async function loadUnit(id) {
   const bodyEl = document.getElementById("article-body");
   classifyBlockquotes(bodyEl);
   wrapTables(bodyEl);
+  renderPlots(bodyEl);
 
   document.getElementById("mark-read").addEventListener("change", e => {
     if (e.target.checked) READ.add(id);

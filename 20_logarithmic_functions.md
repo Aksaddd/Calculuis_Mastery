@@ -41,9 +41,58 @@ $$\text{range of } \log_a = \text{domain of } a^x = \mathbb{R}$$
 
 > **Figure 11 — Graph of $y = a^x$ (for $a > 1$) and its inverse $y = \log_a x$.** Both curves drawn with the diagonal line $y = x$ between them. $y = a^x$ rises steeply from the negative $x$-axis asymptote; $y = \log_a x$ rises gently from a vertical asymptote at the $y$-axis. Each curve is the other's reflection across the diagonal.
 
+```plot
+{
+  "title": "Figure 11 — y = 2ˣ and y = log₂ x reflected across y = x",
+  "width": 460, "height": 460,
+  "xRange": [-3, 5], "yRange": [-3, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x",                   "color": "#888",    "width": 1.4, "dash": "5 4"},
+    {"fn": "pow(2, x)",           "color": "#b04a2f", "width": 2.2},
+    {"fn": "log(x) / log(2)",     "domain": [0.05, 5], "color": "#2867b2", "width": 2.2}
+  ],
+  "annotations": [
+    {"x": 4.6, "y": 4.6, "text": "y = x",      "color": "#666",    "anchor": "end"},
+    {"x": 2.0, "y": 4.4, "text": "y = 2ˣ",     "color": "#b04a2f"},
+    {"x": 4.6, "y": 2.4, "text": "y = log₂ x", "color": "#2867b2", "anchor": "end"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "r": 3},
+    {"x": 1, "y": 0, "style": "filled", "color": "#1f2430", "r": 3}
+  ]
+}
+```
+
 **Key observation.** If $y = a^x$ grows very rapidly for $x > 0$, then its inverse $y = \log_a x$ grows very slowly for $x > 1$. This is the mirror image statement. Fast-growing function $\leftrightarrow$ slow-growing inverse.
 
 > **Figure 12 — Family of log graphs for various bases $> 1$: $\log_2, \log_3, \log_5, \log_{10}$.** All four curves pass through $(1, 0)$ because $\log_a 1 = 0$ for any $a$. All four rise from the vertical asymptote $x = 0$. For $x > 1$, smaller bases give steeper curves: $\log_2 x > \log_3 x > \log_5 x > \log_{10} x$.
+
+```plot
+{
+  "title": "Figure 12 — log₂ x, log₃ x, log₅ x, log₁₀ x",
+  "width": 540, "height": 340,
+  "xRange": [-0.5, 8], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(x) / log(2)",  "domain": [0.05, 8], "color": "#b04a2f", "width": 1.8},
+    {"fn": "log(x) / log(3)",  "domain": [0.05, 8], "color": "#c87d3b", "width": 1.8},
+    {"fn": "log(x) / log(5)",  "domain": [0.05, 8], "color": "#5a8f3a", "width": 1.8},
+    {"fn": "log(x) / log(10)", "domain": [0.05, 8], "color": "#2867b2", "width": 1.8}
+  ],
+  "annotations": [
+    {"x": 7.5, "y": 2.95, "text": "log₂ x",  "color": "#b04a2f", "anchor": "end"},
+    {"x": 7.5, "y": 1.85, "text": "log₃ x",  "color": "#c87d3b", "anchor": "end"},
+    {"x": 7.5, "y": 1.30, "text": "log₅ x",  "color": "#5a8f3a", "anchor": "end"},
+    {"x": 7.5, "y": 0.95, "text": "log₁₀ x", "color": "#2867b2", "anchor": "end"}
+  ],
+  "points": [
+    {"x": 1, "y": 0, "style": "filled", "color": "#1f2430", "r": 3, "label": "(1, 0)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
 
 ---
 
@@ -199,6 +248,30 @@ $$\log_8 5 = \frac{\ln 5}{\ln 8} \approx \frac{1.609438}{2.079442} \approx 0.773
 
 > **Figure 13 — $y = e^x$ and $y = \ln x$ reflected across $y = x$.** Standard setup. $y = e^x$ crosses $(0, 1)$ with slope 1; $y = \ln x$ crosses $(1, 0)$ with slope 1 (the corresponding reflected tangent). $\ln x$ is defined only for $x > 0$, has vertical asymptote at $x = 0$, and grows very slowly for $x > 1$.
 
+```plot
+{
+  "title": "Figure 13 — y = eˣ and y = ln x reflected across y = x",
+  "width": 460, "height": 460,
+  "xRange": [-3, 5], "yRange": [-3, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x",      "color": "#888",    "width": 1.4, "dash": "5 4"},
+    {"fn": "exp(x)", "color": "#b04a2f", "width": 2.2},
+    {"fn": "log(x)", "domain": [0.02, 5], "color": "#2867b2", "width": 2.2}
+  ],
+  "annotations": [
+    {"x": 4.6, "y": 4.6, "text": "y = x",    "color": "#666",    "anchor": "end"},
+    {"x": 1.7, "y": 4.4, "text": "y = eˣ",   "color": "#b04a2f"},
+    {"x": 4.6, "y": 1.9, "text": "y = ln x", "color": "#2867b2", "anchor": "end"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "r": 3},
+    {"x": 1, "y": 0, "style": "filled", "color": "#1f2430", "r": 3}
+  ]
+}
+```
+
 In common with all other logarithmic functions with base greater than 1, the natural log is an **increasing function** defined on $(0, \infty)$, and the $y$-axis is a **vertical asymptote** — meaning $\ln x \to -\infty$ as $x \to 0^+$.
 
 ### Example 11 — Sketch $y = \ln(x - 2) - 1$ using transformations
@@ -212,6 +285,63 @@ In common with all other logarithmic functions with base greater than 1, the nat
 > - **(a) $y = \ln x$:** standard natural log curve; passes through $(1, 0)$; vertical asymptote at $x = 0$.
 > - **(b) $y = \ln(x - 2)$:** same shape shifted right 2; passes through $(3, 0)$; vertical asymptote at $x = 2$.
 > - **(c) $y = \ln(x - 2) - 1$:** panel (b) shifted down 1; passes through $(3, -1)$; same vertical asymptote at $x = 2$.
+
+```plot
+{
+  "title": "Figure 14a — y = ln x",
+  "width": 460, "height": 280,
+  "xRange": [-1, 6], "yRange": [-3, 2.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(x)", "domain": [0.04, 6], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 0, "color": "#888", "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 1, "y": 0, "style": "filled", "color": "#1f2430", "label": "(1, 0)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14b — y = ln(x − 2)",
+  "width": 460, "height": 280,
+  "xRange": [1, 8], "yRange": [-3, 2.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(x - 2)", "domain": [2.04, 8], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 2, "color": "#888", "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 3, "y": 0, "style": "filled", "color": "#1f2430", "label": "(3, 0)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14c — y = ln(x − 2) − 1",
+  "width": 460, "height": 280,
+  "xRange": [1, 8], "yRange": [-4, 1.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(x - 2) - 1", "domain": [2.04, 8], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 2, "color": "#888", "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 3, "y": -1, "style": "filled", "color": "#1f2430", "label": "(3, −1)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
 
 ---
 
@@ -231,7 +361,43 @@ Although $\ln x$ is an increasing function, it grows **very slowly** when $x > 1
 
 > **Figure 15.** Local view of $y = \sqrt{x}$ and $y = \ln x$ on $[0, 5]$. Near the origin they grow at comparable rates; $\ln x$ is slightly larger in a small initial range.
 
+```plot
+{
+  "title": "Figure 15 — y = √x  vs.  y = ln x  on [0, 5]",
+  "width": 480, "height": 320,
+  "xRange": [0, 5], "yRange": [-2, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(x)", "domain": [0, 5],    "color": "#b04a2f", "width": 2.2},
+    {"fn": "log(x)",  "domain": [0.04, 5], "color": "#2867b2", "width": 2.2}
+  ],
+  "annotations": [
+    {"x": 4.7, "y": 2.4, "text": "√x",    "color": "#b04a2f", "anchor": "end"},
+    {"x": 4.7, "y": 1.7, "text": "ln x",  "color": "#2867b2", "anchor": "end"}
+  ]
+}
+```
+
 > **Figure 16.** Zoomed out view on $[0, 1000]$. $\sqrt{x}$ has climbed to about 31, while $\ln x$ is still below 7. The gap is enormous and growing.
+
+```plot
+{
+  "title": "Figure 16 — y = √x  vs.  y = ln x  on [0, 1000]",
+  "width": 540, "height": 340,
+  "xRange": [0, 1000], "yRange": [-2, 35],
+  "xStep": 100, "yStep": 5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(x)", "domain": [0, 1000],    "color": "#b04a2f", "width": 2.2},
+    {"fn": "log(x)",  "domain": [0.04, 1000], "color": "#2867b2", "width": 2.2}
+  ],
+  "annotations": [
+    {"x": 950, "y": 30, "text": "√x",   "color": "#b04a2f", "anchor": "end"},
+    {"x": 950, "y": 8,  "text": "ln x", "color": "#2867b2", "anchor": "end"}
+  ]
+}
+```
 
 ### The formal dominance statement
 

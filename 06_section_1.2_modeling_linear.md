@@ -39,6 +39,23 @@ where $m$ is the slope and $b$ is the $y$-intercept.
 
 > **Figure 2 — $y = 3x - 2$.** A line of slope $3$ and $y$-intercept $-2$, passing through the origin region with steep positive slope.
 
+```plot
+{
+  "title": "Figure 2 — y = 3x − 2",
+  "width": 460, "height": 320,
+  "xRange": [-2, 3], "yRange": [-8, 8],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "3*x - 2", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": -2, "style": "filled", "color": "#1f2430", "label": "(0, −2)", "labelDx": 8, "labelDy": 14},
+    {"x": 1, "y": 1,  "style": "filled", "color": "#1f2430", "label": "(1, 1)",  "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
 | $x$ | $f(x) = 3x - 2$ |
 |:---:|:---:|
 | 1.0 | 1.0 |
@@ -74,6 +91,26 @@ $$\boxed{\; T = -10h + 20 \;}$$
 
 > **Figure 3.** Plot of $T = -10h + 20$ on axes with $h$ horizontal and $T$ vertical. The line passes through $(0, 20)$ and $(2, 0)$ with slope $-10$; labeled points marked at $h = 1$ (where $T = 10$) and $h = 3$ (where $T = -10$).
 
+```plot
+{
+  "title": "Figure 3 — T = −10h + 20",
+  "width": 480, "height": 320,
+  "xRange": [-0.5, 4], "yRange": [-20, 25],
+  "xStep": 0.5, "yStep": 5,
+  "xLabel": "h (km)", "yLabel": "T (°C)",
+  "curves": [
+    {"fn": "-10*x + 20", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y":  20, "style": "filled", "color": "#1f2430", "label": "(0, 20)",  "labelDx": 8, "labelDy": -8},
+    {"x": 1, "y":  10, "style": "filled", "color": "#1f2430", "label": "(1, 10)",  "labelDx": 8, "labelDy": -8},
+    {"x": 2, "y":   0, "style": "filled", "color": "#1f2430", "label": "(2, 0)",   "labelDx": 8, "labelDy": -8},
+    {"x": 3, "y": -10, "style": "filled", "color": "#1f2430", "label": "(3, −10)", "labelDx": 8, "labelDy": -8}
+  ],
+  "caption": "Slope = −10 °C/km: every additional kilometer of altitude drops T by 10°C."
+}
+```
+
 **(c)** At $h = 2.5$:
 
 $$T = -10(2.5) + 20 = -5°\text{C}$$
@@ -103,6 +140,28 @@ Table 1 lists the average carbon dioxide level in the atmosphere, measured in pa
 
 > **Figure 4 — Scatter plot of average CO₂ level.** Axes: $t$ from 1980 to 2002 (with gridlines every 5 years), $C$ from 340 to 370+. Twelve data points, one every 2 years, trending up from about $(1980, 338.7)$ to $(2002, 372.9)$ along what looks like a straight line.
 
+```plot
+{
+  "title": "Figure 4 — Mauna Loa CO₂ scatter (1980–2002)",
+  "width": 520, "height": 320,
+  "xRange": [1978, 2004], "yRange": [335, 376],
+  "xStep": 5, "yStep": 5,
+  "xLabel": "t (year)", "yLabel": "C (ppm)",
+  "curves": [
+    {
+      "data": [
+        [1980, 338.7], [1982, 341.1], [1984, 344.4], [1986, 347.2],
+        [1988, 351.5], [1990, 354.2], [1992, 356.4], [1994, 358.9],
+        [1996, 362.6], [1998, 366.6], [2000, 369.4], [2002, 372.9]
+      ],
+      "mode": "scatter",
+      "color": "#b04a2f",
+      "r": 4
+    }
+  ]
+}
+```
+
 The points lie close to a straight line, so a linear model is natural. But **many** lines would approximate the data; which one?
 
 **First attempt — line through first and last data points.**
@@ -119,6 +178,29 @@ $$\tag{1} C = 1.5545\,t - 2739.21$$
 
 > **Figure 5 — First linear model.** Same scatter points as Figure 4, with a straight line drawn through the first $(1980, 338.7)$ and last $(2002, 372.9)$ data points. The line sits *above* most of the interior data points — it fits reasonably but overestimates.
 
+```plot
+{
+  "title": "Figure 5 — Endpoint line: C = 1.5545·t − 2739.21",
+  "width": 520, "height": 320,
+  "xRange": [1978, 2004], "yRange": [335, 376],
+  "xStep": 5, "yStep": 5,
+  "xLabel": "t (year)", "yLabel": "C (ppm)",
+  "curves": [
+    {"fn": "1.5545*x - 2739.21", "color": "#2867b2", "width": 2},
+    {
+      "data": [
+        [1980, 338.7], [1982, 341.1], [1984, 344.4], [1986, 347.2],
+        [1988, 351.5], [1990, 354.2], [1992, 356.4], [1994, 358.9],
+        [1996, 362.6], [1998, 366.6], [2000, 369.4], [2002, 372.9]
+      ],
+      "mode": "scatter",
+      "color": "#b04a2f",
+      "r": 4
+    }
+  ]
+}
+```
+
 **Better approach — least-squares regression.**
 
 *Margin note: A computer or graphing calculator finds the regression line by the method of **least squares**, which is to minimize the sum of the squares of the vertical distances between the data points and the line. The details are explained in Section 14.7.*
@@ -132,6 +214,29 @@ So the least-squares model is:
 $$\tag{2} C = 1.55192\,t - 2734.55$$
 
 > **Figure 6 — The regression line.** Same scatter points, now with the least-squares line drawn. The line passes cleanly through the middle of the data rather than above it — a better fit than Figure 5.
+
+```plot
+{
+  "title": "Figure 6 — Least-squares fit: C = 1.55192·t − 2734.55",
+  "width": 520, "height": 320,
+  "xRange": [1978, 2004], "yRange": [335, 376],
+  "xStep": 5, "yStep": 5,
+  "xLabel": "t (year)", "yLabel": "C (ppm)",
+  "curves": [
+    {"fn": "1.55192*x - 2734.55", "color": "#2867b2", "width": 2},
+    {
+      "data": [
+        [1980, 338.7], [1982, 341.1], [1984, 344.4], [1986, 347.2],
+        [1988, 351.5], [1990, 354.2], [1992, 356.4], [1994, 358.9],
+        [1996, 362.6], [1998, 366.6], [2000, 369.4], [2002, 372.9]
+      ],
+      "mode": "scatter",
+      "color": "#b04a2f",
+      "r": 4
+    }
+  ]
+}
+```
 
 **Why least squares matters for your quant track specifically.** This is OLS linear regression in its simplest form — one predictor, one response, Gaussian error assumed implicitly. In finance, everything from CAPM beta estimation to the linear factor in Fama-French to residual analysis in pairs trading is built on exactly this objective: minimize $\sum (y_i - \hat{y}_i)^2$. The "pick a line that passes through endpoints" first attempt vs. "minimize total squared residual" second attempt is the core idea of estimation theory — endpoint-based estimators are statistically inefficient because they throw away all interior data; OLS uses every observation.
 

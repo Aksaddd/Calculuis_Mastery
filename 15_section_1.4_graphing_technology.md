@@ -55,6 +55,24 @@ Determine an appropriate viewing rectangle for $f(x) = \sqrt{8 - 2x^2}$ and grap
 
 > **Figure 3.** The upper half of an ellipse, centered at the origin, crossing the $x$-axis at $\pm 2$ and peaking at $(0, 2\sqrt{2})$.
 
+```plot
+{
+  "title": "Figure 3 — y = √(8 − 2x²)",
+  "width": 460, "height": 280,
+  "xRange": [-3, 3], "yRange": [-1, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(8 - 2*x*x)", "domain": [-2, 2], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x":  0, "y": 2.828, "style": "filled", "color": "#1f2430", "label": "(0, 2√2)", "labelDx": 8, "labelDy": -8},
+    {"x": -2, "y": 0,     "style": "filled", "color": "#1f2430"},
+    {"x":  2, "y": 0,     "style": "filled", "color": "#1f2430"}
+  ]
+}
+```
+
 ---
 
 ## Example 3 — Iteratively finding the right window for a polynomial
@@ -84,6 +102,20 @@ The period is $\dfrac{2\pi}{50} = \dfrac{\pi}{25} \approx 0.126$ — very short.
 **Why this happens.** The display has a finite number of pixels (e.g., 95 pixels wide on a TI-83). If the period is shorter than the distance between pixels, the renderer samples at points that can fall systematically at peaks, at troughs, or at zero crossings — producing spurious patterns.
 
 **The fix.** Zoom in to a viewing rectangle narrower than a single period. $[-0.25, 0.25] \times [-1.5, 1.5]$ reveals the true oscillation.
+
+```plot
+{
+  "title": "y = sin 50x — true behavior, narrow window",
+  "width": 540, "height": 280,
+  "xRange": [-0.25, 0.25], "yRange": [-1.5, 1.5],
+  "xStep": 0.0628318530717959, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(50*x)", "color": "#b04a2f", "width": 2, "samples": 1500}
+  ],
+  "caption": "Period = 2π/50 ≈ 0.126. Each tick is one period (π/25)."
+}
+```
 
 **General rule — Nyquist criterion.** To avoid aliasing, you need to sample at least **twice per period**. If the period is $T$, the viewing-rectangle width divided by pixel count must be at most $T/2$. This is the Shannon-Nyquist theorem in its simplest form: *"to capture a signal with maximum frequency $f_{\max}$, sample at rate $> 2f_{\max}$."* **Directly relevant for you** — sampling intraday tick data, resampling returns at different frequencies, computing realized volatility on high-frequency windows. The rule is the same.
 
@@ -135,6 +167,30 @@ Graph $y = x^3 + cx$ for $c = 2, 1, 0, -1, -2$.
 > - $c = 0$: $y = x^3$ — flat at the origin (inflection point, zero slope there).
 > - $c = -1$: $y = x^3 - x$ — now has a local max and a local min.
 > - $c = -2$: $y = x^3 - 2x$ — deeper local max and min.
+
+```plot
+{
+  "title": "Figure 13 — y = x³ + cx for c = 2, 1, 0, −1, −2",
+  "width": 540, "height": 380,
+  "xRange": [-2.5, 2.5], "yRange": [-6, 6],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x*x + 2*x",  "color": "#b04a2f", "width": 1.8},
+    {"fn": "x*x*x + x",    "color": "#c87d3b", "width": 1.8},
+    {"fn": "x*x*x",        "color": "#1f2430", "width": 2.0},
+    {"fn": "x*x*x - x",    "color": "#2867b2", "width": 1.8},
+    {"fn": "x*x*x - 2*x",  "color": "#6b3aa0", "width": 1.8}
+  ],
+  "annotations": [
+    {"x":  2.05, "y":  5.7, "text": "c = 2",  "color": "#b04a2f", "anchor": "start"},
+    {"x":  1.85, "y":  5.6, "text": "c = 1",  "color": "#c87d3b", "anchor": "start"},
+    {"x":  1.65, "y":  4.5, "text": "c = 0",  "color": "#1f2430", "anchor": "start"},
+    {"x":  1.85, "y":  3.6, "text": "c = −1", "color": "#2867b2", "anchor": "start"},
+    {"x":  2.05, "y":  2.7, "text": "c = −2", "color": "#6b3aa0", "anchor": "start"}
+  ]
+}
+```
 
 **Takeaway.** The qualitative behavior changes at $c = 0$: for $c \geq 0$ the cubic is monotone; for $c < 0$ it has a max and a min. This **bifurcation** is the kind of transition you identify analytically in Chapter 4. Parameter sweeps + visual inspection is the experimental counterpart to bifurcation analysis.
 

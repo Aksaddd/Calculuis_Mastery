@@ -41,6 +41,26 @@ Table 1 shows the world population from 1900 to 2000 (same table we saw in Secti
 
 > **Figure 8 — Scatter plot for world population growth.** Axes: year $t$ from 1900 to 2000; population $P$ rising from about $1.6 \times 10^9$ to $6 \times 10^9$. The pattern is clearly concave-up — growing faster than linearly — suggestive of exponential.
 
+```plot
+{
+  "title": "Figure 8 — World population scatter",
+  "width": 520, "height": 320,
+  "xRange": [1895, 2005], "yRange": [0, 7000],
+  "xStep": 20, "yStep": 1000,
+  "xLabel": "t (year)", "yLabel": "P (millions)",
+  "curves": [
+    {
+      "data": [
+        [1900, 1650], [1910, 1750], [1920, 1860], [1930, 2070],
+        [1940, 2300], [1950, 2560], [1960, 3040], [1970, 3710],
+        [1980, 4450], [1990, 5280], [2000, 6080]
+      ],
+      "mode": "scatter", "color": "#b04a2f", "r": 4
+    }
+  ]
+}
+```
+
 **Fit an exponential model by least-squares.** Using a graphing calculator with exponential regression capability:
 
 $$P = (0.008079266) \cdot (1.013731)^t$$
@@ -48,6 +68,27 @@ $$P = (0.008079266) \cdot (1.013731)^t$$
 This is an exponential function with base $a = 1.013731$ — an annual growth rate of about 1.37%.
 
 > **Figure 9 — Exponential model for population growth.** Same scatter from Figure 8, now with the smooth fitted curve $(0.008079266)(1.013731)^t$ drawn through it. Excellent fit, though slightly under-fitting the 1940s–50s (the period of slow growth during WWII and its recovery).
+
+```plot
+{
+  "title": "Figure 9 — Exponential fit P = 0.008·(1.0137)ᵗ (millions)",
+  "width": 520, "height": 320,
+  "xRange": [1895, 2005], "yRange": [0, 7000],
+  "xStep": 20, "yStep": 1000,
+  "xLabel": "t (year)", "yLabel": "P (millions)",
+  "curves": [
+    {"fn": "0.008079266 * pow(1.013731, x) / 1e6", "color": "#2867b2", "width": 2},
+    {
+      "data": [
+        [1900, 1650], [1910, 1750], [1920, 1860], [1930, 2070],
+        [1940, 2300], [1950, 2560], [1960, 3040], [1970, 3710],
+        [1980, 4450], [1990, 5280], [2000, 6080]
+      ],
+      "mode": "scatter", "color": "#b04a2f", "r": 4
+    }
+  ]
+}
+```
 
 **Stewart's observation:** the period of relatively slow population growth is explained by the two world wars and the Great Depression of the 1930s — external shocks that temporarily suppressed the baseline exponential trajectory.
 
@@ -71,7 +112,49 @@ Measuring the tangent slopes experimentally:
 
 > **Figure 10 — $y = 2^x$ with its tangent line at $(0, 1)$.** A growing exponential with a straight tangent line passing through $(0, 1)$, the tangent line visibly having slope less than 1 (marked $m \approx 0.7$).
 
+```plot
+{
+  "title": "Figure 10 — y = 2ˣ with tangent at (0, 1), m = ln 2 ≈ 0.693",
+  "width": 460, "height": 320,
+  "xRange": [-2, 2], "yRange": [-0.5, 4],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)",        "color": "#b04a2f", "width": 2.2},
+    {"fn": "1 + log(2) * x",   "color": "#5a8f3a", "width": 1.6, "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 1.6, "y": 2.5, "text": "y = 2ˣ", "color": "#b04a2f", "anchor": "end"},
+    {"x": 1.9, "y": 2.0, "text": "tangent (slope ≈ 0.69)", "color": "#5a8f3a", "anchor": "end"}
+  ]
+}
+```
+
 > **Figure 11 — $y = 3^x$ with its tangent line at $(0, 1)$.** Same setup but steeper — the tangent line has slope slightly more than 1 (marked $m \approx 1.1$).
+
+```plot
+{
+  "title": "Figure 11 — y = 3ˣ with tangent at (0, 1), m = ln 3 ≈ 1.099",
+  "width": 460, "height": 320,
+  "xRange": [-2, 2], "yRange": [-0.5, 4],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(3, x)",        "color": "#b04a2f", "width": 2.2},
+    {"fn": "1 + log(3) * x",   "color": "#5a8f3a", "width": 1.6, "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 1.4, "y": 3.6, "text": "y = 3ˣ", "color": "#b04a2f", "anchor": "end"},
+    {"x": 1.9, "y": 2.6, "text": "tangent (slope ≈ 1.10)", "color": "#5a8f3a", "anchor": "end"}
+  ]
+}
+```
 
 **The slope of the tangent at $(0,1)$ varies continuously with the base.** At base 2, slope is 0.7. At base 3, slope is 1.1. **By the intermediate value theorem, there must be some base between 2 and 3 where the tangent slope at $(0,1)$ is exactly 1.** That base is the natural base $e$.
 
@@ -99,7 +182,51 @@ $$e \approx 2.71828$$
 
 > **Figure 12 — $y = e^x$ with tangent line of slope 1.** Growing exponential through $(0, 1)$ with the tangent line at that point having the symmetric slope of exactly 1 — you can see it visually bisecting the angle between horizontal and the tangent to $y = 3^x$.
 
+```plot
+{
+  "title": "Figure 12 — y = eˣ with tangent at (0, 1), slope = 1",
+  "width": 460, "height": 320,
+  "xRange": [-2, 2], "yRange": [-0.5, 4],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "exp(x)", "color": "#b04a2f", "width": 2.2},
+    {"fn": "1 + x",  "color": "#5a8f3a", "width": 1.6, "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 1.5, "y": 3.0, "text": "y = eˣ",          "color": "#b04a2f", "anchor": "end"},
+    {"x": 1.9, "y": 2.4, "text": "tangent y = 1 + x", "color": "#5a8f3a", "anchor": "end"}
+  ]
+}
+```
+
 > **Figure 13 — $y = 2^x, y = e^x, y = 3^x$ on the same axes.** Three exponentials all passing through $(0, 1)$. Ordering of growth rates: $2^x < e^x < 3^x$ for $x > 0$, and the ordering reverses for $x < 0$. $e^x$ sits between them — "the Goldilocks exponential."
+
+```plot
+{
+  "title": "Figure 13 — y = 2ˣ, eˣ, 3ˣ together",
+  "width": 480, "height": 340,
+  "xRange": [-2, 2], "yRange": [-0.5, 6],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)", "color": "#2867b2", "width": 1.8},
+    {"fn": "exp(x)",    "color": "#b04a2f", "width": 2.0},
+    {"fn": "pow(3, x)", "color": "#5a8f3a", "width": 1.8}
+  ],
+  "annotations": [
+    {"x": 1.5, "y": 2.6, "text": "2ˣ", "color": "#2867b2"},
+    {"x": 1.5, "y": 4.2, "text": "eˣ", "color": "#b04a2f"},
+    {"x": 1.5, "y": 5.4, "text": "3ˣ", "color": "#5a8f3a"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "r": 3, "label": "(0, 1)", "labelDx": 8, "labelDy": 14}
+  ]
+}
+```
 
 *Margin note: TEC Module 1.5 enables you to graph exponential functions with various bases and their tangent lines in order to estimate more closely the value of $a$ for which the tangent has slope 1.*
 
@@ -144,6 +271,76 @@ $$\text{range} = (-1, \infty)$$
 > - **(c) $y = \tfrac{1}{2}\,e^{-x}$:** panel (b) with heights halved. Passes through $(0, 0.5)$.
 > - **(d) $y = \tfrac{1}{2}\,e^{-x} - 1$:** panel (c) shifted down 1. Passes through $(0, -0.5)$. Horizontal asymptote at $y = -1$ shown as dashed line.
 
+```plot
+{
+  "title": "Figure 14a — y = eˣ",
+  "width": 460, "height": 260,
+  "xRange": [-3, 3], "yRange": [-1, 8],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "exp(x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14b — y = e⁻ˣ",
+  "width": 460, "height": 260,
+  "xRange": [-3, 3], "yRange": [-1, 8],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "exp(-x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14c — y = ½ e⁻ˣ",
+  "width": 460, "height": 260,
+  "xRange": [-3, 3], "yRange": [-1, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.5 * exp(-x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 0.5, "style": "filled", "color": "#1f2430", "label": "(0, 0.5)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14d — y = ½ e⁻ˣ − 1",
+  "width": 460, "height": 280,
+  "xRange": [-3, 3], "yRange": [-2, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.5 * exp(-x) - 1", "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": -1, "color": "#888", "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 0, "y": -0.5, "style": "filled", "color": "#1f2430", "label": "(0, −0.5)", "labelDx": 8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 2.8, "y": -0.7, "text": "y = −1 (asymptote)", "color": "#666", "anchor": "end", "italic": false}
+  ]
+}
+```
+
 ---
 
 ## Example 4 — How large does $x$ have to be for $e^x$ to exceed a million?
@@ -155,6 +352,29 @@ Use a graphing device to find the values of $x$ for which $e^x > 1{,}000{,}000$.
 $$e^x > 10^6 \quad \text{when} \quad x > 13.8$$
 
 > **Figure 15 — Finding where $e^x$ exceeds one million.** Axes show $x$ from $0$ to $15$ and $y$ from $0$ to $1.5 \times 10^6$. The curve $y = e^x$ starts near the $x$-axis and stays flat until about $x = 13$, then rockets up through the horizontal line $y = 10^6$ at roughly $x = 13.8$. The upper portion of the viewing window shows the dramatic steepening.
+
+```plot
+{
+  "title": "Figure 15 — y = eˣ crosses 10⁶ near x ≈ 13.8",
+  "width": 540, "height": 340,
+  "xRange": [0, 15], "yRange": [0, 1500000],
+  "xStep": 1, "yStep": 250000,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "exp(x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 1000000, "color": "#2867b2", "dash": "5 4"},
+    {"type": "vertical",   "x": 13.8155, "yRange": [0, 1000000], "color": "#888", "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 13.8155, "y": 1000000, "style": "filled", "color": "#1f2430", "label": "(13.8, 10⁶)", "labelDx": -8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 14.5, "y": 1050000, "text": "y = 10⁶", "color": "#2867b2", "anchor": "end", "italic": false}
+  ]
+}
+```
 
 **Scale intuition — why this should surprise you.** $e^{13} \approx 442{,}413$ and $e^{14} \approx 1{,}202{,}604$. The million-mark is reached somewhere in between. What makes this startling is how *short* the $x$-interval is: going from "near zero" at $x = 0$ to "over a million" at $x \approx 14$ takes only 14 units. **This is the lived reality of exponential growth** — absolutely nothing for a long stretch, then everything all at once.
 
