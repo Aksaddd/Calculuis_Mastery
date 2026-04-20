@@ -86,6 +86,17 @@ window.CalcHints = {
 
   /* ================= Chapter 2 ================= */
 
+  /* ---------------- Section 2.4 — Exercises ---------------- */
+  "10_exercises_2.4": {
+    "3": "Read the graph. The inequality $|\\sqrt{x} - 2| < 0.4$ means $1.6 < \\sqrt{x} < 2.4$, i.e. $2.56 < x < 5.76$. Since we want this for $|x - 4| < \\delta$ (i.e. $4-\\delta < x < 4+\\delta$), pick $\\delta$ equal to the *smaller* distance from $4$ to either end: $\\min(4 - 2.56,\\; 5.76 - 4) = \\min(1.44,\\; 1.76) = 1.44$.",
+    "17": "For a **linear** function $1 - 4x$ near $x = -3$: $|f(x) - L| = |(1 - 4x) - 13| = |-4x - 12| = 4|x + 3|$. So given $\\varepsilon > 0$, pick $\\delta = \\varepsilon/4$. Then $|x - (-3)| < \\delta$ forces $4|x + 3| < \\varepsilon$, done.",
+    "25": "$|x^2 - 0| = x^2 = |x|^2$. Want $|x|^2 < \\varepsilon$, so need $|x| < \\sqrt{\\varepsilon}$. Choose $\\delta = \\sqrt{\\varepsilon}$ — the square-root scaling is the norm for quadratic limits at 0.",
+    "29": "Complete the square or factor: $x^2 - 4x + 5 - 1 = x^2 - 4x + 4 = (x-2)^2$. So $|f(x) - L| = (x-2)^2 = |x-2|^2$. Choose $\\delta = \\min(1, \\sqrt{\\varepsilon})$ — the first bound keeps things local, the second handles the error.",
+    "31": "Factor: $x^2 - 1 - 3 = x^2 - 4 = (x-2)(x+2)$. We need $|(x-2)(x+2)| < \\varepsilon$ when $|x + 2| < \\delta$. Use the standard trick: first assume $\\delta \\leq 1$ so $|x - 2|$ is bounded (near $-2$, $x-2$ is near $-4$, so $|x-2| < 5$). Then $|(x-2)(x+2)| < 5|x+2|$, and picking $\\delta = \\min(1, \\varepsilon/5)$ works.",
+    "37": "The hint factors $|\\sqrt{x} - \\sqrt{a}| = |x-a| / (\\sqrt{x} + \\sqrt{a})$. Since $\\sqrt{x} \\geq 0$ and $\\sqrt{a} > 0$, the denominator is $\\geq \\sqrt{a}$, giving $|\\sqrt{x} - \\sqrt{a}| \\leq |x - a| / \\sqrt{a}$. So pick $\\delta = \\varepsilon \\sqrt{a}$ — but also restrict $\\delta \\leq a$ to keep $x > 0$.",
+    "43": "Infinite limit means: for every $M < 0$ we must make $\\ln x < M$. Exponentiate: $x < e^M$. So given $M$, pick $\\delta = e^M$ — then $0 < x < \\delta$ forces $\\ln x < M$. (We only need a right-limit since $\\ln$ isn't defined for negative $x$.)"
+  },
+
   /* ---------------- Section 2.3 — Exercises ---------------- */
   "07_exercises_2.3": {
     "8": "The radicand $u^4 + 3u + 6$ is a polynomial — continuous everywhere — and the square root is continuous on its domain. So long as the value under the root is positive, you can use the Direct Substitution Property: plug $u = -2$ straight into the expression. Compute $(-2)^4 + 3(-2) + 6 = 16 - 6 + 6 = 16$, so the limit is $\\sqrt{16} = 4$.",
