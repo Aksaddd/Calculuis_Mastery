@@ -65,6 +65,75 @@ const TOC = [
         ]
       }
     ]
+  },
+  {
+    chapter: "Chapter 2 — Limits and Derivatives",
+    sections: [
+      {
+        title: "2.1 The Tangent and Velocity Problems",
+        units: [
+          { id: "01_section_2.1_tangent_velocity", title: "Tangent & Velocity" }
+        ]
+      },
+      {
+        title: "2.2 The Limit of a Function",
+        units: [
+          { id: "02_section_2.2_limit_definition", title: "Definition & One-Sided Limits" },
+          { id: "03_section_2.2_infinite_limits",  title: "Infinite Limits & Vertical Asymptotes" },
+          { id: "04_exercises_2.2",                title: "Exercises 2.2" }
+        ]
+      },
+      {
+        title: "2.3 Calculating Limits (Limit Laws)",
+        units: [
+          { id: "05_section_2.3_limit_laws",       title: "Limit Laws & Direct Substitution" },
+          { id: "06_section_2.3_factoring_squeeze",title: "Factoring, Rationalizing, Squeeze" },
+          { id: "07_exercises_2.3",                title: "Exercises 2.3" }
+        ]
+      },
+      {
+        title: "2.4 The Precise Definition of a Limit",
+        units: [
+          { id: "08_section_2.4_precise_definition", title: "ε-δ Definition & Examples" },
+          { id: "09_section_2.4_harder_proofs",      title: "Harder Proofs & Sum Law" },
+          { id: "10_exercises_2.4",                  title: "Exercises 2.4" }
+        ]
+      },
+      {
+        title: "2.5 Continuity",
+        units: [
+          { id: "11_section_2.5_continuity",      title: "Continuity & Discontinuity Types" },
+          { id: "12_section_2.5_IVT_exercises",   title: "Intermediate Value Theorem + Exercises" }
+        ]
+      },
+      {
+        title: "2.6 Limits at Infinity",
+        units: [
+          { id: "13_section_2.6_limits_at_infinity", title: "Horizontal Asymptotes" },
+          { id: "14_section_2.6_precise_exercises",  title: "Precise ε-N Definitions + Exercises" }
+        ]
+      },
+      {
+        title: "2.7 Derivatives and Rates of Change",
+        units: [
+          { id: "15_section_2.7_derivative_definition", title: "Definition of the Derivative" },
+          { id: "16_section_2.7_rates_exercises",        title: "Rates of Change + Exercises" }
+        ]
+      },
+      {
+        title: "2.8 The Derivative as a Function",
+        units: [
+          { id: "17_section_2.8_derivative_function",              title: "The Derivative Function" },
+          { id: "18_section_2.8_higher_derivatives_exercises",     title: "Higher Derivatives + Exercises" }
+        ]
+      },
+      {
+        title: "Chapter 2 Wrap-up",
+        units: [
+          { id: "19_ch2_review_concept_exercises", title: "Concept Check, T/F, Review Exercises" }
+        ]
+      }
+    ]
   }
 ];
 
@@ -432,7 +501,7 @@ function refreshReadStates() {
   });
   const text = document.getElementById("progress-text");
   const fill = document.getElementById("progress-fill");
-  text.textContent = `${READ.size} / ${FLAT.length} read`;
+  text.textContent = `${READ.size} / ${FLAT.length} sections read`;
   fill.style.width = `${(READ.size / FLAT.length) * 100}%`;
 }
 
