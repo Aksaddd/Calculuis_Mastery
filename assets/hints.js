@@ -86,6 +86,21 @@ window.CalcHints = {
 
   /* ================= Chapter 2 ================= */
 
+  /* ---------------- Section 2.5 — IVT + Continuity Exercises ---------------- */
+  "12_section_2.5_IVT_exercises": {
+    "3": "Three things to check at each point: does $\\lim_{x \\to a} f(x)$ exist? does $f(a)$ exist? do they agree? A failure of the first gives a *jump* or *essential* discontinuity; failure of the third with both existing gives a *removable* discontinuity; failure of the second is also removable (we can fill in the hole). One-sided continuity: the left-limit equals $f(a)$ ⇒ continuous from the left; right-limit equals $f(a)$ ⇒ from the right.",
+    "7": "This is a step function — jumps at each hour boundary. The cost is $\\$3$ on $(0,1]$, $\\$5$ on $(1,2]$, $\\$7$ on $(2,3]$, $\\$9$ on $(3,4]$, then caps at $\\$10$ for $t \\geq 4$ hours (since $3 + 2 + 2 + 2 = 9$, next step would be $11$ but capped). Discontinuities at $t = 1, 2, 3$; the function is cost-unfriendly — each tiny fraction of an hour past a boundary costs $\\$2$.",
+    "11": "$(x + 2x^3)^4$ is a composition: inner polynomial $x + 2x^3$ (continuous everywhere), outer fourth power (continuous everywhere). Composition of continuous functions is continuous, so $f$ is continuous at every $a$ — including $a = -1$. You just need to state this and evaluate $f(-1) = (-1 + 2(-1))^4 = (-3)^4 = 81$.",
+    "18": "The piecewise function has a potential discontinuity at $x = 1$. Compute the limit: $\\dfrac{x^2 - x}{x^2 - 1} = \\dfrac{x(x-1)}{(x-1)(x+1)}$, cancel to get $\\dfrac{x}{x+1}$, limit is $\\frac{1}{2}$. But $f(1) = 1$ by the piecewise rule. Since $\\frac{1}{2} \\neq 1$, $f$ is discontinuous at 1 (removable — the definition could be fixed by redefining $f(1) = \\frac{1}{2}$).",
+    "27": "$G(t) = \\ln(t^4 - 1)$ is continuous wherever $t^4 - 1 > 0$ (log needs positive argument). Solve $t^4 > 1 \\Leftrightarrow |t| > 1$, giving domain $t < -1$ or $t > 1$. The function is continuous on $(-\\infty, -1) \\cup (1, \\infty)$.",
+    "32": "Apply continuity of sine and of the polynomial $x + \\sin x$: both continuous everywhere, so the composition is continuous everywhere. Direct substitution: $\\sin(\\pi + \\sin \\pi) = \\sin(\\pi + 0) = \\sin \\pi = 0$.",
+    "39": "Check continuity at the breakpoints $x = 0$ and $x = 1$. At $x = 0$: left limit $= 0 + 2 = 2$; right limit $= e^0 = 1$; jump ⇒ discontinuous. At $x = 1$: left limit $= e^1 = e$; right limit $= 2 - 1 = 1$; jump ⇒ discontinuous. Elsewhere, each piece is continuous. So the set of continuity is $(-\\infty, 0) \\cup (0, 1) \\cup (1, \\infty)$.",
+    "41": "For continuity at the breakpoint $x = 2$, equate the two one-sided limits. Left: $c(4) + 2(2) = 4c + 4$. Right: $8 - 2c$. Set equal: $4c + 4 = 8 - 2c \\Rightarrow 6c = 4 \\Rightarrow c = \\frac{2}{3}$.",
+    "47": "Apply IVT on $[1, 2]$ with $f(x) = x^4 + x - 3$. Check $f(1) = 1 + 1 - 3 = -1 < 0$ and $f(2) = 16 + 2 - 3 = 15 > 0$. $f$ is polynomial (continuous), so IVT guarantees a root in $(1, 2)$.",
+    "53": "Define $g(x) = 100 e^{-x/100} - 0.01 x^2$, and find an interval where $g$ changes sign. $g(0) = 100 - 0 = 100 > 0$; for large $x$, $e^{-x/100} \\to 0$ while $0.01 x^2 \\to \\infty$, so $g$ is eventually very negative. Try $x = 100$: $g(100) \\approx 100 e^{-1} - 100 \\approx 36.8 - 100 < 0$. So a root exists in $(0, 100)$; zoom to narrow.",
+    "61": "\"A number exactly 1 more than its cube\" means $x = x^3 + 1$, i.e. $x^3 - x + 1 = 0$. Let $f(x) = x^3 - x + 1$. Check: $f(-2) = -8 + 2 + 1 = -5 < 0$, $f(0) = 1 > 0$. By IVT, there's a root in $(-2, 0)$. Yes."
+  },
+
   /* ---------------- Section 2.4 — Exercises ---------------- */
   "10_exercises_2.4": {
     "3": "Read the graph. The inequality $|\\sqrt{x} - 2| < 0.4$ means $1.6 < \\sqrt{x} < 2.4$, i.e. $2.56 < x < 5.76$. Since we want this for $|x - 4| < \\delta$ (i.e. $4-\\delta < x < 4+\\delta$), pick $\\delta$ equal to the *smaller* distance from $4$ to either end: $\\min(4 - 2.56,\\; 5.76 - 4) = \\min(1.44,\\; 1.76) = 1.44$.",
