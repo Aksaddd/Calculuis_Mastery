@@ -189,10 +189,12 @@ function classifyBlockquotes(root) {
 
 /* Turn `[HINT]` / `[GRAPH]` / `[CAS]` code spans into stylized badges,
  * and italic "[Graph: ...]" prompts into compact figure-placeholder cards.
+ * HINT badges become clickable — they open an inline hint card with
+ * a pedagogically written hint keyed by exercise number.
  */
-function stylizeExerciseMarkers(root) {
+function stylizeExerciseMarkers(root, fileId) {
   const BADGES = {
-    "[HINT]":  { cls: "badge-hint",  title: "Homework hint available online (cyan-boxed exercise number in the textbook).",  text: "HINT" },
+    "[HINT]":  { cls: "badge-hint",  title: "Click for a study hint.",  text: "HINT", interactive: true },
     "[GRAPH]": { cls: "badge-graph", title: "Graphing calculator or graphing software recommended (tree icon in the textbook).", text: "GRAPH" },
     "[CAS]":   { cls: "badge-cas",   title: "Computer algebra system required.", text: "CAS" }
   };
@@ -201,11 +203,22 @@ function stylizeExerciseMarkers(root) {
     const key = code.textContent.trim();
     const badge = BADGES[key];
     if (!badge) return;
-    const span = document.createElement("span");
-    span.className = `ex-badge ${badge.cls}`;
-    span.title = badge.title;
-    span.textContent = badge.text;
-    code.replaceWith(span);
+
+    if (badge.interactive) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `ex-badge ${badge.cls}`;
+      btn.title = badge.title;
+      btn.textContent = badge.text;
+      btn.addEventListener("click", () => toggleHint(btn, fileId));
+      code.replaceWith(btn);
+    } else {
+      const span = document.createElement("span");
+      span.className = `ex-badge ${badge.cls}`;
+      span.title = badge.title;
+      span.textContent = badge.text;
+      code.replaceWith(span);
+    }
   });
 
   // Italic [Graph: ...] placeholders → figure-placeholder card
@@ -222,8 +235,6 @@ function stylizeExerciseMarkers(root) {
       </svg>
       <figcaption><strong>Graph:</strong> ${escapeHtml(desc)}</figcaption>
     `;
-    // If the <em> is the sole content of its parent <p>, replace the <p>
-    // to avoid a block-level <figure> nested in a paragraph.
     const parent = em.parentElement;
     if (parent && parent.tagName === "P" && parent.childNodes.length === 1) {
       parent.replaceWith(fig);
@@ -231,6 +242,92 @@ function stylizeExerciseMarkers(root) {
       em.replaceWith(fig);
     }
   });
+}
+
+/* Resolve the exercise number a HINT badge belongs to by walking up to
+ * its paragraph and reading the first bold token — "5.", "7a.", "23–24.",
+ * or a leading "(a)" / "(b)" inside a sub-item. We accept the first
+ * number we find before the badge. */
+function resolveExerciseId(btn) {
+  // First look back within the paragraph for a <strong>N.</strong>
+  const p = btn.closest("p, li");
+  if (!p) return null;
+  const strongs = p.querySelectorAll("strong");
+  for (const s of strongs) {
+    const m = s.textContent.match(/^(\d+)(?:[\-–]\d+)?[a-z]?\./);
+    if (m) return m[1];
+  }
+  // Fallback: walk previous siblings looking for the nearest exercise header
+  let node = p.previousElementSibling;
+  while (node) {
+    const ss = node.querySelectorAll ? node.querySelectorAll("strong") : [];
+    for (const s of ss) {
+      const m = s.textContent.match(/^(\d+)(?:[\-–]\d+)?[a-z]?\./);
+      if (m) return m[1];
+    }
+    node = node.previousElementSibling;
+  }
+  return null;
+}
+
+function toggleHint(btn, fileId) {
+  const existing = btn._hintCard;
+  if (existing && existing.isConnected) {
+    existing.remove();
+    btn._hintCard = null;
+    btn.classList.remove("open");
+    return;
+  }
+
+  const exId = resolveExerciseId(btn);
+  const hints = (window.CalcHints || {})[fileId] || {};
+  const hintRaw = exId ? hints[exId] : null;
+
+  const card = document.createElement("div");
+  card.className = "hint-card";
+
+  const header = document.createElement("div");
+  header.className = "hint-card-header";
+  header.innerHTML = `<span class="hint-card-label">Hint${exId ? " · Ex " + exId : ""}</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "hint-card-close";
+  closeBtn.setAttribute("aria-label", "Close hint");
+  closeBtn.textContent = "×";
+  closeBtn.addEventListener("click", () => {
+    card.remove();
+    btn._hintCard = null;
+    btn.classList.remove("open");
+  });
+  header.appendChild(closeBtn);
+  card.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "hint-card-body";
+  if (hintRaw) {
+    body.innerHTML = renderMarkdown(hintRaw);
+  } else {
+    body.innerHTML = `<p class="hint-card-empty">No hint authored yet for this exercise. <em>The original textbook marked this one with a boxed number, indicating an online homework hint was available.</em> Try the analytical approach from the lesson notes for this section.</p>`;
+  }
+  card.appendChild(body);
+
+  // Insert the hint card sensibly relative to the exercise element:
+  //   - inside an <li>, append to the <li> itself
+  //   - otherwise, insert after the enclosing <p>
+  const container = btn.closest("li");
+  if (container) {
+    container.appendChild(card);
+  } else {
+    const p = btn.closest("p");
+    if (p && p.parentElement) {
+      p.parentElement.insertBefore(card, p.nextSibling);
+    } else {
+      btn.parentElement.appendChild(card);
+    }
+  }
+
+  btn._hintCard = card;
+  btn.classList.add("open");
 }
 
 /* Render ```plot fenced blocks as inline SVG figures */
@@ -400,7 +497,7 @@ async function loadUnit(id) {
   const bodyEl = document.getElementById("article-body");
   classifyBlockquotes(bodyEl);
   wrapTables(bodyEl);
-  stylizeExerciseMarkers(bodyEl);
+  stylizeExerciseMarkers(bodyEl, id);
   renderPlots(bodyEl);
 
   document.getElementById("mark-read").addEventListener("change", e => {
