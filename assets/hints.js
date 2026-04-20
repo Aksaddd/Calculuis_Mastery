@@ -82,5 +82,34 @@ window.CalcHints = {
   "24_principles_and_problems_plus": {
     /* Problems Plus is meant to be hard on purpose — Stewart's principle
        is "struggle productively." Hints here should be minimal. */
+  },
+
+  /* ================= Chapter 2 ================= */
+
+  /* ---------------- Section 2.3 — Exercises ---------------- */
+  "07_exercises_2.3": {
+    "8": "The radicand $u^4 + 3u + 6$ is a polynomial — continuous everywhere — and the square root is continuous on its domain. So long as the value under the root is positive, you can use the Direct Substitution Property: plug $u = -2$ straight into the expression. Compute $(-2)^4 + 3(-2) + 6 = 16 - 6 + 6 = 16$, so the limit is $\\sqrt{16} = 4$.",
+    "15": "Direct substitution gives $0/0$ — classic factor-and-cancel setup. Numerator: $t^2 - 9 = (t-3)(t+3)$. Denominator: $2t^2 + 7t + 3 = (2t + 1)(t + 3)$. Cancel the common $(t + 3)$ factor, then substitute $t = -3$ into what remains.",
+    "19": "Direct substitution → $0/0$. Factor the denominator as a sum of cubes: $x^3 + 8 = (x + 2)(x^2 - 2x + 4)$. Cancel $(x + 2)$ and substitute $x = -2$ into the simplified expression.",
+    "20": "Expand $(2 + h)^3$ using the binomial theorem: $8 + 12h + 6h^2 + h^3$. Subtract 8, divide by $h$, and cancel. The limit as $h \\to 0$ is the leading term. This is exactly the difference-quotient setup — the limit will be the derivative of $x^3$ at $x = 2$.",
+    "35": "Use the Squeeze Theorem. Compute both bounding functions at $x = 4$: $4(4) - 9 = 7$ and $4^2 - 4(4) + 7 = 7$. The two bounds agree, so the squeeze forces the limit to the common value.",
+    "39": "Absolute values require one-sided analysis at the breakpoint $x = 3$. For $x > 3$: $|x-3| = x-3$, so the expression equals $2x + (x-3) = 3x - 3$, giving 6. For $x < 3$: $|x-3| = -(x-3)$, so the expression equals $2x - (x-3) = x + 3$, giving 6. Both sides agree → limit is 6.",
+    "49": "The greatest integer function $\\llbracket x \\rrbracket$ is a step function — constant on each interval $[n, n+1)$ for integer $n$, jumping by 1 at each integer. At an integer $n$, the left-limit is $n - 1$ (value just below) and the right-limit is $n$ (value at and just above). So the two-sided limit exists **iff $a$ is not an integer**.",
+    "58": "You need two pathological functions whose pointwise sum behaves nicely even though neither alone has a limit. Try $f(x) = \\text{sgn}(x)$ (or $\\llbracket x \\rrbracket$-type jumps) and $g(x) = -f(x)$ — their sum is identically zero. Both $f$ and $g$ fail to have limits at jumps, but $f + g = 0$ has the limit 0 everywhere.",
+    "61": "For the limit to exist as $x \\to -2$, the denominator's zero must be matched by a zero in the numerator (otherwise you'd blow up). The denominator $x^2 + x - 2 = (x+2)(x-1)$ has a root at $x = -2$. Require the numerator to vanish there too: $3(4) + a(-2) + a + 3 = 0 \\Rightarrow 12 - 2a + a + 3 = 15 - a = 0 \\Rightarrow a = 15$. Now factor out $(x+2)$ from both and take the limit of what remains."
+  },
+
+  /* ---------------- Section 2.2 — Exercises ---------------- */
+  "04_exercises_2.2": {
+    "4": "For each limit, read the graph from the stated side. The **two-sided** limit exists iff the two one-sided limits agree — if the graph has a jump, the two-sided limit at that point does **not exist**, even if the function is defined there. Also: $\\lim_{x \\to 3} f(x)$ has nothing to do with the *value* $f(3)$; they are independent pieces of information.",
+    "15": "Sketch conditions one at a time. A jump at $x=3$: plot an open circle at $(3, 2)$ (left limit) and an open circle at $(3, 4)$ (right limit), with a solid dot at $(3, 3)$ for the actual value. Near $x=-2$: the limit is 2 but $f(-2) = 1$, so an open circle at $(-2, 2)$ and a solid dot at $(-2, 1)$ — a **removable** discontinuity.",
+    "27": "As $x \\to 1$, the denominator $(x-1)^2 \\to 0^+$ (squared ⇒ always positive near 1) and the numerator $2 - x \\to 1 > 0$. Positive / tiny-positive = $+\\infty$. Note $(x-1)^2$ doesn't change sign the way $(x-1)$ would, so no one-sided analysis is needed — the limit is $+\\infty$ from both sides."
+  },
+
+  /* ---------------- Section 2.1 — Tangent & Velocity ---------------- */
+  "01_section_2.1_tangent_velocity": {
+    "3": "The secant slope from $P(1, \\frac{1}{2})$ to $Q(x, x/(1+x))$ is $m_{PQ} = \\dfrac{x/(1+x) - 1/2}{x - 1}$. Simplify symbolically: the numerator becomes $\\dfrac{2x - (1+x)}{2(1+x)} = \\dfrac{x-1}{2(1+x)}$, so $m_{PQ} = \\dfrac{1}{2(1+x)}$. As $x \\to 1$, this approaches $\\frac{1}{4}$ — that's your tangent slope.",
+    "5": "Average velocity over $[t_1, t_2]$ is $\\dfrac{y(t_2) - y(t_1)}{t_2 - t_1}$. With $y(t) = 40t - 16t^2$ and $t_1 = 2$, compute $y(2) = 80 - 64 = 16$, then plug in each end-time. The values should close in on a single number as the interval shrinks — the instantaneous velocity at $t=2$ is $-24$ ft/s (negative = falling).",
+    "9": "The function $\\sin(10\\pi/x)$ oscillates **wildly** as $x \\to 1$ — sine of a large argument flips sign whenever the argument crosses a multiple of $\\pi$, which happens very often near $x=1$. Your secant slopes sample the curve at irregular points and miss the true tangent behavior. To estimate the real tangent, pick $x$-values *much* closer to 1 (like $1.001, 1.0001$) to sample the curve densely."
   }
 };
