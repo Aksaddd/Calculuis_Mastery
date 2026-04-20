@@ -86,6 +86,21 @@ window.CalcHints = {
 
   /* ================= Chapter 2 ================= */
 
+  /* ---------------- Section 2.8 — Derivative as a Function Exercises ---------------- */
+  "18_section_2.8_higher_derivatives_exercises": {
+    "3": "The derivative's graph encodes the *slopes* of the original. Check: where $f$ is increasing, $f'$ is positive. Where $f$ has a local max/min (horizontal tangent), $f'$ crosses zero. Where $f$ is steeper, $f'$ is larger in magnitude. Match each pair by finding the $f'$ that zero-crosses where $f$ turns around.",
+    "5": "For an \"increasing then decreasing\" bell shape: $f'$ starts positive (rising portion), crosses zero at the peak, then goes negative (descending portion). Sketch $f'$ as a curve that starts above zero, crosses the $x$-axis once at the peak location, and ends below zero.",
+    "11": "For an S-shape approaching a horizontal asymptote: $f$ is increasing throughout (so $f' > 0$) but the rate of increase starts small, grows, then shrinks back toward 0 at the asymptote. So $f'$ is a bump — positive everywhere, peaks in the middle, and tails off to 0 at both ends.",
+    "17": "Zoom in on each point until the curve looks linear. The slope you see is $f'$ at that point. For $x^2$, you'll discover $f'(0) = 0$, $f'(1/2) = 1$, $f'(1) = 2$, $f'(2) = 4$ — the pattern $f'(x) = 2x$. By symmetry ($x^2$ is even), $f'(-x) = -f'(x)$ — so $f'(-1) = -2$, etc.",
+    "18": "Same drill for $x^3$. Zooming reveals $f'(0) = 0$, $f'(1/2) = 0.75$, $f'(1) = 3$, $f'(2) = 12$ — the pattern $f'(x) = 3x^2$. Since $x^3$ is odd, $f'$ is even (derivative of an odd function is even): $f'(-x) = f'(x)$.",
+    "27": "Apply the limit definition: $G'(t) = \\lim_{h\\to 0} \\dfrac{G(t+h) - G(t)}{h}$. Get a common denominator for the difference, expand, and let $h$ factor out. After algebra: $G'(t) = \\dfrac{4}{(t+1)^2}$.",
+    "33": "$U'(t)$ approximates the instantaneous rate of change of unemployment rate (in percentage points per year). Estimate with symmetric differences: $U'(t_0) \\approx (U(t_0+1) - U(t_0-1))/2$. Positive means unemployment is rising; negative means falling.",
+    "35": "At a corner, the left-slope ≠ right-slope, so $f'(-2)$ does not exist. For $x < -2$, $f'$ is the slope of the left piece; for $x > -2$, the slope of the right piece. Graph of $f'$: two horizontal segments with a jump at $x = -2$.",
+    "41": "Use the sign and shape relationships: wherever $f$ has a horizontal tangent, $f'$ crosses zero. Wherever $f'$ has a horizontal tangent, $f''$ crosses zero. So find the curve with the most zero-crossings at turning points of the others — that's the highest-order derivative. Also: derivatives tend to have fewer extrema than the original.",
+    "51": "$f(x) = |x - 6|$ is piecewise linear: $x - 6$ for $x \\geq 6$, $-(x - 6)$ for $x < 6$. Slopes are $+1$ and $-1$ — they don't match at $x = 6$, so $f'(6)$ doesn't exist. Elsewhere $f'(x) = \\text{sgn}(x - 6)$, a step function jumping from $-1$ to $+1$ at $x = 6$.",
+    "53": "$f(x) = x|x|$ equals $x^2$ for $x \\geq 0$ and $-x^2$ for $x < 0$. Both pieces have slope $0$ at $x = 0$, so $f'(0) = 0$ exists! Elsewhere $f'(x) = 2|x|$. $f$ is differentiable **everywhere** — despite looking like it should have trouble at 0, the factor of $|x|$ smooths things out."
+  },
+
   /* ---------------- Section 2.7 — Derivatives + Rates Exercises ---------------- */
   "16_section_2.7_rates_exercises": {
     "5": "The tangent slope at $(a, f(a))$ is $f'(a) = \\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h}$. For $f(x) = \\dfrac{x-1}{x-2}$ at $a = 3$: compute $f(3+h) - f(3)$, get a common denominator, simplify. After algebra, the $h$ cancels and you're left with a limit that goes to $-1$. The tangent line is $y - 2 = -1(x - 3)$.",
