@@ -38,11 +38,67 @@
 
 **5.** *[Graph: smooth monotonically increasing curve from lower-left to upper-right.]*
 
+```plot
+{
+  "title": "Exercise 5 — representative curve",
+  "width": 380, "height": 240,
+  "xRange": [-3, 3], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.6*x + 0.08*x*x*x", "color": "#b04a2f", "width": 2.2}
+  ],
+  "caption": "Strictly increasing everywhere — passes the HLT, so one-to-one."
+}
+```
+
 **6.** *[Graph: smooth curve that rises, has a local maximum, then descends — like a hump.]*
+
+```plot
+{
+  "title": "Exercise 6 — representative curve",
+  "width": 380, "height": 240,
+  "xRange": [-3, 3], "yRange": [-2, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2.2 * exp(-x*x/2.5)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "caption": "Up then down — a horizontal line near the peak hits twice, so NOT one-to-one."
+}
+```
 
 **7.** *[Graph: a zigzag curve with multiple peaks and troughs over its $x$-range.]*
 
+```plot
+{
+  "title": "Exercise 7 — representative curve",
+  "width": 380, "height": 240,
+  "xRange": [-4, 4], "yRange": [-2, 2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(1.8*x) + 0.15*x", "color": "#b04a2f", "width": 2.2}
+  ],
+  "caption": "Multiple peaks and troughs — many horizontal lines cross repeatedly, so NOT one-to-one."
+}
+```
+
 **8.** `[HINT]` *[Graph: an increasing curve, with a slight concavity change.]*
+
+```plot
+{
+  "title": "Exercise 8 — representative curve",
+  "width": 380, "height": 240,
+  "xRange": [-3, 3], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x + sin(x)/4", "color": "#b04a2f", "width": 2.2}
+  ],
+  "caption": "Still monotonically increasing despite a slight change of concavity — one-to-one."
+}
+```
 
 **9.** $f(x) = x^2 - 2x$
 

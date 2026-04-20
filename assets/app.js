@@ -187,6 +187,52 @@ function classifyBlockquotes(root) {
   });
 }
 
+/* Turn `[HINT]` / `[GRAPH]` / `[CAS]` code spans into stylized badges,
+ * and italic "[Graph: ...]" prompts into compact figure-placeholder cards.
+ */
+function stylizeExerciseMarkers(root) {
+  const BADGES = {
+    "[HINT]":  { cls: "badge-hint",  title: "Homework hint available online (cyan-boxed exercise number in the textbook).",  text: "HINT" },
+    "[GRAPH]": { cls: "badge-graph", title: "Graphing calculator or graphing software recommended (tree icon in the textbook).", text: "GRAPH" },
+    "[CAS]":   { cls: "badge-cas",   title: "Computer algebra system required.", text: "CAS" }
+  };
+
+  root.querySelectorAll("code").forEach(code => {
+    const key = code.textContent.trim();
+    const badge = BADGES[key];
+    if (!badge) return;
+    const span = document.createElement("span");
+    span.className = `ex-badge ${badge.cls}`;
+    span.title = badge.title;
+    span.textContent = badge.text;
+    code.replaceWith(span);
+  });
+
+  // Italic [Graph: ...] placeholders → figure-placeholder card
+  root.querySelectorAll("em").forEach(em => {
+    const txt = em.textContent.trim();
+    if (!/^\[Graph:/i.test(txt)) return;
+    const desc = txt.replace(/^\[Graph:\s*/i, "").replace(/\]$/, "").trim();
+    const fig = document.createElement("figure");
+    fig.className = "graph-placeholder";
+    fig.innerHTML = `
+      <svg viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="22" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M6 20 Q 12 8 22 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <figcaption><strong>Graph:</strong> ${escapeHtml(desc)}</figcaption>
+    `;
+    // If the <em> is the sole content of its parent <p>, replace the <p>
+    // to avoid a block-level <figure> nested in a paragraph.
+    const parent = em.parentElement;
+    if (parent && parent.tagName === "P" && parent.childNodes.length === 1) {
+      parent.replaceWith(fig);
+    } else {
+      em.replaceWith(fig);
+    }
+  });
+}
+
 /* Render ```plot fenced blocks as inline SVG figures */
 function renderPlots(root) {
   const blocks = root.querySelectorAll('pre > code.language-plot');
@@ -354,6 +400,7 @@ async function loadUnit(id) {
   const bodyEl = document.getElementById("article-body");
   classifyBlockquotes(bodyEl);
   wrapTables(bodyEl);
+  stylizeExerciseMarkers(bodyEl);
   renderPlots(bodyEl);
 
   document.getElementById("mark-read").addEventListener("change", e => {

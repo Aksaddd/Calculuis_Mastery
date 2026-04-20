@@ -385,6 +385,75 @@ a:hover { text-decoration: underline; }
 #article blockquote.definition,
 #article blockquote.note { position: relative; padding-top: 18px; }
 
+/* Exercise-marker badges — replace `[HINT]` / `[GRAPH]` / `[CAS]` code spans */
+.ex-badge {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  vertical-align: 2px;
+  margin: 0 3px;
+  cursor: help;
+  user-select: none;
+  line-height: 1.3;
+}
+.ex-badge.badge-hint {
+  background: #e4f3fa;
+  color: #0c5a85;
+  border: 1px solid #8dc6e0;
+}
+.ex-badge.badge-graph {
+  background: #e8f2e0;
+  color: #2e5617;
+  border: 1px solid #8bb368;
+}
+.ex-badge.badge-graph::before {
+  content: "▲ ";
+  font-size: 0.75em;
+  letter-spacing: 0;
+  vertical-align: 0;
+  margin-right: 2px;
+}
+.ex-badge.badge-cas {
+  background: #efe5f6;
+  color: #4a2279;
+  border: 1px solid #b593d1;
+}
+
+/* Italic [Graph: ...] placeholder → figure card */
+.graph-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 14px;
+  padding: 10px 14px;
+  background: #f6f3ea;
+  border: 1px dashed #b9b3a2;
+  border-radius: 6px;
+  color: #4a3e1b;
+  font-style: italic;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+}
+.graph-placeholder svg {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  color: #b08a3e;
+}
+.graph-placeholder figcaption { margin: 0; }
+.graph-placeholder strong {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #6b5a1c;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  margin-right: 6px;
+}
+
 /* Plot figures rendered from ```plot fenced blocks */
 .plot-figure {
   margin: 6px 0 22px;
