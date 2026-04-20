@@ -86,6 +86,18 @@ window.CalcHints = {
 
   /* ================= Chapter 2 ================= */
 
+  /* ---------------- Section 2.6 — Limits at Infinity Exercises ---------------- */
+  "14_section_2.6_precise_exercises": {
+    "2": "(a) Vertical asymptote: no — by definition, $f$ is undefined (or blows up) at $x = a$, so no point of the graph can sit on the line $x = a$. Horizontal asymptote: yes — the definition only controls behavior *at infinity*, so $f$ can freely cross $y = L$ at finite $x$-values. (b) A graph can have 0, 1, or 2 horizontal asymptotes (left-$\\infty$ and right-$\\infty$ behaviors are independent).",
+    "7": "Translate each limit into a graph feature: $\\lim_{x\\to 2} f = -\\infty$ ⇒ vertical asymptote at $x = 2$, approached from both sides going down. $\\lim_{x\\to \\infty} = \\infty$ ⇒ rises without bound on the right. $\\lim_{x\\to -\\infty} = 0$ ⇒ horizontal asymptote $y = 0$ on the left. Vertical asymptote at $x = 0$ with the two sides going opposite directions.",
+    "19": "For rational functions $\\lim_{x \\to \\infty} P(x)/Q(x)$: divide numerator and denominator by the highest power of $x$ appearing (here $x^3$). You get $\\dfrac{1 + 5/x^2}{2 - 1/x + 4/x^3}$, and every $1/x^k$ term goes to 0 as $x \\to \\infty$. Limit is $1/2$.",
+    "25": "Difference of square roots → $\\infty - \\infty$ (indeterminate). Multiply by the conjugate: $\\dfrac{(\\sqrt{9x^2+x} - 3x)(\\sqrt{9x^2+x} + 3x)}{\\sqrt{9x^2+x} + 3x} = \\dfrac{x}{\\sqrt{9x^2+x} + 3x}$. Divide top and bottom by $x$ (positive as $x \\to \\infty$, so $x = \\sqrt{x^2}$): limit becomes $\\dfrac{1}{3 + 3} = \\frac{1}{6}$.",
+    "41": "Compare leading behaviors: numerator degree 2, denominator degree 2, leading coefficients both $1$ on $x^2$ for the denom and $2$ for the numerator. So horizontal asymptote is $y = 2$. For vertical asymptotes, factor $x^2 + x - 2 = (x+2)(x-1)$ — zeros at $x = -2, 1$. Numerator $2x^2 + x - 1 = (2x - 1)(x + 1)$ shares no common factors, so both are true vertical asymptotes.",
+    "55": "Write $P(x) = a_n x^n + \\cdots$ and $Q(x) = b_m x^m + \\cdots$. For large $x$ only leading terms matter. (a) If $n < m$: ratio ∼ $a_n/(b_m x^{m-n}) \\to 0$. (b) If $n > m$: ratio ∼ $(a_n/b_m) x^{n-m}$, which goes to $\\pm\\infty$ (sign determined by the sign of $a_n/b_m$).",
+    "57": "Squeeze theorem at infinity. Compute both bounds. Left: $\\dfrac{10 e^x - 21}{2 e^x} = 5 - \\dfrac{21}{2 e^x} \\to 5$. Right: $\\dfrac{5\\sqrt{x}}{\\sqrt{x-1}} = 5 \\sqrt{\\dfrac{x}{x-1}} \\to 5 \\sqrt{1} = 5$. Both bounds go to 5, so by Squeeze $f(x) \\to 5$.",
+    "65": "(a) $1/x^2 < 0.0001 \\Leftrightarrow x^2 > 10000 \\Leftrightarrow x > 100$ (since $x$ is assumed large positive). (b) For the $\\varepsilon$-$N$ proof: given $\\varepsilon > 0$, solve $1/x^2 < \\varepsilon$ to get $x > 1/\\sqrt{\\varepsilon}$, so pick $N = 1/\\sqrt{\\varepsilon}$."
+  },
+
   /* ---------------- Section 2.5 — IVT + Continuity Exercises ---------------- */
   "12_section_2.5_IVT_exercises": {
     "3": "Three things to check at each point: does $\\lim_{x \\to a} f(x)$ exist? does $f(a)$ exist? do they agree? A failure of the first gives a *jump* or *essential* discontinuity; failure of the third with both existing gives a *removable* discontinuity; failure of the second is also removable (we can fill in the hole). One-sided continuity: the left-limit equals $f(a)$ ⇒ continuous from the left; right-limit equals $f(a)$ ⇒ from the right.",
