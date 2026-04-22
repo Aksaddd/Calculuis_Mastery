@@ -441,6 +441,15 @@ function renderPlots(root) {
     }
     pre.replaceWith(figure);
   });
+
+  // Fold manually-authored <figure class="plot-figure"> (inline SVG in
+  // the markdown) into a preceding figure-description blockquote too.
+  root.querySelectorAll('figure.plot-figure').forEach(fig => {
+    const prev = fig.previousElementSibling;
+    if (prev && prev.tagName === 'BLOCKQUOTE' && prev.classList.contains('figure')) {
+      prev.classList.add('with-plot');
+    }
+  });
 }
 
 /* Wrap raw <table> in scroll container for narrow viewports */

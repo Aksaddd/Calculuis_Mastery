@@ -12,6 +12,25 @@ There are several ways to picture what a function does:
 
 > **Figure 2 — Machine diagram.** A box labeled $f$ with an incoming arrow labeled $x$ (input) on the left and an outgoing arrow labeled $f(x)$ (output) on the right.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" role="img" aria-label="Machine diagram: x goes in, the machine f produces f(x)">
+  <defs>
+    <marker id="fig2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2430"/>
+    </marker>
+  </defs>
+  <text x="55" y="108" font-size="28" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#1f2430">x</text>
+  <text x="55" y="140" font-size="12" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">input</text>
+  <line x1="90" y1="100" x2="198" y2="100" stroke="#1f2430" stroke-width="2" marker-end="url(#fig2-arrow)"/>
+  <rect x="205" y="50" width="120" height="100" rx="10" fill="#fdfcf6" stroke="#1f2430" stroke-width="2"/>
+  <text x="265" y="115" font-size="54" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#b04a2f">f</text>
+  <line x1="330" y1="100" x2="438" y2="100" stroke="#1f2430" stroke-width="2" marker-end="url(#fig2-arrow)"/>
+  <text x="478" y="107" font-size="22" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#1f2430">f(x)</text>
+  <text x="478" y="140" font-size="12" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">output</text>
+</svg>
+<figcaption>The function as a machine: feed in <em>x</em>, get out <em>f(x)</em>.</figcaption>
+</figure>
+
 The preprogrammed functions on a calculator illustrate this. Press $\sqrt{\phantom{x}}$ (or $\sqrt{x}\,$), enter input $x$:
 - If $x < 0$, the calculator returns an error — $x$ is not in the domain of this function.
 - If $x \geq 0$, the display shows an *approximation* to $\sqrt{x}$.
@@ -21,6 +40,35 @@ So the calculator's $\sqrt{x}$ key is not quite the same as the exact mathematic
 **As an arrow diagram.** Each arrow connects an element of $D$ to an element of $E$; the arrow from $x$ indicates that $f(x)$ is the value associated with $x$.
 
 > **Figure 3 — Arrow diagram.** Two blob-shaped regions side by side: $D$ (left) and $E$ (right). Points $x$ and $a$ sit in $D$; arrows from them land on $f(x)$ and $f(a)$ in $E$. The arrows are labeled $f$.
+
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-label="Arrow diagram of function f from set D to set E">
+  <defs>
+    <marker id="fig3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b04a2f"/>
+    </marker>
+  </defs>
+  <ellipse cx="130" cy="165" rx="100" ry="125" fill="#fdfcf6" stroke="#1f2430" stroke-width="2"/>
+  <text x="130" y="315" font-size="22" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#1f2430">D</text>
+  <text x="130" y="45" font-size="11" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">domain</text>
+  <ellipse cx="430" cy="165" rx="100" ry="125" fill="#fdfcf6" stroke="#1f2430" stroke-width="2"/>
+  <text x="430" y="315" font-size="22" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#1f2430">E</text>
+  <text x="430" y="45" font-size="11" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">range lives here</text>
+  <circle cx="110" cy="115" r="4.5" fill="#1f2430"/>
+  <text x="101" y="112" font-size="16" font-style="italic" text-anchor="end" font-family="'Times New Roman', Times, serif" fill="#1f2430">x</text>
+  <circle cx="100" cy="215" r="4.5" fill="#1f2430"/>
+  <text x="91" y="212" font-size="16" font-style="italic" text-anchor="end" font-family="'Times New Roman', Times, serif" fill="#1f2430">a</text>
+  <circle cx="410" cy="130" r="4.5" fill="#1f2430"/>
+  <text x="421" y="128" font-size="15" font-style="italic" text-anchor="start" font-family="'Times New Roman', Times, serif" fill="#1f2430">f(x)</text>
+  <circle cx="398" cy="220" r="4.5" fill="#1f2430"/>
+  <text x="409" y="218" font-size="15" font-style="italic" text-anchor="start" font-family="'Times New Roman', Times, serif" fill="#1f2430">f(a)</text>
+  <path d="M 116 113 Q 265 70 403 128" fill="none" stroke="#b04a2f" stroke-width="1.8" marker-end="url(#fig3-arrow)"/>
+  <text x="270" y="80" font-size="16" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#b04a2f">f</text>
+  <path d="M 106 214 Q 250 252 391 220" fill="none" stroke="#b04a2f" stroke-width="1.8" marker-end="url(#fig3-arrow)"/>
+  <text x="255" y="253" font-size="16" font-style="italic" text-anchor="middle" font-family="'Times New Roman', Times, serif" fill="#b04a2f">f</text>
+</svg>
+<figcaption>Each input in <em>D</em> is sent by <em>f</em> to exactly one output in <em>E</em>.</figcaption>
+</figure>
 
 **As a graph** (most common).
 
@@ -33,7 +81,73 @@ The graph gives a "life history" picture. Since $y = f(x)$ at any point $(x, y)$
 
 > **Figure 4.** A generic curve in the $xy$-plane with a point $(x, f(x))$ marked on it. Vertical drop-lines at $x = 1$, $x = 2$, and a generic $x$ show the heights $f(1)$, $f(2)$, $f(x)$.
 
+```plot
+{
+  "title": "Figure 4 — heights read off the graph",
+  "width": 540, "height": 360,
+  "xRange": [-0.6, 5.6], "yRange": [-0.8, 4.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "fn": "2 + 1.5 * exp(-pow(x - 1, 2) / 3) - 1.2 * exp(-pow((x - 4) / 0.9, 2))",
+      "domain": [0, 5],
+      "color": "#b04a2f", "width": 2.2
+    }
+  ],
+  "lines": [
+    {"type": "vertical",   "x": 1,   "yRange": [0, 3.5],   "color": "#888", "dash": "3 3"},
+    {"type": "horizontal", "y": 3.5, "xRange": [0, 1],     "color": "#888", "dash": "3 3"},
+    {"type": "vertical",   "x": 2,   "yRange": [0, 3.066], "color": "#888", "dash": "3 3"},
+    {"type": "horizontal", "y": 3.066, "xRange": [0, 2],   "color": "#888", "dash": "3 3"},
+    {"type": "vertical",   "x": 3.5, "yRange": [0, 1.306], "color": "#888", "dash": "3 3"},
+    {"type": "horizontal", "y": 1.306, "xRange": [0, 3.5], "color": "#888", "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 1,   "y": 3.5,   "style": "filled", "color": "#1f2430", "label": "f(1)", "labelDx": 10, "labelDy": -8},
+    {"x": 2,   "y": 3.066, "style": "filled", "color": "#1f2430", "label": "f(2)", "labelDx": 10, "labelDy": 14},
+    {"x": 3.5, "y": 1.306, "style": "filled", "color": "#1f2430", "label": "f(x)", "labelDx": 10, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 3.5, "y": -0.35, "text": "x", "anchor": "middle"}
+  ],
+  "caption": "The height of the graph above any input is the output. Dashed lines show how to read f(1), f(2), and f(x) off the y-axis."
+}
+```
+
 > **Figure 5.** Same idea, but with the *range* labeled as a bracket on the $y$-axis (from the minimum $y$-value of the curve to the maximum) and the *domain* labeled as a bracket on the $x$-axis.
+
+```plot
+{
+  "title": "Figure 5 — domain and range",
+  "width": 540, "height": 360,
+  "xRange": [-1.1, 5.6], "yRange": [-1.2, 4.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "fn": "2 + 1.5 * exp(-pow(x - 1, 2) / 3) - 1.2 * exp(-pow((x - 4) / 0.9, 2))",
+      "domain": [0, 5],
+      "color": "#b04a2f", "width": 2.2
+    }
+  ],
+  "lines": [
+    {"from": [-0.45, 0.88], "to": [-0.45, 3.5],   "color": "#2867b2", "width": 2.5},
+    {"from": [-0.55, 3.5],  "to": [-0.35, 3.5],   "color": "#2867b2", "width": 2.5},
+    {"from": [-0.55, 0.88], "to": [-0.35, 0.88],  "color": "#2867b2", "width": 2.5},
+    {"type": "horizontal",  "y": 0.88, "xRange": [0, 5], "color": "#bbb", "dash": "2 3"},
+    {"type": "horizontal",  "y": 3.5,  "xRange": [0, 5], "color": "#bbb", "dash": "2 3"},
+    {"from": [0, -0.6], "to": [5, -0.6],  "color": "#2867b2", "width": 2.5},
+    {"from": [0, -0.7], "to": [0, -0.5],  "color": "#2867b2", "width": 2.5},
+    {"from": [5, -0.7], "to": [5, -0.5],  "color": "#2867b2", "width": 2.5}
+  ],
+  "annotations": [
+    {"x": -0.75, "y": 2.2,  "text": "range",  "anchor": "middle", "color": "#2867b2", "italic": false},
+    {"x": 2.5,   "y": -0.95, "text": "domain", "anchor": "middle", "color": "#2867b2", "italic": false}
+  ],
+  "caption": "Projecting the curve onto the x-axis gives the domain; projecting onto the y-axis gives the range."
+}
+```
 
 ---
 
