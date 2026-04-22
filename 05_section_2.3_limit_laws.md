@@ -49,6 +49,37 @@ Use the Limit Laws and the graphs of $f$ and $g$ to evaluate the following limit
 > - $f$ is a smooth curve passing through approximately $(-2, 1)$, with a local max, descending on the right side.
 > - $g$ is a decreasing line-like curve, passing through approximately $(-2, -1)$, continuing to decrease. Near $x = 1$, $g$ has a jump discontinuity — open circles at $(1, -2)$ and $(1, -1)$.
 
+```plot
+{
+  "title": "Figure 1 — graphs of f (top) and g (bottom) for Example 1",
+  "width": 560, "height": 360,
+  "xRange": [-3.3, 3.3], "yRange": [-3.2, 3.2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "2 - 0.1*(x - 1)*(x - 1)", "domain": [-3, 1],  "endpoints": ["closed", "closed"]},
+        {"fn": "2 - 0.6*(x - 1)*(x - 1)", "domain": [1,  3],  "endpoints": ["closed", "closed"]}
+      ],
+      "color": "#b04a2f", "width": 2.3
+    },
+    {
+      "piecewise": [
+        {"fn": "-(x + 5)/3", "domain": [-3, 1], "endpoints": ["closed", "open"]},
+        {"fn": "x - 2",      "domain": [1,  3], "endpoints": ["open",   "closed"]}
+      ],
+      "color": "#2867b2", "width": 2.3
+    }
+  ],
+  "annotations": [
+    {"x": -2.8, "y": 1.5, "text": "y = f(x)", "color": "#b04a2f", "italic": false},
+    {"x": -2.8, "y": -2.3, "text": "y = g(x)", "color": "#2867b2", "italic": false}
+  ],
+  "caption": "f is smooth; g has a jump at x = 1 (left-limit −2, right-limit −1). Read each limit by sliding up or down to the indicated x."
+}
+```
+
 ***Solution.***
 
 **(a)** From the graphs: $\lim_{x \to -2} f(x) = 1$ and $\lim_{x \to -2} g(x) = -1$.

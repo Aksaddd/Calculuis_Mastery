@@ -283,6 +283,36 @@ exists? If so, find the value of $a$ and the value of the limit.
 
 > **Figure provided.** Two circles in the plane: $C_1$ fixed, unit-circle centered at $(1, 0)$; $C_2$ variable, centered at origin with shrinking radius $r$. The upper intersection point $Q$ is shown, the line $PQ$ is drawn, and $R$ is marked where this line crosses the $x$-axis.
 
+```plot
+{
+  "title": "Exercise 62 — fixed C₁, shrinking C₂, and the point R on the x-axis",
+  "width": 580, "height": 320,
+  "xRange": [-1, 4.6], "yRange": [-1.2, 1.3],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(1 - (x - 1)*(x - 1))",  "domain": [0, 2],      "color": "#1f2430", "width": 1.8, "samples": 500},
+    {"fn": "-sqrt(1 - (x - 1)*(x - 1))", "domain": [0, 2],      "color": "#1f2430", "width": 1.8, "samples": 500},
+    {"fn": "sqrt(0.36 - x*x)",           "domain": [-0.6, 0.6], "color": "#b04a2f", "width": 1.8, "samples": 400},
+    {"fn": "-sqrt(0.36 - x*x)",          "domain": [-0.6, 0.6], "color": "#b04a2f", "width": 1.8, "samples": 400}
+  ],
+  "lines": [
+    {"from": [0, 0.6], "to": [4.5, -0.1], "color": "#2867b2", "width": 1.6}
+  ],
+  "points": [
+    {"x": 0,    "y": 0.6,   "style": "filled", "color": "#1f2430", "label": "P(0, r)",       "labelDx": -8, "labelDy": -6, "labelAnchor": "end"},
+    {"x": 0.18, "y": 0.572, "style": "filled", "color": "#1f2430", "label": "Q",             "labelDx": 10, "labelDy": -6},
+    {"x": 3.857,"y": 0,     "style": "filled", "color": "#1f2430", "label": "R",             "labelDx": -8, "labelDy": -10, "labelAnchor": "end"},
+    {"x": 1,    "y": 0,     "style": "filled", "color": "#1f2430", "label": "(1, 0)",        "labelDx": 10, "labelDy": 14}
+  ],
+  "annotations": [
+    {"x": 1.4,  "y": 0.85, "text": "C₁",      "color": "#1f2430", "italic": false},
+    {"x": 0.5,  "y": 0.4,  "text": "C₂",      "color": "#b04a2f", "italic": false}
+  ],
+  "caption": "Drawn for r ≈ 0.6. As r → 0⁺, the intersection Q slides toward (0, 0) but the line PQ pivots so that R → (4, 0)."
+}
+```
+
 ---
 
 *This closes Section 2.3 Exercises.*

@@ -57,6 +57,41 @@ $$\lim_{x \to 1} g(x) = \lim_{x \to 1}(x + 1) = 2$$
 > - **Upper panel:** $y = f(x) = (x^2 - 1)/(x - 1)$ — the line $y = x + 1$ with a **hole** at $(1, 2)$.
 > - **Lower panel:** $y = g(x)$ — the line $y = x + 1$ with an **isolated dot** at $(1, \pi)$ and a hole at $(1, 2)$.
 
+```plot
+{
+  "title": "Figure 2 (top) — f(x) = (x² − 1)/(x − 1): hole at (1, 2)",
+  "width": 520, "height": 280,
+  "xRange": [-1, 3], "yRange": [-1, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x + 1", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 1, "y": 2, "style": "open", "color": "#b04a2f", "label": "(1, 2)", "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "Same line y = x + 1, but with a hole at x = 1 where the formula is literally 0/0."
+}
+```
+
+```plot
+{
+  "title": "Figure 2 (bottom) — g(x): same line, g(1) = π",
+  "width": 520, "height": 280,
+  "xRange": [-1, 3], "yRange": [-1, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x + 1", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 1, "y": 2,       "style": "open",   "color": "#b04a2f", "label": "limit = 2",  "labelDx": 10, "labelDy": 14},
+    {"x": 1, "y": 3.14159, "style": "filled", "color": "#1f2430", "label": "g(1) = π",  "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "Redefining g(1) = π does not change the limit as x → 1. The limit still equals 2."
+}
+```
+
 **Examples 3 and 4 show the same limiting behavior with different function values at the point.** The function may have a hole, a different isolated value, or even be continuous — the limit only cares about the approach.
 
 ---
@@ -141,6 +176,23 @@ $$\lim_{x \to 0} |x| = 0$$
 
 > **Figure 3 — Graph of $y = |x|$.** A V-shape with vertex at the origin — the canonical picture. Both branches approach the origin, confirming the limit is 0.
 
+```plot
+{
+  "title": "Figure 3 — y = |x|",
+  "width": 480, "height": 300,
+  "xRange": [-3, 3], "yRange": [-0.8, 3.2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "abs(x)", "domain": [-3, 3], "color": "#b04a2f", "width": 2.3}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}
+  ],
+  "caption": "Both branches close in on (0, 0). lim_{x→0} |x| = 0."
+}
+```
+
 ---
 
 ### Example 8 — $|x|/x$ at 0 does NOT exist
@@ -160,6 +212,26 @@ $$\lim_{x \to 0^-} \frac{|x|}{x} = \lim_{x \to 0^-}(-1) = -1$$
 Since the right- and left-hand limits are different, by Theorem 1, $\displaystyle \lim_{x \to 0}|x|/x$ **does not exist**.
 
 > **Figure 4 — Graph of $y = |x|/x$.** A piecewise-constant function: $y = 1$ for $x > 0$, $y = -1$ for $x < 0$, with a hole at the origin. Jump of size 2 at $x = 0$.
+
+```plot
+{
+  "title": "Figure 4 — y = |x|/x = sgn(x) (undefined at 0)",
+  "width": 480, "height": 280,
+  "xRange": [-3, 3], "yRange": [-2, 2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "-1", "domain": [-3, 0], "endpoints": ["closed", "open"]},
+        {"fn": "1",  "domain": [0, 3],  "endpoints": ["open",   "closed"]}
+      ],
+      "color": "#b04a2f", "width": 2.4
+    }
+  ],
+  "caption": "Right-limit at 0 is +1; left-limit is −1. They disagree, so the two-sided limit does not exist."
+}
+```
 
 **This is the "sign function" — denoted $\text{sgn}(x)$** — which you'll meet in Exercise 45. It's everywhere in applied math: as the derivative of $|x|$ where defined, as the output of a perceptron in ML, as the indicator for whether a trading signal goes long or short.
 
@@ -191,6 +263,29 @@ $$\lim_{x \to 4} f(x) = 0$$
 
 > **Figure 5 — Graph of $f$.** A V-shaped curve meeting at the point $(4, 0)$: the left piece is a descending line from the upper-left down to $(4, 0)$; the right piece is an ascending square-root curve starting at $(4, 0)$.
 
+```plot
+{
+  "title": "Figure 5 — piecewise f from Example 9",
+  "width": 520, "height": 320,
+  "xRange": [-0.5, 10], "yRange": [-1, 10],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "8 - 2*x",      "domain": [0, 4],  "endpoints": ["closed", "open"]},
+        {"fn": "sqrt(x - 4)",  "domain": [4, 10], "endpoints": ["closed", "closed"]}
+      ],
+      "color": "#b04a2f", "width": 2.3
+    }
+  ],
+  "points": [
+    {"x": 4, "y": 0, "style": "filled", "color": "#1f2430", "label": "(4, 0)", "labelDx": 10, "labelDy": 14}
+  ],
+  "caption": "Both pieces meet at (4, 0): left-limit and right-limit both equal 0, so lim_{x→4} f(x) = 0."
+}
+```
+
 **Geometric takeaway.** The two pieces of $f$ meet continuously at $x = 4$ — they join at the same point, even though the slopes differ (a corner). This foreshadows **continuous but not differentiable** — a concept that becomes precise in Chapter 3.
 
 ---
@@ -218,6 +313,32 @@ $$\lim_{x \to 3^-}\llbracket x \rrbracket = \lim_{x \to 3^-} 2 = 2$$
 Because these one-sided limits are not equal, $\displaystyle \lim_{x \to 3}\llbracket x \rrbracket$ does not exist by Theorem 1.
 
 > **Figure 6 — Graph of the greatest integer function.** A staircase-shaped graph: horizontal segments at integer heights, with open circles on the right end and closed circles on the left end of each step. Jumps of size 1 at each integer.
+
+```plot
+{
+  "title": "Figure 6 — y = ⟦x⟧ (floor function)",
+  "width": 520, "height": 300,
+  "xRange": [-2.5, 5.5], "yRange": [-3, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "step": [
+        {"y": -3, "x": [-3, -2], "endpoints": ["closed", "open"]},
+        {"y": -2, "x": [-2, -1], "endpoints": ["closed", "open"]},
+        {"y": -1, "x": [-1, 0],  "endpoints": ["closed", "open"]},
+        {"y": 0,  "x": [0, 1],   "endpoints": ["closed", "open"]},
+        {"y": 1,  "x": [1, 2],   "endpoints": ["closed", "open"]},
+        {"y": 2,  "x": [2, 3],   "endpoints": ["closed", "open"]},
+        {"y": 3,  "x": [3, 4],   "endpoints": ["closed", "open"]},
+        {"y": 4,  "x": [4, 5],   "endpoints": ["closed", "open"]}
+      ],
+      "color": "#b04a2f", "width": 2.3
+    }
+  ],
+  "caption": "At every integer n, the left-limit is n − 1 and the right-limit is n. The two-sided limit does not exist at any integer."
+}
+```
 
 **In applied contexts:**
 - **Time-discretization** — rounding sub-second timestamps to integer seconds uses floor.
@@ -247,6 +368,30 @@ The next two theorems give additional properties of limits. Their proofs can be 
 **In words.** If $g(x)$ is squeezed between $f(x)$ and $h(x)$ near $a$, and if $f$ and $h$ have the same limit $L$ at $a$, then **$g$ is forced to have limit $L$ also**.
 
 > **Figure 7 — Visualization of the Squeeze Theorem.** Three curves on one graph: $h$ on top, $f$ on bottom, and $g$ sandwiched between them. All three curves meet at the point $(a, L)$ — the $f$ and $h$ bounds collapse to $L$ at $a$, dragging $g$ along.
+
+```plot
+{
+  "title": "Figure 7 — the Squeeze Theorem: f ≤ g ≤ h, all meeting at (a, L)",
+  "width": 540, "height": 340,
+  "xRange": [-2.5, 2.5], "yRange": [-0.5, 3.2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1.5 - 0.4*x*x",                 "domain": [-2.5, 2.5], "color": "#2867b2", "width": 2},
+    {"fn": "1.5 + 0.4*x*x",                 "domain": [-2.5, 2.5], "color": "#2867b2", "width": 2},
+    {"fn": "1.5 + 0.35*x*sin(3*x)",         "domain": [-2.5, 2.5], "color": "#b04a2f", "width": 2.3, "samples": 600}
+  ],
+  "points": [
+    {"x": 0, "y": 1.5, "style": "filled", "color": "#1f2430", "label": "(a, L)", "labelDx": 10, "labelDy": -6}
+  ],
+  "annotations": [
+    {"x":  2.2, "y": 3.0, "text": "h(x) (upper bound)", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x":  2.2, "y": 0.1, "text": "f(x) (lower bound)", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": -2.2, "y": 2.4, "text": "g(x)",               "color": "#b04a2f", "italic": false, "anchor": "start"}
+  ],
+  "caption": "Upper bound h and lower bound f both head toward L at x = a. Whatever g is doing in between, it is forced to head toward L as well."
+}
+```
 
 **When to reach for the Squeeze Theorem.** Anytime you have a function that *oscillates* or is otherwise hard to analyze directly, but whose *magnitude* can be bounded. Oscillation + a bound of the form $|g(x)| \leq h(x)$ with $h(x) \to 0$ is the canonical setup.
 
@@ -279,6 +424,30 @@ By the Squeeze Theorem:
 $$\lim_{x \to 0} x^2 \sin\!\left(\frac{1}{x}\right) = 0$$
 
 > **Figure 8 — Graph of $y = x^2 \sin(1/x)$ squeezed between $y = \pm x^2$.** The outer parabolas $\pm x^2$ form a narrowing "funnel" at the origin. Inside the funnel, the oscillating curve $x^2 \sin(1/x)$ bounces between the two parabolas with rapidly increasing frequency as $x \to 0$. Despite the wild oscillation, the amplitude is damped toward zero by the $x^2$ factor, so the whole thing collapses into the origin.
+
+```plot
+{
+  "title": "Figure 8 — y = x² sin(1/x) squeezed between ±x²",
+  "width": 540, "height": 340,
+  "xRange": [-0.6, 0.6], "yRange": [-0.35, 0.35],
+  "xStep": 0.2, "yStep": 0.1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x",             "domain": [-0.6, 0.6],   "color": "#2867b2", "width": 1.6, "dash": "4 3"},
+    {"fn": "-x*x",            "domain": [-0.6, 0.6],   "color": "#2867b2", "width": 1.6, "dash": "4 3"},
+    {"fn": "x*x*sin(1/x)",    "domain": [-0.6, -0.01], "color": "#b04a2f", "width": 2,   "samples": 3000},
+    {"fn": "x*x*sin(1/x)",    "domain": [0.01, 0.6],   "color": "#b04a2f", "width": 2,   "samples": 3000}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "open", "color": "#b04a2f"}
+  ],
+  "annotations": [
+    {"x": 0.55, "y": 0.31, "text": "h(x) = x²",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 0.55, "y": -0.31,"text": "f(x) = −x²", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "The inner curve bounces frantically but is trapped between ±x², which pinch to 0 at x = 0. Squeeze Theorem forces the limit to 0."
+}
+```
 
 **This is a prototype for a common pattern in analysis and probability.** Whenever you have a product where one factor oscillates but the other shrinks to zero, the oscillation doesn't matter — the shrinking dominates. The Squeeze Theorem formalizes this intuition:
 
