@@ -24,11 +24,89 @@ An important property of continuous functions is expressed by the following theo
 >
 > **The conceptual content:** IVT guarantees existence — $c$ exists — but not uniqueness. The horizontal line $y = N$ **must be crossed at least once** but could be crossed many times.
 
+```plot
+{
+  "title": "Figure 8(a) — monotone curve: exactly one c with f(c) = N",
+  "width": 500, "height": 280,
+  "xRange": [0, 5], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.2 + 0.9*x", "domain": [0, 5], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.5, "color": "#2867b2", "width": 1.5, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": 0.2, "style": "filled", "color": "#1f2430", "label": "(a, f(a))", "labelDx": 10, "labelDy": -6},
+    {"x": 5, "y": 4.7, "style": "filled", "color": "#1f2430", "label": "(b, f(b))", "labelDx": -10, "labelDy": -8, "labelAnchor": "end"},
+    {"x": 2.5555, "y": 2.5, "style": "filled", "color": "#b04a2f", "label": "c", "labelDx": -6, "labelDy": -10, "labelAnchor": "end"}
+  ],
+  "annotations": [
+    {"x": 4.7, "y": 2.75, "text": "y = N", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "Monotone crossings are unique."
+}
+```
+
+```plot
+{
+  "title": "Figure 8(b) — oscillating curve: three points c with f(c) = N",
+  "width": 500, "height": 280,
+  "xRange": [0, 5], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2.5 + 1.6*sin(2*(x - 0.5))", "domain": [0, 5], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.5, "color": "#2867b2", "width": 1.5, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": 1.154, "style": "filled", "color": "#1f2430", "label": "(a, f(a))", "labelDx": 10, "labelDy": 14},
+    {"x": 5, "y": 0.961, "style": "filled", "color": "#1f2430", "label": "(b, f(b))", "labelDx": -10, "labelDy": 14, "labelAnchor": "end"},
+    {"x": 0.5,   "y": 2.5, "style": "filled", "color": "#b04a2f", "label": "c₁", "labelDx": -4, "labelDy": -10, "labelAnchor": "end"},
+    {"x": 2.0708,"y": 2.5, "style": "filled", "color": "#b04a2f", "label": "c₂", "labelDx": -4, "labelDy": -10, "labelAnchor": "end"},
+    {"x": 3.6415,"y": 2.5, "style": "filled", "color": "#b04a2f", "label": "c₃", "labelDx":  4, "labelDy": -10}
+  ],
+  "annotations": [
+    {"x": 4.7, "y": 2.75, "text": "y = N", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "Oscillating curves may cross N many times — IVT only promises at least one."
+}
+```
+
 ### Intuition and geometric argument
 
 **If we think of a continuous function as a function whose graph has no hole or break, then it is easy to believe the IVT is true.** In geometric terms: if any horizontal line $y = N$ is given between $y = f(a)$ and $y = f(b)$ (Figure 9), then the graph of $f$ can't jump over the line. It must intersect $y = N$ somewhere.
 
 > **Figure 9.** The curve starts at $(a, f(a))$ with $f(a) > N$ (above the line), ends at $(b, f(b))$ with $f(b) < N$ (below the line). Since the graph is continuous — no gaps, no jumps — it must cross $y = N$ somewhere in $(a, b)$.
+
+```plot
+{
+  "title": "Figure 9 — the curve can't jump over y = N",
+  "width": 500, "height": 280,
+  "xRange": [0, 5], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "4 - 0.5*x - 0.2*(x - 2)*(x - 2)*cos(x)", "domain": [0, 5], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2, "color": "#2867b2", "width": 1.5, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": 3.2, "style": "filled", "color": "#1f2430", "label": "(a, f(a))", "labelDx": 10, "labelDy": 6},
+    {"x": 5, "y": 0.22,"style": "filled", "color": "#1f2430", "label": "(b, f(b))", "labelDx": -10, "labelDy": -8, "labelAnchor": "end"}
+  ],
+  "annotations": [
+    {"x": 4.7, "y": 2.25, "text": "y = N", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 0.2, "y": 4.5,  "text": "f(a) > N",  "color": "#1f2430", "italic": false},
+    {"x": 4.8, "y": 0.6,  "text": "f(b) < N",  "color": "#1f2430", "italic": false, "anchor": "end"}
+  ],
+  "caption": "To get from above the line to below it, the continuous curve has to cross y = N somewhere in between."
+}
+```
 
 ### Continuity is essential
 
@@ -72,7 +150,46 @@ So a root lies in $(1.22, 1.23)$.
 
 > **Figure 10.** The graph of $f(x) = 4x^3 - 6x^2 + 3x - 2$ in the viewing rectangle $[-1, 3] \times [-3, 3]$. The curve crosses the $x$-axis exactly once, between $x = 1$ and $x = 2$.
 
+```plot
+{
+  "title": "Figure 10 — f(x) = 4x³ − 6x² + 3x − 2 on [−1, 3]",
+  "width": 520, "height": 320,
+  "xRange": [-1, 3], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "4*x*x*x - 6*x*x + 3*x - 2", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "points": [
+    {"x": 1, "y": -1, "style": "filled", "color": "#1f2430", "label": "f(1) = −1", "labelDx": 10, "labelDy": 14},
+    {"x": 2, "y": 12, "style": "filled", "color": "#1f2430"}
+  ],
+  "annotations": [
+    {"x": 2.3, "y": 1.3, "text": "(2, 12) lies above this window", "color": "#5b6477", "italic": false, "size": 10, "anchor": "end"}
+  ],
+  "caption": "f(1) = −1 < 0 and f(2) = 12 > 0. The continuous cubic must pass through zero somewhere in (1, 2)."
+}
+```
+
 > **Figure 11.** Zoom to $[1.2, 1.3] \times [-0.2, 0.2]$. The crossing is now visible between $x = 1.22$ and $x = 1.23$.
+
+```plot
+{
+  "title": "Figure 11 — zoom to [1.2, 1.3] × [−0.2, 0.2]",
+  "width": 520, "height": 320,
+  "xRange": [1.2, 1.3], "yRange": [-0.2, 0.2],
+  "xStep": 0.02, "yStep": 0.05,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "4*x*x*x - 6*x*x + 3*x - 2", "domain": [1.2, 1.3], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "points": [
+    {"x": 1.22, "y": -0.007, "style": "filled", "color": "#1f2430", "label": "f(1.22) < 0", "labelDx": -10, "labelDy": 14, "labelAnchor": "end"},
+    {"x": 1.23, "y":  0.056, "style": "filled", "color": "#1f2430", "label": "f(1.23) > 0", "labelDx": 10,  "labelDy": -8}
+  ],
+  "caption": "The sign change is now confined to (1.22, 1.23). One more bisection round would trap the root in an interval of length 0.005."
+}
+```
 
 **This procedure has a name: the *bisection method*.** Halve the interval each step by evaluating at the midpoint, keep whichever half contains the sign change, and iterate. **It's guaranteed to converge** — the error at step $n$ is at most $(b - a)/2^n$. This is the single most bulletproof (if slow) root-finder in numerical analysis.
 

@@ -41,6 +41,27 @@ But **discontinuities do occur** — e.g., in electric currents switched on at a
 
 > **Figure 1 — Geometric view of continuity at $a$.** As $x$ approaches $a$, the point $(x, f(x))$ on the graph approaches $(a, f(a))$. There is **no gap** in the curve. Conceptually: you can draw the graph through $x = a$ without lifting your pen.
 
+```plot
+{
+  "title": "Figure 1 — continuous at a: lim_{x→a} f(x) = f(a)",
+  "width": 520, "height": 320,
+  "xRange": [-1, 3], "yRange": [0, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1.5 + 0.7*sin(x - 0.5)", "domain": [-1, 3], "color": "#b04a2f", "width": 2.3, "samples": 400}
+  ],
+  "lines": [
+    {"type": "vertical",   "x": 1,    "yRange": [0, 1.961], "color": "#888", "dash": "3 3"},
+    {"type": "horizontal", "y": 1.961, "xRange": [0, 1],    "color": "#888", "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 1, "y": 1.961, "style": "filled", "color": "#1f2430", "label": "(a, f(a))", "labelDx": 10, "labelDy": -8}
+  ],
+  "caption": "Continuous at a means the curve passes through (a, f(a)) with no hole, jump, or blow-up — the pen never leaves the page."
+}
+```
+
 **A function is continuous on an interval if it is continuous at every number in that interval.** Equivalently: its graph has no break in it and can be drawn without removing your pen from the paper.
 
 ---
@@ -50,6 +71,31 @@ But **discontinuities do occur** — e.g., in electric currents switched on at a
 At which numbers is $f$ discontinuous, from the graph?
 
 > **Figure 2 — Graph of $f$ over $[0, 5]$ with three notable features** at $x = 1, 3, 5$. The curve has a break at $x = 1$, jumps at $x = 3$, and has a definite value at $x = 5$ that's separated from the rest of the curve.
+
+```plot
+{
+  "title": "Figure 2 — three discontinuities: x = 1 (hole), x = 3 (jump), x = 5 (value ≠ limit)",
+  "width": 540, "height": 340,
+  "xRange": [-0.3, 5.5], "yRange": [-0.2, 3.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "1.5 + 0.5*sin(x)",    "domain": [0, 3],  "endpoints": ["closed", "open"]},
+        {"fn": "2.8 - 0.3*(x - 3)",   "domain": [3, 5],  "endpoints": ["open",   "open"]}
+      ],
+      "color": "#b04a2f", "width": 2.3
+    }
+  ],
+  "points": [
+    {"x": 1, "y": 1.9207, "style": "open",   "color": "#b04a2f"},
+    {"x": 3, "y": 2,      "style": "filled", "color": "#1f2430", "label": "f(3)", "labelDx": 10, "labelDy": -6},
+    {"x": 5, "y": 1,      "style": "filled", "color": "#1f2430", "label": "f(5)", "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "At x = 1 f is undefined (hole). At x = 3 the left and right limits disagree (jump, but f(3) defined). At x = 5 limits agree yet f(5) lives somewhere else."
+}
+```
 
 ***Solution.*** Three discontinuities to analyze:
 
@@ -88,6 +134,77 @@ Where are each of the following functions discontinuous?
 > - **(b) Infinite.** Curve $1/x^2$ with a vertical asymptote at 0; $f(0) = 1$ is isolated at height 1 but graph explodes around it.
 > - **(c) Removable.** Same line as (a) but with an isolated dot at $(2, 1)$; redefining $f(2) = 3$ would make it continuous.
 > - **(d) Jump.** Staircase of horizontal segments. At each integer, a jump of size 1.
+
+```plot
+{
+  "title": "Figure 3(a) — removable: hole at x = 2",
+  "width": 460, "height": 260,
+  "xRange": [-0.5, 4], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "x + 1", "domain": [-0.5, 4], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 2, "y": 3, "style": "open", "color": "#b04a2f"}],
+  "caption": "(a) f(x) = (x² − x − 2)/(x − 2): simplifies to x + 1 with a hole at x = 2."
+}
+```
+
+```plot
+{
+  "title": "Figure 3(b) — infinite discontinuity at 0",
+  "width": 460, "height": 280,
+  "xRange": [-3, 3], "yRange": [-0.5, 10],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1/(x*x)", "domain": [-3, -0.32], "color": "#b04a2f", "width": 2.2, "samples": 600},
+    {"fn": "1/(x*x)", "domain": [0.32, 3],   "color": "#b04a2f", "width": 2.2, "samples": 600}
+  ],
+  "points": [{"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "f(0) = 1", "labelDx": 10, "labelDy": -6}],
+  "lines": [{"type": "vertical", "x": 0, "color": "#2867b2", "dash": "4 4"}],
+  "caption": "(b) f(0) = 1 is defined, but 1/x² blows up as x → 0 — limit is ∞, not 1."
+}
+```
+
+```plot
+{
+  "title": "Figure 3(c) — redefined at 2: isolated dot",
+  "width": 460, "height": 260,
+  "xRange": [-0.5, 4], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "x + 1", "domain": [-0.5, 4], "color": "#b04a2f", "width": 2.2}],
+  "points": [
+    {"x": 2, "y": 3, "style": "open",   "color": "#b04a2f", "label": "limit = 3", "labelDx": 10, "labelDy": -6},
+    {"x": 2, "y": 1, "style": "filled", "color": "#1f2430", "label": "f(2) = 1",  "labelDx": 10, "labelDy": 14}
+  ],
+  "caption": "(c) Same line as (a), but f(2) = 1 is defined at a different height. Still removable — reset f(2) = 3 and the function becomes continuous."
+}
+```
+
+```plot
+{
+  "title": "Figure 3(d) — jump discontinuities at every integer",
+  "width": 460, "height": 260,
+  "xRange": [-2.5, 4.5], "yRange": [-3, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "step": [
+        {"y": -3, "x": [-3, -2], "endpoints": ["closed", "open"]},
+        {"y": -2, "x": [-2, -1], "endpoints": ["closed", "open"]},
+        {"y": -1, "x": [-1, 0],  "endpoints": ["closed", "open"]},
+        {"y": 0,  "x": [0, 1],   "endpoints": ["closed", "open"]},
+        {"y": 1,  "x": [1, 2],   "endpoints": ["closed", "open"]},
+        {"y": 2,  "x": [2, 3],   "endpoints": ["closed", "open"]},
+        {"y": 3,  "x": [3, 4],   "endpoints": ["closed", "open"]}
+      ],
+      "color": "#b04a2f", "width": 2.2
+    }
+  ],
+  "caption": "(d) ⟦x⟧: left-limit n − 1, right-limit n, jump of size 1 at every integer."
+}
+```
 
 **The discontinuity taxonomy:**
 
@@ -237,6 +354,28 @@ extend this to continuity everywhere. (The detailed argument uses continuity at 
 
 > **Figure 6 — $y = \tan x$.** Standard picture: periodic with vertical asymptotes at odd multiples of $\pi/2$, continuous on each interval between asymptotes.
 
+```plot
+{
+  "title": "Figure 6 — y = tan x is continuous between asymptotes",
+  "width": 540, "height": 320,
+  "xRange": [-4.8, 4.8], "yRange": [-5, 5],
+  "xStep": 1.5707963, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "tan(x)", "domain": [-4.5, -1.7], "color": "#b04a2f", "width": 2.2, "samples": 500},
+    {"fn": "tan(x)", "domain": [-1.4,  1.4], "color": "#b04a2f", "width": 2.2, "samples": 500},
+    {"fn": "tan(x)", "domain": [ 1.7,  4.5], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -4.71239, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x": -1.57080, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x":  1.57080, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x":  4.71239, "color": "#2867b2", "dash": "4 4"}
+  ],
+  "caption": "Continuous on each open interval ((2n−1)π/2, (2n+1)π/2). Discontinuous at every odd multiple of π/2."
+}
+```
+
 **Inverse trig functions.** The inverse of any continuous one-to-one function is continuous (proved in Appendix F via the reflection-across-$y = x$ picture). So inverse trig functions ($\arcsin, \arccos, \arctan$, etc.) are continuous on their domains.
 
 **Exponential and logarithmic functions.** Recall from Section 1.5 that $y = a^x$ was defined to be continuous on $\mathbb{R}$ (the "holes at irrational values" were *filled in* by the definition). Its inverse $y = \log_a x$ is therefore continuous on $(0, \infty)$.
@@ -354,6 +493,28 @@ Decompose: $F = f \circ g$ with $g(x) = 1 + \cos x$ and $f(x) = \ln x$.
 By Theorem 9, $F$ is continuous wherever $g(x) > 0$, i.e., wherever $1 + \cos x > 0$. Since $\cos x \geq -1$ with equality only at $x = \pm\pi, \pm 3\pi, \ldots$, $F$ is undefined exactly at the odd multiples of $\pi$. Otherwise, $F$ is continuous.
 
 > **Figure 7 — $y = \ln(1 + \cos x)$.** Series of hump-shaped arcs on each interval $(-\pi, \pi), (\pi, 3\pi), \ldots$, each rising from $-\infty$ (where $\cos = -1$) to a peak at the center, then dropping back to $-\infty$. The function has **vertical asymptotes** at every odd multiple of $\pi$, but is continuous on each interval between them.
+
+```plot
+{
+  "title": "Figure 7 — y = ln(1 + cos x): humps on every interval between odd multiples of π",
+  "width": 560, "height": 340,
+  "xRange": [-7, 7], "yRange": [-5, 1.5],
+  "xStep": 3.14159265, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(1 + cos(x))", "domain": [-9.30, -3.26], "color": "#b04a2f", "width": 2.1, "samples": 900},
+    {"fn": "log(1 + cos(x))", "domain": [-3.12,  3.12], "color": "#b04a2f", "width": 2.1, "samples": 900},
+    {"fn": "log(1 + cos(x))", "domain": [ 3.26,  9.30], "color": "#b04a2f", "width": 2.1, "samples": 900}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -9.42478, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x": -3.14159, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x":  3.14159, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical", "x":  9.42478, "color": "#2867b2", "dash": "4 4"}
+  ],
+  "caption": "ln(0) = −∞ at every odd multiple of π. Between those asymptotes the composition of continuous functions (log ∘ (1 + cos)) is itself continuous."
+}
+```
 
 ---
 
