@@ -81,7 +81,75 @@ So the derivative "fails to exist as a finite number" at $x = 0$.
 > - **(b) A discontinuity.** Graph with a jump break at $x = a$ (solid dot on one side, open dot on the other). Function isn't even continuous there.
 > - **(c) A vertical tangent.** Smooth curve passing through $(a, f(a))$ but with a vertical tangent line — the graph is "infinitely steep" at that single point.
 
+```plot
+{
+  "title": "Figure 7(a) — corner",
+  "width": 420, "height": 240,
+  "xRange": [-2, 2], "yRange": [-0.5, 2.5],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "abs(x)", "domain": [-2, 2], "color": "#b04a2f", "width": 2.3}],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "(a) Left slope ≠ right slope — no unique tangent at the corner."
+}
+```
+
+```plot
+{
+  "title": "Figure 7(b) — discontinuity",
+  "width": 420, "height": 240,
+  "xRange": [-2, 2], "yRange": [-1, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "x + 1", "domain": [-2, 0], "endpoints": ["closed", "closed"]},
+        {"fn": "x + 2", "domain": [0, 2],  "endpoints": ["open", "closed"]}
+      ],
+      "color": "#b04a2f", "width": 2.3
+    }
+  ],
+  "caption": "(b) Not continuous at 0 → not differentiable at 0 (Theorem 4 contrapositive)."
+}
+```
+
+```plot
+{
+  "title": "Figure 7(c) — vertical tangent",
+  "width": 420, "height": 240,
+  "xRange": [-2, 2], "yRange": [-1.5, 1.5],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "-pow(-x, 1/3)", "domain": [-2, 0],  "color": "#b04a2f", "width": 2.3, "samples": 400},
+    {"fn": "pow(x, 1/3)",    "domain": [0, 2],   "color": "#b04a2f", "width": 2.3, "samples": 400}
+  ],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "(c) Continuous at 0, but the tangent is vertical — slope is infinite, not a number."
+}
+```
+
 > **Figure 6 — Vertical tangent illustrated.** A smooth curve that passes through the point $(a, f(a))$ continuously but whose tangent line is vertical at that point — the slope is undefined (or ∞).
+
+```plot
+{
+  "title": "Figure 6 — y = ∛x has a vertical tangent at (0, 0)",
+  "width": 520, "height": 300,
+  "xRange": [-2, 2], "yRange": [-1.5, 1.5],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "-pow(-x, 1/3)", "domain": [-2, 0], "color": "#b04a2f", "width": 2.3, "samples": 500},
+    {"fn": "pow(x, 1/3)",    "domain": [0, 2],  "color": "#b04a2f", "width": 2.3, "samples": 500}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 0, "yRange": [-1.2, 1.2], "color": "#2867b2", "width": 1.6, "dash": "4 3"}
+  ],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "Slope of ∛x blows up at 0: f'(x) = 1/(3x^{2/3}) → ∞. The vertical dashed line IS the tangent — but verticality means no well-defined slope."
+}
+```
 
 ### The zooming-in diagnostic
 
@@ -93,7 +161,85 @@ A graphing calculator or computer provides another way of looking at differentia
 
 > **Figure 8 — Differentiable point under zoom.** Successive zooms on the graph of a differentiable function at a point: outer view shows the curved graph; inner zooms show it straightening into a line.
 
+```plot
+{
+  "title": "Figure 8(i) — y = 0.5x² + 0.5 at (1, 1) — outer view",
+  "width": 420, "height": 240,
+  "xRange": [-0.5, 2.5], "yRange": [0, 3],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "0.5*x*x + 0.5", "domain": [-0.5, 2.5], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430"}],
+  "caption": "(i) Curve clearly bends."
+}
+```
+
+```plot
+{
+  "title": "Figure 8(ii) — zoom [0.5, 1.5] × [0.6, 1.4]",
+  "width": 420, "height": 240,
+  "xRange": [0.5, 1.5], "yRange": [0.6, 1.4],
+  "xStep": 0.25, "yStep": 0.2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "0.5*x*x + 0.5", "domain": [0.5, 1.5], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430"}],
+  "caption": "(ii) Bend is subtler."
+}
+```
+
+```plot
+{
+  "title": "Figure 8(iii) — zoom [0.9, 1.1] × [0.92, 1.08]",
+  "width": 420, "height": 240,
+  "xRange": [0.9, 1.1], "yRange": [0.92, 1.08],
+  "xStep": 0.05, "yStep": 0.04,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "0.5*x*x + 0.5", "domain": [0.9, 1.1], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430"}],
+  "caption": "(iii) Indistinguishable from a straight line — differentiable at (1, 1)."
+}
+```
+
 > **Figure 9 — Non-differentiable point under zoom.** Successive zooms on a corner: outer view shows the corner; inner zooms show the corner persists at every scale — the graph never looks like a line locally.
+
+```plot
+{
+  "title": "Figure 9(i) — y = |x| at (0, 0) — outer view",
+  "width": 420, "height": 240,
+  "xRange": [-2, 2], "yRange": [-0.2, 2],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "abs(x)", "domain": [-2, 2], "color": "#b04a2f", "width": 2.3}],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "(i) Sharp corner at origin."
+}
+```
+
+```plot
+{
+  "title": "Figure 9(ii) — zoom [−0.5, 0.5] × [−0.1, 0.5]",
+  "width": 420, "height": 240,
+  "xRange": [-0.5, 0.5], "yRange": [-0.1, 0.5],
+  "xStep": 0.25, "yStep": 0.1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "abs(x)", "domain": [-0.5, 0.5], "color": "#b04a2f", "width": 2.3}],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "(ii) Still a corner, just smaller."
+}
+```
+
+```plot
+{
+  "title": "Figure 9(iii) — zoom [−0.1, 0.1] × [−0.02, 0.1]",
+  "width": 420, "height": 240,
+  "xRange": [-0.1, 0.1], "yRange": [-0.02, 0.1],
+  "xStep": 0.05, "yStep": 0.02,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "abs(x)", "domain": [-0.1, 0.1], "color": "#b04a2f", "width": 2.3}],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}],
+  "caption": "(iii) The corner never smooths out. Non-differentiable at 0."
+}
+```
 
 **Intuitive test:** "Is this function differentiable here?" becomes "Can I zoom in until the graph looks like a line?"
 
@@ -139,6 +285,27 @@ $$= \lim_{h \to 0}\frac{3x^2 + 6xh + 3h^2 - 1 - 3x^2 + 1}{h} = \lim_{h \to 0}\fr
 > - $f''(x) = 6x$ (labeled $f''$) — straight line through origin.
 >
 > **Conceptual check:** $f''$ is negative when $f'$ has negative slope (the parabola is decreasing, for $x < 0$); $f''$ is positive when $f'$ has positive slope (for $x > 0$). **So the second derivative graph $f''$ is consistent with differentiating $f'$.**
+
+```plot
+{
+  "title": "Figure 10 — f, f', f'' on one screen for f(x) = x³ − x",
+  "width": 560, "height": 360,
+  "xRange": [-2, 2], "yRange": [-8, 8],
+  "xStep": 0.5, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x*x - x", "domain": [-2, 2], "color": "#b04a2f", "width": 2.2},
+    {"fn": "3*x*x - 1", "domain": [-2, 2], "color": "#2867b2", "width": 2.0},
+    {"fn": "6*x",       "domain": [-2, 2], "color": "#1f9d55", "width": 2.0, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 1.9, "y": 5.9,  "text": "f",   "color": "#b04a2f", "italic": true, "anchor": "end"},
+    {"x": 1.9, "y": 11,   "text": "f'",  "color": "#2867b2", "italic": true, "anchor": "end"},
+    {"x": 1.3, "y": 7.7,  "text": "f''", "color": "#1f9d55", "italic": true, "anchor": "end"}
+  ],
+  "caption": "f' is 0 where f has horizontal tangents (±1/√3); f'' is 0 where f' has its minimum (x = 0) — differentiating is consistent across the chain."
+}
+```
 
 We can interpret $f''(x)$ as the **slope of the curve $y = f'(x)$** at the point $(x, f'(x))$. In other words, it is the **rate of change of the slope of the original curve $y = f(x)$**.
 

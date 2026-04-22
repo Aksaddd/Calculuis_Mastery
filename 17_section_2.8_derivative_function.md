@@ -26,6 +26,26 @@ The graph of a function $f$ is given. Use it to sketch the graph of the derivati
 
 > **Figure 1 — Given graph of $f$.** A curve over $[-1, 7]$ or so showing: a local minimum around $x = 1$ (labeled $A$), a local maximum around $x = 2$ (labeled $B$), another local minimum around $x = 3$ (labeled $C$), and a steadily increasing region to the right. The point $P$ is marked at $x = 5$ where the tangent slope visibly looks like about $3/2$.
 
+```plot
+{
+  "title": "Figure 1 — a function f with features A, B, C, P",
+  "width": 540, "height": 320,
+  "xRange": [-0.2, 6.3], "yRange": [-1, 6],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + sin(1.7*x) + 0.3*x - 0.05*x*x", "domain": [0, 6.3], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "points": [
+    {"x": 1.028, "y": 1.291, "style": "filled", "color": "#1f2430", "label": "A",  "labelDx": 10, "labelDy": 14},
+    {"x": 2.668, "y": 3.114, "style": "filled", "color": "#1f2430", "label": "B",  "labelDx": 10, "labelDy": -8},
+    {"x": 4.724, "y": 1.308, "style": "filled", "color": "#1f2430", "label": "C",  "labelDx": 10, "labelDy": 14},
+    {"x": 6,     "y": 1.869, "style": "filled", "color": "#b04a2f", "label": "P",  "labelDx": 10, "labelDy": -8}
+  ],
+  "caption": "A and C are local minima (horizontal tangents), B is a local maximum. P marks the point where we will estimate f′(x) by drawing a tangent."
+}
+```
+
 ***Solution.*** We can estimate the value of the derivative at any value of $x$ by drawing the tangent at the point $(x, f(x))$ and estimating its slope.
 
 **Sample estimate:** for $x = 5$, we draw the tangent at $P$ in Figure 2(a) and estimate its slope to be about $\frac{3}{2}$, so $f'(5) \approx 1.5$. This allows us to plot the point $P'(5, 1.5)$ on the graph of $f'$ directly beneath $P$.
@@ -35,6 +55,49 @@ Repeating this procedure at several points gives the graph shown in Figure 2(b).
 > **Figure 2 — The graphical differentiation procedure.**
 > - **Panel (a):** Top graph $y = f(x)$. Tangent slopes at critical points: $A$ (horizontal, slope 0), $B$ (horizontal, slope 0), $C$ (horizontal, slope 0), $P$ (slope $\approx 3/2$).
 > - **Panel (b):** Bottom graph $y = f'(x)$. The tangent slopes from (a) become $y$-values here. $A', B', C'$ are the points where $f'$ crosses the $x$-axis (corresponding to the horizontal-tangent points in (a)). **$f'$ is positive where $f$ is increasing (between $A$ and $B$, after $C$) and negative where $f$ is decreasing (between $B$ and $C$).**
+
+```plot
+{
+  "title": "Figure 2(a) — y = f(x) with horizontal tangents drawn at A, B, C",
+  "width": 540, "height": 280,
+  "xRange": [-0.2, 6.3], "yRange": [-1, 6],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + sin(1.7*x) + 0.3*x - 0.05*x*x", "domain": [0, 6.3], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 1.291, "xRange": [0.4, 1.7], "color": "#2867b2", "width": 1.8},
+    {"type": "horizontal", "y": 3.114, "xRange": [2.05, 3.3], "color": "#2867b2", "width": 1.8},
+    {"type": "horizontal", "y": 1.308, "xRange": [4.1, 5.35], "color": "#2867b2", "width": 1.8}
+  ],
+  "points": [
+    {"x": 1.028, "y": 1.291, "style": "filled", "color": "#1f2430", "label": "A", "labelDx": 10, "labelDy": 14},
+    {"x": 2.668, "y": 3.114, "style": "filled", "color": "#1f2430", "label": "B", "labelDx": 10, "labelDy": -8},
+    {"x": 4.724, "y": 1.308, "style": "filled", "color": "#1f2430", "label": "C", "labelDx": 10, "labelDy": 14}
+  ],
+  "caption": "(a) Horizontal tangents at A, B, C: slope = 0 there."
+}
+```
+
+```plot
+{
+  "title": "Figure 2(b) — y = f'(x): zeros directly under A, B, C",
+  "width": 540, "height": 280,
+  "xRange": [-0.2, 6.3], "yRange": [-2.5, 2.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1.7*cos(1.7*x) + 0.3 - 0.1*x", "domain": [0, 6.3], "color": "#2867b2", "width": 2.2, "samples": 500}
+  ],
+  "points": [
+    {"x": 1.028, "y": 0, "style": "filled", "color": "#1f2430", "label": "A'", "labelDx": 10, "labelDy": 14},
+    {"x": 2.668, "y": 0, "style": "filled", "color": "#1f2430", "label": "B'", "labelDx": 10, "labelDy": -8},
+    {"x": 4.724, "y": 0, "style": "filled", "color": "#1f2430", "label": "C'", "labelDx": 10, "labelDy": 14}
+  ],
+  "caption": "(b) f′ is 0 exactly where f had horizontal tangents, positive where f is increasing, negative where f is decreasing."
+}
+```
 
 **The three-step method:**
 1. **Mark horizontal tangents** on $f$ — these are the zeros of $f'$.
@@ -79,6 +142,42 @@ $$= \lim_{h \to 0}\frac{h(3x^2 + 3xh + h^2 - 1)}{h} = \lim_{h \to 0}(3x^2 + 3xh 
 > - **Right:** $y = 3x^2 - 1$. Upward-opening parabola with roots at $\pm 1/\sqrt{3}$.
 >
 > **Notice:** $f'(x) = 0$ when $f$ has horizontal tangents (at $x = \pm 1/\sqrt{3}$). $f'(x) > 0$ when $f$ is increasing (outside $[-1/\sqrt{3}, 1/\sqrt{3}]$). $f'(x) < 0$ when $f$ is decreasing (inside). **The graphs serve as a check on the algebraic work.**
+
+```plot
+{
+  "title": "Figure 3(left) — f(x) = x³ − x",
+  "width": 420, "height": 300,
+  "xRange": [-2, 2], "yRange": [-3, 3],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x*x - x", "domain": [-2, 2], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -0.57735, "y": 0.3849,  "style": "filled", "color": "#1f2430"},
+    {"x":  0.57735, "y": -0.3849, "style": "filled", "color": "#1f2430"}
+  ],
+  "caption": "Cubic with horizontal tangents at x = ±1/√3."
+}
+```
+
+```plot
+{
+  "title": "Figure 3(right) — f'(x) = 3x² − 1",
+  "width": 420, "height": 300,
+  "xRange": [-2, 2], "yRange": [-2, 6],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "3*x*x - 1", "domain": [-2, 2], "color": "#2867b2", "width": 2.2}
+  ],
+  "points": [
+    {"x": -0.57735, "y": 0, "style": "filled", "color": "#1f2430"},
+    {"x":  0.57735, "y": 0, "style": "filled", "color": "#1f2430"}
+  ],
+  "caption": "Parabola with the same two zeros — where f had horizontal tangents, f' crosses 0."
+}
+```
 
 **A pattern to file away.** $f(x) = x^3 - x$ gives $f'(x) = 3x^2 - 1$. **Differentiate each term separately:** $x^3 \mapsto 3x^2$, $-x \mapsto -1$, and constants (which we don't have here) would go to 0. This is the **Power Rule + Sum/Difference + Constant Multiple Rule** from Chapter 3, which you'd re-derive by the same mechanical expansion-and-cancel technique used here.
 
@@ -239,6 +338,41 @@ $$f'(x) = \begin{cases} 1 & \text{if } x > 0 \\ -1 & \text{if } x < 0 \end{cases
 > **Figure 5 — Graphs of $|x|$ and its derivative.**
 > - **(a):** $y = |x|$ — V-shape with vertex at origin. The two straight sides have slopes $+1$ (right side) and $-1$ (left side). At the vertex, the graph has a **corner**.
 > - **(b):** $y = f'(x)$ — piecewise constant: $+1$ for $x > 0$, $-1$ for $x < 0$, with a hole at $x = 0$ (no defined value).
+
+```plot
+{
+  "title": "Figure 5(a) — y = |x| has a corner at 0",
+  "width": 420, "height": 240,
+  "xRange": [-2.5, 2.5], "yRange": [-0.5, 2.5],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "abs(x)", "domain": [-2.5, 2.5], "color": "#b04a2f", "width": 2.3}
+  ],
+  "points": [{"x": 0, "y": 0, "style": "filled", "color": "#1f2430", "label": "corner", "labelDx": 8, "labelDy": -6}],
+  "caption": "(a) Corner at (0, 0): left slope −1, right slope +1."
+}
+```
+
+```plot
+{
+  "title": "Figure 5(b) — f'(x) = sgn(x), undefined at 0",
+  "width": 420, "height": 240,
+  "xRange": [-2.5, 2.5], "yRange": [-1.5, 1.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "-1", "domain": [-2.5, 0], "endpoints": ["closed", "open"]},
+        {"fn": "1",  "domain": [0, 2.5],  "endpoints": ["open",   "closed"]}
+      ],
+      "color": "#2867b2", "width": 2.4
+    }
+  ],
+  "caption": "(b) The derivative jumps from −1 to +1 at x = 0 — no single value; f'(0) does not exist."
+}
+```
 
 **The geometric diagnosis.** The graph of $|x|$ has a **corner at $x = 0$** — it changes direction abruptly. At a corner, **there is no single tangent line**; the left side "sees" a tangent with slope $-1$ and the right side "sees" slope $+1$. No single number can be "the" tangent slope. **Hence $f'(0)$ fails to exist.**
 
