@@ -101,17 +101,190 @@ Five things to notice:
 
 > **Figure 1 (the motivating example).** The graph of the function $y = 2x - 1$ with the target limit height $y = 5$ drawn in. A horizontal band at heights $5 - \varepsilon$ to $5 + \varepsilon$ is shaded, and we see that for $x$ in the interval $(3 - \delta, 3 + \delta)$ (excluding $x = 3$ itself), the graph stays inside this horizontal band. **Conceptually: the band represents the output tolerance, and we find an $x$-neighborhood that maps inside it.**
 
+```plot
+{
+  "title": "Figure 1 — the motivating limit: f(x) → 5 as x → 3",
+  "width": 540, "height": 360,
+  "xRange": [1.5, 4.5], "yRange": [1, 9],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2*x - 1", "domain": [1.5, 4.5], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 5.6, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 4.4, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 3.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 2.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 3, "y": 5, "style": "open",   "color": "#b04a2f"},
+    {"x": 3, "y": 6, "style": "filled", "color": "#1f2430", "label": "f(3) = 6", "labelDx": 10, "labelDy": -6}
+  ],
+  "annotations": [
+    {"x": 4.4, "y": 5.75,"text": "5 + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 4.4, "y": 4.55,"text": "5 − ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 3.3, "y": 1.35,"text": "3 + δ", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": 2.7, "y": 1.35,"text": "3 − δ", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Given ε (horizontal band), choose δ = ε/2 (vertical strip). For x in the strip, the curve stays in the band. The isolated dot f(3) = 6 is irrelevant — the limit only sees values near 3."
+}
+```
+
 > **Figure 2 (arrow-diagram visualization).** Two copies of the real number line with an "$f$" arrow connecting them. The input $x$ on the left line is mapped to $f(x)$ on the right line. The figure represents $f$ as a mapping $\mathbb{R} \to \mathbb{R}$, setting up the interval-based geometric picture.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" role="img" aria-label="Two number lines with f mapping the input x to the output f(x)">
+  <defs>
+    <marker id="fig2a-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b04a2f"/>
+    </marker>
+  </defs>
+  <g font-family="'Times New Roman', Times, serif" font-size="14" fill="#1f2430">
+    <line x1="40" y1="50" x2="520" y2="50" stroke="#1f2430" stroke-width="1.5"/>
+    <polygon points="520,50 510,45 510,55" fill="#1f2430"/>
+    <circle cx="250" cy="50" r="4" fill="#1f2430"/>
+    <text x="250" y="38" text-anchor="middle" font-style="italic">x</text>
+    <text x="530" y="54" font-style="italic">ℝ (input)</text>
+    <line x1="40" y1="150" x2="520" y2="150" stroke="#1f2430" stroke-width="1.5"/>
+    <polygon points="520,150 510,145 510,155" fill="#1f2430"/>
+    <circle cx="370" cy="150" r="4" fill="#1f2430"/>
+    <text x="370" y="170" text-anchor="middle" font-style="italic">f(x)</text>
+    <text x="530" y="154" font-style="italic">ℝ (output)</text>
+    <path d="M 252 55 C 300 95, 340 95, 370 145" fill="none" stroke="#b04a2f" stroke-width="2" marker-end="url(#fig2a-arr)"/>
+    <text x="320" y="100" font-style="italic" fill="#b04a2f">f</text>
+  </g>
+</svg>
+<figcaption>The function f as a mapping between two number lines. Each input point x on the top line is sent by f to an output point f(x) on the bottom line.</figcaption>
+</figure>
+
 > **Figure 3 (what the ε-δ definition looks like as a mapping).** A tiny $\delta$-sized interval around $a$ on the left maps, under $f$, into a tiny $\varepsilon$-sized interval around $L$ on the right. **The definition asserts this mapping works for every $\varepsilon$, by adjusting $\delta$.**
+
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" role="img" aria-label="δ-interval around a maps into ε-interval around L">
+  <defs>
+    <marker id="fig3a-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#b04a2f"/>
+    </marker>
+  </defs>
+  <g font-family="'Times New Roman', Times, serif" font-size="13" fill="#1f2430">
+    <line x1="40" y1="70" x2="520" y2="70" stroke="#1f2430" stroke-width="1.5"/>
+    <polygon points="520,70 510,65 510,75" fill="#1f2430"/>
+    <rect x="205" y="60" width="110" height="20" fill="#cbd9ea" stroke="none"/>
+    <line x1="205" y1="58" x2="205" y2="82" stroke="#2867b2" stroke-width="2"/>
+    <line x1="315" y1="58" x2="315" y2="82" stroke="#2867b2" stroke-width="2"/>
+    <circle cx="260" cy="70" r="4" fill="#1f2430"/>
+    <text x="260" y="56" text-anchor="middle" font-style="italic">a</text>
+    <text x="205" y="98" text-anchor="middle" font-style="italic" fill="#2867b2">a − δ</text>
+    <text x="315" y="98" text-anchor="middle" font-style="italic" fill="#2867b2">a + δ</text>
+    <text x="530" y="74" font-style="italic">(input)</text>
+    <line x1="40" y1="190" x2="520" y2="190" stroke="#1f2430" stroke-width="1.5"/>
+    <polygon points="520,190 510,185 510,195" fill="#1f2430"/>
+    <rect x="260" y="180" width="180" height="20" fill="#fbe9e2" stroke="none"/>
+    <line x1="260" y1="178" x2="260" y2="202" stroke="#b04a2f" stroke-width="2"/>
+    <line x1="440" y1="178" x2="440" y2="202" stroke="#b04a2f" stroke-width="2"/>
+    <circle cx="350" cy="190" r="4" fill="#1f2430"/>
+    <text x="350" y="220" text-anchor="middle" font-style="italic">L</text>
+    <text x="258" y="174" text-anchor="middle" font-style="italic" fill="#b04a2f">L − ε</text>
+    <text x="442" y="174" text-anchor="middle" font-style="italic" fill="#b04a2f">L + ε</text>
+    <text x="530" y="194" font-style="italic">(output)</text>
+    <path d="M 262 80 C 310 120, 320 140, 350 180" fill="none" stroke="#b04a2f" stroke-width="2" marker-end="url(#fig3a-arr)"/>
+    <text x="305" y="135" font-style="italic" fill="#b04a2f">f</text>
+  </g>
+</svg>
+<figcaption>The whole blue δ-interval on top gets sent by f into the orange ε-interval on the bottom. The limit statement says: however narrow the ε-window is, some δ-window on the input side will fit inside it.</figcaption>
+</figure>
 
 ### Graph-based visualization: the "horizontal band challenge"
 
 > **Figure 4.** The graph of a function $y = f(x)$ with two horizontal lines $y = L + \varepsilon$ and $y = L - \varepsilon$ drawn in. These define the "target band" of output tolerance.
 
+```plot
+{
+  "title": "Figure 4 — the target band: |f(x) − L| < ε",
+  "width": 520, "height": 320,
+  "xRange": [-1, 3], "yRange": [0, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + sin(x - 1)", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 1, "y": 2, "style": "filled", "color": "#1f2430", "label": "(a, L)", "labelDx": 10, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 2.9, "y": 2.85, "text": "L + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 2.9, "y": 1.45, "text": "L − ε", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "The challenger sets ε; the ε-band is the height slab we must stay inside. So far, no constraint on the input — that comes next."
+}
+```
+
 > **Figure 5.** Given the horizontal band from Figure 4, we narrow the $x$-axis to an interval $(a - \delta, a + \delta)$ — shown as a **vertical strip** — such that the graph of $f$ over that strip stays within the horizontal band. **The ε-δ game is: given any band width ε, find a strip width δ such that the graph confined to the strip stays in the band.**
 
+```plot
+{
+  "title": "Figure 5 — responding with δ: curve stays inside the box",
+  "width": 520, "height": 320,
+  "xRange": [-1, 3], "yRange": [0, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + sin(x - 1)", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 1.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 0.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 1, "y": 2, "style": "filled", "color": "#1f2430", "label": "(a, L)", "labelDx": 10, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 2.9, "y": 2.85, "text": "L + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 2.9, "y": 1.45, "text": "L − ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 1.7, "y": 0.2,  "text": "a + δ", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": 0.3, "y": 0.2,  "text": "a − δ", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Inside the rectangle, the curve never leaves the ε-band. The δ-strip on the x-axis is the responder's answer to the challenger's ε."
+}
+```
+
 > **Figure 6.** A tighter $\varepsilon$ (narrower horizontal band) typically requires a smaller $\delta$ (narrower vertical strip). The figure shows the same curve with $\varepsilon$ reduced and $\delta$ correspondingly smaller. **Conceptually: smaller output tolerance forces tighter input control.**
+
+```plot
+{
+  "title": "Figure 6 — shrink ε, and δ must shrink too",
+  "width": 520, "height": 320,
+  "xRange": [-1, 3], "yRange": [0, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + sin(x - 1)", "domain": [-1, 3], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 1.3, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 0.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 1, "y": 2, "style": "filled", "color": "#1f2430", "label": "(a, L)", "labelDx": 10, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 2.9, "y": 2.45, "text": "L + ε'", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 2.9, "y": 1.85, "text": "L − ε'", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 1.3, "y": 0.2,  "text": "a + δ'", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": 0.7, "y": 0.2,  "text": "a − δ'", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "A tighter ε (ε' < ε in Figure 5) forces the responder to pick a tighter δ (δ' < δ). The game must succeed for every positive ε, no matter how small."
+}
+```
 
 ### The "every positive ε" requirement is the whole point
 
@@ -204,6 +377,35 @@ $$|(4x - 5) - 7| = |4x - 12| = 4|x - 3| < 4\delta = 4 \cdot \frac{\varepsilon}{4
 Therefore $|(4x - 5) - 7| < \varepsilon$ whenever $0 < |x - 3| < \delta$. **By Definition 2, $\lim_{x \to 3}(4x - 5) = 7$.** $\blacksquare$
 
 > **Figure 9 (the geometric picture).** The graph of $y = 4x - 5$ with horizontal lines at $y = 7 \pm \varepsilon$ and vertical lines at $x = 3 \pm \delta$. The band-and-strip picture: the $\varepsilon$-band on the $y$-axis corresponds to a $\delta$-strip on the $x$-axis, and the graph stays inside the box where they intersect.
+
+```plot
+{
+  "title": "Figure 9 — y = 4x − 5 with δ = ε/4",
+  "width": 520, "height": 340,
+  "xRange": [2, 4], "yRange": [3, 11],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "4*x - 5", "domain": [2, 4], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 7.4, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 6.6, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 3.1, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 2.9, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 3, "y": 7, "style": "filled", "color": "#1f2430", "label": "(3, 7)", "labelDx": 10, "labelDy": -6}
+  ],
+  "annotations": [
+    {"x": 3.9, "y": 7.55, "text": "7 + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 3.9, "y": 6.75, "text": "7 − ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 3.1, "y": 3.2,  "text": "3 + δ", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": 2.9, "y": 3.2,  "text": "3 − δ", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Slope 4: every ε of output tolerance needs δ = ε/4 of input tolerance. The exact algebraic bound from Example 2's proof."
+}
+```
 
 ### Commentary on Stage 1 vs. Stage 2
 

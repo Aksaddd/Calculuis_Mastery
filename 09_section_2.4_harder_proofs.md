@@ -151,6 +151,31 @@ The intuitive statement "$\lim_{x \to a} f(x) = \infty$" from Section 2.2 (Unit 
 
 > **Figure 10 — Visualizing Definition 6.** The graph of $f$ with a horizontal line $y = M$ drawn high up, and a vertical strip $(a - \delta, a + \delta)$ around the limit point. **The conceptual content: within this strip, the graph of $f$ stays entirely above the line $y = M$.** As the challenger raises $M$ (moving the horizontal line up), the responder must tighten $\delta$ (narrowing the strip).
 
+```plot
+{
+  "title": "Figure 10 — lim_{x→a} f(x) = ∞: above every line y = M",
+  "width": 520, "height": 340,
+  "xRange": [-3, 3], "yRange": [-2, 12],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1/(x*x)", "domain": [-3, -0.32], "color": "#b04a2f", "width": 2.2, "samples": 700},
+    {"fn": "1/(x*x)", "domain": [0.32, 3],   "color": "#b04a2f", "width": 2.2, "samples": 700}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 6,  "color": "#2867b2", "width": 1.5, "dash": "4 3"},
+    {"type": "vertical",   "x":  0.4, "color": "#2867b2", "width": 1.5, "dash": "4 3"},
+    {"type": "vertical",   "x": -0.4, "color": "#2867b2", "width": 1.5, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 2.8, "y": 6.5, "text": "y = M", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 0.4, "y": -1.4,"text": "a + δ", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": -0.4,"y": -1.4,"text": "a − δ", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Inside the δ-strip, the whole curve sits above y = M. Pick any larger M and you'll need a thinner strip — but a strip always exists."
+}
+```
+
 ---
 
 ### Example 5 — Using Definition 6 to prove $\lim_{x \to 0}(1/x^2) = \infty$
@@ -194,6 +219,31 @@ The analogous definition for "$\lim = -\infty$":
 **The challenger hands you a very negative $N$ (say, $N = -10{,}000$); you respond with $\delta > 0$ such that $f(x)$ is forced below $N$.** The definition is the mirror image of Definition 6: large-positive $M$ becomes large-negative $N$, and "exceeds $M$" becomes "falls below $N$."
 
 > **Figure 11 — Visualizing Definition 7.** A horizontal line $y = N$ drawn very low on the graph, with a vertical strip $(a - \delta, a + \delta)$ around the limit point. **The conceptual content: within this strip, the graph of $f$ stays entirely below the line $y = N$.** The picture is the vertical-flip of Figure 10.
+
+```plot
+{
+  "title": "Figure 11 — lim_{x→a} f(x) = −∞: below every line y = N",
+  "width": 520, "height": 340,
+  "xRange": [-3, 3], "yRange": [-12, 2],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "-1/(x*x)", "domain": [-3, -0.32], "color": "#b04a2f", "width": 2.2, "samples": 700},
+    {"fn": "-1/(x*x)", "domain": [0.32, 3],   "color": "#b04a2f", "width": 2.2, "samples": 700}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": -6,  "color": "#2867b2", "width": 1.5, "dash": "4 3"},
+    {"type": "vertical",   "x":  0.4, "color": "#2867b2", "width": 1.5, "dash": "4 3"},
+    {"type": "vertical",   "x": -0.4, "color": "#2867b2", "width": 1.5, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 2.8, "y": -5.5, "text": "y = N", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 0.4, "y": 1.3,  "text": "a + δ", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": -0.4,"y": 1.3,  "text": "a − δ", "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Mirror image of Figure 10. For any N < 0 (however far below the axis), some δ > 0 forces the entire δ-strip of the curve below y = N."
+}
+```
 
 ---
 
