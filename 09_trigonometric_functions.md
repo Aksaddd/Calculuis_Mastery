@@ -20,6 +20,40 @@
 > - **(a) $f(x) = \sin x$.** Wave oscillating between $-1$ and $+1$. Zero crossings at $x = -\pi, 0, \pi, 2\pi, 3\pi, \ldots$ (every integer multiple of $\pi$). Peaks at $x = \pi/2, 5\pi/2, \ldots$ (value $+1$). Troughs at $x = -\pi/2, 3\pi/2, \ldots$ (value $-1$).
 > - **(b) $g(x) = \cos x$.** Same shape as sine, shifted left by $\pi/2$. Zero crossings at $x = \pm\pi/2, \pm 3\pi/2, \ldots$. Peaks at $x = 0, 2\pi, \ldots$ (value $+1$). Troughs at $x = \pm\pi, 3\pi, \ldots$ (value $-1$).
 
+```plot
+{
+  "title": "Figure 18a — y = sin x",
+  "width": 540, "height": 280,
+  "xRange": [-6.5, 9.5], "yRange": [-1.5, 1.5],
+  "xStep": 1.5707963267948966, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y":  1, "color": "#ddd", "dash": "3 3"},
+    {"type": "horizontal", "y": -1, "color": "#ddd", "dash": "3 3"}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 18b — y = cos x",
+  "width": 540, "height": 280,
+  "xRange": [-6.5, 9.5], "yRange": [-1.5, 1.5],
+  "xStep": 1.5707963267948966, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "cos(x)", "color": "#2867b2", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y":  1, "color": "#ddd", "dash": "3 3"},
+    {"type": "horizontal", "y": -1, "color": "#ddd", "dash": "3 3"}
+  ]
+}
+```
+
 **Domain and range.** For both sine and cosine:
 
 $$\text{domain} = (-\infty, \infty), \qquad \text{range} = [-1, 1]$$
@@ -86,6 +120,30 @@ $$\tan(x + \pi) = \tan x \qquad \text{for all } x \text{ in the domain}$$
 (This is because $\sin$ and $\cos$ both flip sign under $x \mapsto x + \pi$, and the signs cancel in the ratio.)
 
 > **Figure 19 — $y = \tan x$.** Infinitely many vertical asymptotes, one at each zero of cosine. Between consecutive asymptotes (e.g., between $-\pi/2$ and $\pi/2$), the graph rises monotonically from $-\infty$ (as $x \to -\pi/2^+$) through the origin (where $\tan 0 = 0$) up to $+\infty$ (as $x \to \pi/2^-$). The pattern repeats in every interval of length $\pi$ — hence the period $\pi$.
+
+```plot
+{
+  "title": "Figure 19 — y = tan x",
+  "width": 540, "height": 360,
+  "xRange": [-7.85, 7.85], "yRange": [-6, 6],
+  "xStep": 1.5707963267948966, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "tan(x)", "domain": [-7.7, -4.78], "color": "#b04a2f", "width": 2},
+    {"fn": "tan(x)", "domain": [-4.61, -1.64], "color": "#b04a2f", "width": 2},
+    {"fn": "tan(x)", "domain": [-1.50, 1.50],  "color": "#b04a2f", "width": 2},
+    {"fn": "tan(x)", "domain": [1.64, 4.61],   "color": "#b04a2f", "width": 2},
+    {"fn": "tan(x)", "domain": [4.78, 7.7],    "color": "#b04a2f", "width": 2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -4.71238898, "color": "#999", "dash": "5 4"},
+    {"type": "vertical", "x": -1.57079633, "color": "#999", "dash": "5 4"},
+    {"type": "vertical", "x":  1.57079633, "color": "#999", "dash": "5 4"},
+    {"type": "vertical", "x":  4.71238898, "color": "#999", "dash": "5 4"}
+  ],
+  "caption": "Vertical asymptotes at x = π/2 + nπ; period π."
+}
+```
 
 ### The other three trig functions
 

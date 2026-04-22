@@ -50,6 +50,61 @@ Consider $x = y^2 - 2$.
 > - **(b)** $y = \sqrt{x + 2}$: the **upper** half only (vertex at $(-2, 0)$, curving up and to the right).
 > - **(c)** $y = -\sqrt{x + 2}$: the **lower** half only.
 
+```plot
+{
+  "title": "Figure 14a — x = y² − 2 (full parabola, fails VLT)",
+  "width": 460, "height": 320,
+  "xRange": [-3, 6], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(x + 2)",  "domain": [-2, 6], "color": "#b04a2f", "width": 2.2},
+    {"fn": "-sqrt(x + 2)", "domain": [-2, 6], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": 2, "color": "#888", "dash": "4 4"}
+  ],
+  "points": [
+    {"x": 2, "y":  2, "style": "filled", "color": "#1f2430", "label": "(2, 2)",  "labelDx": 8, "labelDy": -8},
+    {"x": 2, "y": -2, "style": "filled", "color": "#1f2430", "label": "(2, −2)", "labelDx": 8, "labelDy": 14},
+    {"x": -2, "y": 0, "style": "filled", "color": "#1f2430", "label": "vertex",  "labelDx": -8, "labelDy": -8}
+  ],
+  "caption": "Dashed vertical line x = 2 hits the curve twice — not a function of x."
+}
+```
+
+```plot
+{
+  "title": "Figure 14b — y = √(x + 2)  (upper half, valid function)",
+  "width": 460, "height": 280,
+  "xRange": [-3, 6], "yRange": [-1, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(x + 2)", "domain": [-2, 6], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -2, "y": 0, "style": "filled", "color": "#1f2430"}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 14c — y = −√(x + 2)  (lower half, valid function)",
+  "width": 460, "height": 280,
+  "xRange": [-3, 6], "yRange": [-3, 1],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "-sqrt(x + 2)", "domain": [-2, 6], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -2, "y": 0, "style": "filled", "color": "#1f2430"}
+  ]
+}
+```
+
 From $x = y^2 - 2$, solving for $y$: $y^2 = x + 2$, so $y = \pm\sqrt{x + 2}$. The upper and lower halves are graphs of the functions
 
 $$f(x) = \sqrt{x + 2} \qquad \text{and} \qquad g(x) = -\sqrt{x + 2}$$
@@ -79,6 +134,26 @@ Evaluate $f(0)$, $f(1)$, $f(2)$, and sketch the graph.
 **Graph.** For $x \leq 1$, use $y = 1 - x$ — the line with slope $-1$, $y$-intercept $1$. For $x > 1$, use $y = x^2$ — the parabola.
 
 > **Figure 15.** Left piece: a line segment descending from upper-left through $(0, 1)$ down to the filled point $(1, 0)$. Right piece: the right branch of the parabola starting from the **open** point $(1, 1)$ (excluded) and rising. The solid dot at $(1, 0)$ means $f(1) = 0$ **is** in the graph; the open dot at $(1, 1)$ means that point is **not** in the graph.
+
+```plot
+{
+  "title": "Figure 15 — piecewise f(x) = (1 − x  if x ≤ 1, x²  if x > 1)",
+  "width": 480, "height": 340,
+  "xRange": [-2, 3], "yRange": [-1, 6],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "1 - x", "domain": [-2, 1], "endpoints": ["closed", "closed"]},
+        {"fn": "x*x",   "domain": [1,  3], "endpoints": ["open",   "closed"]}
+      ],
+      "color": "#b04a2f",
+      "width": 2.2
+    }
+  ]
+}
+```
 
 **Notation watch:** solid dot = point included, open dot = point excluded. This is how you visually encode strict vs. non-strict inequality on a piecewise boundary.
 
@@ -115,6 +190,19 @@ So $f$ coincides with $y = x$ to the right of the $y$-axis and with $y = -x$ to 
 
 > **Figure 16.** The characteristic V-shape: two half-lines meeting at the origin, left arm going up-left along $y = -x$, right arm going up-right along $y = x$.
 
+```plot
+{
+  "title": "Figure 16 — y = |x|",
+  "width": 460, "height": 300,
+  "xRange": [-4, 4], "yRange": [-1, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "abs(x)", "color": "#b04a2f", "width": 2.2}
+  ]
+}
+```
+
 ---
 
 ### Example 9 — Reading a piecewise formula off a graph
@@ -122,6 +210,27 @@ So $f$ coincides with $y = x$ to the right of the $y$-axis and with $y = -x$ to 
 Find a formula for the function $f$ graphed in Figure 17.
 
 > **Figure 17.** On a grid, the graph rises from the origin along $y = x$ to the point $(1, 1)$, then descends to $(2, 0)$ (forming a triangular "bump"), and for $x > 2$ lies flat on the $x$-axis.
+
+```plot
+{
+  "title": "Figure 17 — piecewise from a graph (Example 9)",
+  "width": 480, "height": 300,
+  "xRange": [-1, 5], "yRange": [-1, 2],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {
+      "piecewise": [
+        {"fn": "x",     "domain": [0, 1], "endpoints": ["closed", "closed"]},
+        {"fn": "2 - x", "domain": [1, 2], "endpoints": ["closed", "closed"]},
+        {"fn": "0",     "domain": [2, 5], "endpoints": ["closed", "closed"]}
+      ],
+      "color": "#b04a2f",
+      "width": 2.2
+    }
+  ]
+}
+```
 
 ***Solution.*** Three pieces.
 
@@ -150,6 +259,33 @@ In Example C (Unit 1) we had the cost $C(w)$ of mailing a first-class letter of 
 $$C(w) = \begin{cases} 0.39 & \text{if } 0 < w \leq 1 \\ 0.63 & \text{if } 1 < w \leq 2 \\ 0.87 & \text{if } 2 < w \leq 3 \\ 1.11 & \text{if } 3 < w \leq 4 \\ \vdots \end{cases}$$
 
 > **Figure 18.** A staircase graph in the $wC$-plane. Horizontal segments at heights $0.39, 0.63, 0.87, 1.11, 1.35, \ldots$ over successive unit intervals $(0,1], (1,2], (2,3], \ldots$ Each segment is closed on the right end (filled dot) and open on the left (open dot), encoding the $w \leq n$ boundaries of the definition.
+
+```plot
+{
+  "title": "Figure 18 — Postage step function C(w)",
+  "width": 520, "height": 320,
+  "xRange": [0, 8], "yRange": [0, 2.4],
+  "xStep": 1, "yStep": 0.25,
+  "xLabel": "w (oz)", "yLabel": "C(w) ($)",
+  "curves": [
+    {
+      "step": [
+        {"y": 0.39, "x": [0, 1], "endpoints": ["open", "closed"]},
+        {"y": 0.63, "x": [1, 2], "endpoints": ["open", "closed"]},
+        {"y": 0.87, "x": [2, 3], "endpoints": ["open", "closed"]},
+        {"y": 1.11, "x": [3, 4], "endpoints": ["open", "closed"]},
+        {"y": 1.35, "x": [4, 5], "endpoints": ["open", "closed"]},
+        {"y": 1.59, "x": [5, 6], "endpoints": ["open", "closed"]},
+        {"y": 1.83, "x": [6, 7], "endpoints": ["open", "closed"]},
+        {"y": 2.07, "x": [7, 8], "endpoints": ["open", "closed"]}
+      ],
+      "color": "#b04a2f",
+      "width": 2.2
+    }
+  ],
+  "caption": "Closed dot = endpoint included (w ≤ n); open dot = endpoint excluded (w > n−1)."
+}
+```
 
 Functions shaped like this — jumping from one constant value to the next — are called **step functions**. Stewart revisits them formally in Chapter 2.
 

@@ -20,6 +20,40 @@ The function never touches zero, never goes negative, and is defined for *every*
 > - **(a) $y = 2^x$** (growth, $a > 1$). Passes through $(0, 1)$ and $(1, 2)$. As $x \to -\infty$ the graph hugs the $x$-axis (horizontal asymptote); as $x \to +\infty$ it climbs without bound, with concavity upward throughout.
 > - **(b) $y = (0.5)^x$** (decay, $0 < a < 1$). Mirror image of (a) reflected across the $y$-axis. Passes through $(0, 1)$ and $(1, 0.5)$. As $x \to -\infty$ it climbs without bound; as $x \to +\infty$ it hugs the $x$-axis.
 
+```plot
+{
+  "title": "Figure 20a — y = 2ˣ (growth)",
+  "width": 460, "height": 320,
+  "xRange": [-3, 4], "yRange": [-1, 8],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": -8, "labelDy": -8},
+    {"x": 1, "y": 2, "style": "filled", "color": "#1f2430", "label": "(1, 2)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 20b — y = (0.5)ˣ (decay)",
+  "width": 460, "height": 320,
+  "xRange": [-4, 3], "yRange": [-1, 8],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(0.5, x)", "color": "#2867b2", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 1,   "style": "filled", "color": "#1f2430", "label": "(0, 1)",   "labelDx": 8, "labelDy": -8},
+    {"x": 1, "y": 0.5, "style": "filled", "color": "#1f2430", "label": "(1, 0.5)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
+
 **Modeling intuition.** Exponentials arise whenever the *rate of change* of a quantity is proportional to the quantity itself — "the more you have, the faster it grows" (or decays).
 
 - **$a > 1$:** growth. Population under unlimited resources; compound interest; viral spread (early phase before saturation); any autocatalytic process.
@@ -59,6 +93,31 @@ $$\text{domain} = (0, \infty), \qquad \text{range} = (-\infty, \infty)$$
 > - **Ordering for $x > 1$:** $\log_2 x > \log_3 x > \log_5 x > \log_{10} x$ — smaller base gives steeper ascent.
 > - **Ordering for $0 < x < 1$:** reversed — smaller base dives faster to $-\infty$.
 > - The curves all increase **slowly** for $x > 1$ — log growth is the paradigm of "technically unbounded but practically boring."
+
+```plot
+{
+  "title": "Figure 21 — y = log₂ x, log₃ x, log₅ x, log₁₀ x",
+  "width": 520, "height": 340,
+  "xRange": [-0.5, 8], "yRange": [-3, 3],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "log(x) / log(2)",  "domain": [0.05, 8], "color": "#b04a2f", "width": 1.8},
+    {"fn": "log(x) / log(3)",  "domain": [0.05, 8], "color": "#c87d3b", "width": 1.8},
+    {"fn": "log(x) / log(5)",  "domain": [0.05, 8], "color": "#5a8f3a", "width": 1.8},
+    {"fn": "log(x) / log(10)", "domain": [0.05, 8], "color": "#2867b2", "width": 1.8}
+  ],
+  "annotations": [
+    {"x": 7.5, "y": 2.95, "text": "log₂ x",  "color": "#b04a2f", "anchor": "end"},
+    {"x": 7.5, "y": 1.85, "text": "log₃ x",  "color": "#c87d3b", "anchor": "end"},
+    {"x": 7.5, "y": 1.30, "text": "log₅ x",  "color": "#5a8f3a", "anchor": "end"},
+    {"x": 7.5, "y": 0.95, "text": "log₁₀ x", "color": "#2867b2", "anchor": "end"}
+  ],
+  "points": [
+    {"x": 1, "y": 0, "style": "filled", "color": "#1f2430", "r": 3, "label": "(1, 0)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
 
 *Logarithmic functions will be studied in detail in Section 1.6.*
 

@@ -29,6 +29,29 @@ $$\{x \mid x \neq \pm 2\}$$
 >
 > Exact asymptotic behavior and the location of the local minima are derived systematically in Chapter 2.
 
+```plot
+{
+  "title": "Figure 16 — f(x) = (2x⁴ − x² + 1) / (x² − 4)",
+  "width": 540, "height": 380,
+  "xRange": [-5, 5], "yRange": [-30, 40],
+  "xStep": 1, "yStep": 10,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "(2*pow(x,4) - x*x + 1) / (x*x - 4)", "domain": [-5, -2.05], "color": "#b04a2f", "width": 2},
+    {"fn": "(2*pow(x,4) - x*x + 1) / (x*x - 4)", "domain": [-1.95, 1.95], "color": "#b04a2f", "width": 2},
+    {"fn": "(2*pow(x,4) - x*x + 1) / (x*x - 4)", "domain": [2.05, 5], "color": "#b04a2f", "width": 2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -2, "color": "#999", "dash": "5 4"},
+    {"type": "vertical", "x":  2, "color": "#999", "dash": "5 4"}
+  ],
+  "annotations": [
+    {"x": -2.05, "y": 35, "text": "x = −2", "color": "#666", "anchor": "end", "italic": false},
+    {"x":  2.05, "y": 35, "text": "x = 2",  "color": "#666", "anchor": "start", "italic": false}
+  ]
+}
+```
+
 **The universal fact about rational functions:** wherever $Q(x) = 0$ but $P(x) \neq 0$, you get a **vertical asymptote**. This is why domain-finding for rationals reduces to factoring the denominator — every root of $Q$ is either a hole (if it's also a root of $P$ with at least the same multiplicity) or a vertical asymptote.
 
 ---
@@ -57,6 +80,59 @@ Stewart defers systematic graphing of algebraic functions to Chapter 4 (derivati
 > - **(a) $f(x) = x\sqrt{x + 3}$.** Domain $[-3, \infty)$ (need $x + 3 \geq 0$). The graph starts at $(-3, 0)$, dips through the fourth quadrant to a minimum, crosses the $x$-axis at the origin, and rises concave-up through the first quadrant. Passes through $(1, 2)$.
 > - **(b) $g(x) = \sqrt[4]{x^2 - 25}$.** Domain is where $x^2 - 25 \geq 0$, i.e. $x \leq -5$ or $x \geq 5$. Two disconnected branches. Each rises from $(±5, 0)$ outward with a slope that starts vertical at the boundary (because of the fourth-root behavior at its zero).
 > - **(c) $h(x) = x^{2/3}(x - 2)^2$.** Two zeros at $x = 0$ and $x = 2$. Has a **cusp at the origin** (from the $x^{2/3}$ factor) and a smooth local min at $x = 2$ (double root). Non-negative everywhere.
+
+```plot
+{
+  "title": "Figure 17a — f(x) = x·√(x + 3)",
+  "width": 460, "height": 320,
+  "xRange": [-4, 3], "yRange": [-3, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x * sqrt(x + 3)", "domain": [-3, 3], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -3, "y": 0, "style": "filled", "color": "#1f2430", "label": "(−3, 0)", "labelDx": -8, "labelDy": -8},
+    {"x":  0, "y": 0, "style": "filled", "color": "#1f2430"},
+    {"x":  1, "y": 2, "style": "filled", "color": "#1f2430", "label": "(1, 2)",  "labelDx": 8,  "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 17b — g(x) = (x² − 25)^(1/4)",
+  "width": 460, "height": 320,
+  "xRange": [-9, 9], "yRange": [-1, 4],
+  "xStep": 1, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(x*x - 25, 0.25)", "domain": [-8.5, -5], "color": "#b04a2f", "width": 2.2},
+    {"fn": "pow(x*x - 25, 0.25)", "domain": [5, 8.5],   "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -5, "y": 0, "style": "filled", "color": "#1f2430", "label": "(−5, 0)", "labelDx": -8, "labelDy": -8},
+    {"x":  5, "y": 0, "style": "filled", "color": "#1f2430", "label": "(5, 0)",  "labelDx": 8,  "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 17c — h(x) = x^(2/3)·(x − 2)²",
+  "width": 460, "height": 320,
+  "xRange": [-2, 4], "yRange": [-1, 6],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "cbrt(x)*cbrt(x) * (x - 2)*(x - 2)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "filled", "color": "#1f2430", "label": "cusp", "labelDx": -8, "labelDy": -8},
+    {"x": 2, "y": 0, "style": "filled", "color": "#1f2430", "label": "(2, 0)", "labelDx": 8, "labelDy": -8}
+  ]
+}
+```
 
 **Cusps and vertical tangents are specifically the signature of fractional-exponent algebraic functions.** $x^{2/3}$ has a cusp at 0; $x^{1/3}$ has a vertical tangent at 0; $\sqrt[4]{x - a}$ has a vertical tangent at $x = a$. These show up in Chapter 4 curve-sketching.
 

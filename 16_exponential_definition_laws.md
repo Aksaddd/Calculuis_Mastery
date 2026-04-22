@@ -78,6 +78,37 @@ $$2^{\sqrt{3}} \approx 3.321997$$
 > - $y = 1.5^x$, $y = 2^x$, $y = 4^x$, $y = 10^x$ on the right — **growing** (bases $> 1$). Larger bases grow faster.
 > - All six curves pass through the single point $(0, 1)$ because $a^0 = 1$ for any $a \neq 0$.
 
+```plot
+{
+  "title": "Figure 3 — y = aˣ for a = ¼, ½, 1, 1.5, 2, 4, 10",
+  "width": 540, "height": 380,
+  "xRange": [-2.5, 2.5], "yRange": [-1, 8],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(0.25, x)", "color": "#6b3aa0", "width": 1.8},
+    {"fn": "pow(0.5,  x)", "color": "#2867b2", "width": 1.8},
+    {"fn": "1",            "color": "#888",    "width": 1.4, "dash": "5 4"},
+    {"fn": "pow(1.5,  x)", "color": "#5a8f3a", "width": 1.8},
+    {"fn": "pow(2,    x)", "color": "#c87d3b", "width": 1.8},
+    {"fn": "pow(4,    x)", "color": "#b04a2f", "width": 1.8},
+    {"fn": "pow(10,   x)", "color": "#7a2515", "width": 1.8}
+  ],
+  "annotations": [
+    {"x": -2.0, "y": 7.3, "text": "(¼)ˣ",  "color": "#6b3aa0"},
+    {"x": -2.4, "y": 4.3, "text": "(½)ˣ",  "color": "#2867b2"},
+    {"x":  2.05,"y": 1.1, "text": "1ˣ",    "color": "#666"},
+    {"x":  2.05,"y": 2.5, "text": "1.5ˣ",  "color": "#5a8f3a"},
+    {"x":  2.05,"y": 4.2, "text": "2ˣ",    "color": "#c87d3b"},
+    {"x":  1.50,"y": 6.5, "text": "4ˣ",    "color": "#b04a2f"},
+    {"x":  0.85,"y": 7.4, "text": "10ˣ",   "color": "#7a2515"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "r": 3, "label": "(0, 1)", "labelDx": 8, "labelDy": 14}
+  ]
+}
+```
+
 **The three cases of $y = a^x$** (summarized in Figure 4):
 
 | Base | Behavior | Graph |
@@ -139,6 +170,60 @@ $$\text{range} = (-\infty, 3)$$
 > - **(b) $y = -2^x$:** Same shape reflected downward, passing through $(0, -1)$. Range $(-\infty, 0)$.
 > - **(c) $y = 3 - 2^x$:** Panel (b) shifted up 3. Passes through $(0, 2)$. Horizontal asymptote at $y = 3$ as $x \to -\infty$. Goes to $-\infty$ as $x \to \infty$.
 
+```plot
+{
+  "title": "Figure 5a — y = 2ˣ",
+  "width": 460, "height": 280,
+  "xRange": [-3, 3], "yRange": [-1, 8],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 5b — y = −2ˣ",
+  "width": 460, "height": 280,
+  "xRange": [-3, 3], "yRange": [-8, 1],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "-pow(2, x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": -1, "style": "filled", "color": "#1f2430", "label": "(0, −1)", "labelDx": -8, "labelDy": 14}
+  ]
+}
+```
+
+```plot
+{
+  "title": "Figure 5c — y = 3 − 2ˣ",
+  "width": 460, "height": 320,
+  "xRange": [-3, 4], "yRange": [-6, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "3 - pow(2, x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 3, "color": "#888", "dash": "5 4"}
+  ],
+  "points": [
+    {"x": 0, "y": 2, "style": "filled", "color": "#1f2430", "label": "(0, 2)", "labelDx": 8, "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 3.8, "y": 3.4, "text": "y = 3 (asymptote)", "color": "#666", "anchor": "end", "italic": false}
+  ]
+}
+```
+
 ---
 
 ## Example 2 — Exponential vs. power function: who grows faster?
@@ -149,9 +234,45 @@ Use a graphing device to compare the exponential function $f(x) = 2^x$ and the p
 
 > **Figure 6 — Local view, $[-2, 6] \times [0, 40]$.** The curves intersect **three times** in this window. For a while the power function $x^2$ is larger; in the middle region they cross back and forth; by $x > 4$ the exponential $2^x$ pulls decisively above the power function.
 
+```plot
+{
+  "title": "Figure 6 — y = 2ˣ vs. y = x², local view",
+  "width": 540, "height": 360,
+  "xRange": [-2, 6], "yRange": [0, 40],
+  "xStep": 1, "yStep": 5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)", "color": "#b04a2f", "width": 2.0},
+    {"fn": "x*x",       "color": "#2867b2", "width": 2.0}
+  ],
+  "annotations": [
+    {"x": 5.8, "y": 36, "text": "2ˣ", "color": "#b04a2f", "anchor": "end"},
+    {"x": 5.8, "y": 28, "text": "x²", "color": "#2867b2", "anchor": "end"}
+  ]
+}
+```
+
 Widen to $[0, 8] \times [0, 250]$:
 
 > **Figure 7 — Global view, $[0, 8] \times [0, 250]$.** The exponential has surged far above the power function. At $x = 8$: $2^8 = 256$, while $8^2 = 64$. The gap widens without bound.
+
+```plot
+{
+  "title": "Figure 7 — y = 2ˣ vs. y = x², global view",
+  "width": 540, "height": 360,
+  "xRange": [0, 8], "yRange": [0, 260],
+  "xStep": 1, "yStep": 50,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(2, x)", "color": "#b04a2f", "width": 2.2},
+    {"fn": "x*x",       "color": "#2867b2", "width": 2.2}
+  ],
+  "annotations": [
+    {"x": 7.8, "y": 240, "text": "2ˣ", "color": "#b04a2f", "anchor": "end"},
+    {"x": 7.8, "y":  55, "text": "x²", "color": "#2867b2", "anchor": "end"}
+  ]
+}
+```
 
 **The general fact** (will be proved rigorously with limits in Chapter 2, with L'Hôpital's in Chapter 4): for any $a > 1$ and any $n > 0$,
 

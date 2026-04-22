@@ -18,11 +18,47 @@ You can see from Figure 17 that the sine function is not one-to-one (HLT fails):
 
 > **Figure 17 — $y = \sin x$.** Standard sine wave, oscillating between $-1$ and $1$. Any horizontal line at height $c \in (-1, 1)$ crosses it infinitely many times.
 
+```plot
+{
+  "title": "Figure 17 — y = sin x  (not one-to-one)",
+  "width": 540, "height": 260,
+  "xRange": [-7, 7], "yRange": [-1.5, 1.5],
+  "xStep": 1.5707963267948966, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(x)", "color": "#b04a2f", "width": 2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 0.5, "color": "#2867b2", "dash": "5 4"}
+  ],
+  "annotations": [
+    {"x": 6.5, "y": 0.7, "text": "y = ½ — infinitely many crossings", "color": "#2867b2", "anchor": "end", "italic": false}
+  ]
+}
+```
+
 ### The restriction
 
 But the function $f(x) = \sin x$, restricted to $-\pi/2 \leq x \leq \pi/2$, **is** one-to-one:
 
 > **Figure 18 — $y = \sin x$ restricted to $[-\pi/2, \pi/2]$.** Just one increasing arc of the sine wave — from $(-\pi/2, -1)$ through the origin up to $(\pi/2, 1)$. Passes the HLT.
+
+```plot
+{
+  "title": "Figure 18 — y = sin x  on  [−π/2, π/2]  (one-to-one)",
+  "width": 460, "height": 320,
+  "xRange": [-2, 2], "yRange": [-1.5, 1.5],
+  "xStep": 0.5235987755982989, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(x)", "domain": [-1.5707963267948966, 1.5707963267948966], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -1.5707963267948966, "y": -1, "style": "filled", "color": "#1f2430", "label": "(−π/2, −1)", "labelDx": 8,  "labelDy": 14},
+    {"x":  1.5707963267948966, "y":  1, "style": "filled", "color": "#1f2430", "label": "(π/2, 1)",   "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
 
 The inverse function of this restricted sine function exists and is denoted by $\sin^{-1}$ or $\arcsin$. It is called the **inverse sine function** or the **arcsine function**.
 
@@ -85,6 +121,24 @@ $$\text{domain of } \sin^{-1} = [-1, 1], \qquad \text{range of } \sin^{-1} = [-\
 
 > **Figure 20 — $y = \sin^{-1} x = \arcsin x$.** The restricted sine curve (Figure 18) reflected across the line $y = x$. Passes through $(-1, -\pi/2)$, $(0, 0)$, $(1, \pi/2)$. S-shape restricted to a bounded domain, with **endpoints** rather than asymptotes.
 
+```plot
+{
+  "title": "Figure 20 — y = arcsin x",
+  "width": 460, "height": 360,
+  "xRange": [-1.5, 1.5], "yRange": [-2, 2],
+  "xStep": 0.5, "yStep": 0.5235987755982989,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "asin(x)", "domain": [-1, 1], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -1, "y": -1.5707963267948966, "style": "filled", "color": "#1f2430", "label": "(−1, −π/2)", "labelDx": 8, "labelDy": 14},
+    {"x":  0, "y":  0, "style": "filled", "color": "#1f2430"},
+    {"x":  1, "y":  1.5707963267948966, "style": "filled", "color": "#1f2430", "label": "(1, π/2)",  "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
+
 ---
 
 ## Inverse Cosine (Arccosine)
@@ -92,6 +146,24 @@ $$\text{domain of } \sin^{-1} = [-1, 1], \qquad \text{range of } \sin^{-1} = [-\
 The inverse cosine function is handled similarly, but with a different domain restriction on $\cos$ — we pick $[0, \pi]$ because cosine is one-to-one (decreasing) there.
 
 > **Figure 21 — $y = \cos x$ restricted to $[0, \pi]$.** Starts at $(0, 1)$, decreases smoothly through $(\pi/2, 0)$, down to $(\pi, -1)$.
+
+```plot
+{
+  "title": "Figure 21 — y = cos x  on  [0, π]  (one-to-one, decreasing)",
+  "width": 460, "height": 320,
+  "xRange": [-0.5, 3.5], "yRange": [-1.5, 1.5],
+  "xStep": 0.5235987755982989, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "cos(x)", "domain": [0, 3.141592653589793], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0,                  "y":  1, "style": "filled", "color": "#1f2430", "label": "(0, 1)",   "labelDx": 8, "labelDy": -8},
+    {"x": 1.5707963267948966, "y":  0, "style": "filled", "color": "#1f2430", "label": "(π/2, 0)", "labelDx": 8, "labelDy": -8},
+    {"x": 3.141592653589793,  "y": -1, "style": "filled", "color": "#1f2430", "label": "(π, −1)",  "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
 
 > **Definition of arccosine.**
 > $$\cos^{-1} x = y \quad \Longleftrightarrow \quad \cos y = x \ \text{ and } \ 0 \leq y \leq \pi$$
@@ -107,6 +179,24 @@ $$\text{domain of } \cos^{-1} = [-1, 1], \qquad \text{range of } \cos^{-1} = [0,
 
 > **Figure 22 — $y = \cos^{-1} x = \arccos x$.** Starts at $(-1, \pi)$, decreases smoothly through $(0, \pi/2)$, down to $(1, 0)$. This is the reflection of restricted cosine (Figure 21) across $y = x$.
 
+```plot
+{
+  "title": "Figure 22 — y = arccos x",
+  "width": 460, "height": 360,
+  "xRange": [-1.5, 1.5], "yRange": [-0.5, 3.5],
+  "xStep": 0.5, "yStep": 0.5235987755982989,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "acos(x)", "domain": [-1, 1], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": -1, "y": 3.141592653589793,  "style": "filled", "color": "#1f2430", "label": "(−1, π)",   "labelDx": 8,  "labelDy": -8},
+    {"x":  0, "y": 1.5707963267948966, "style": "filled", "color": "#1f2430", "label": "(0, π/2)",  "labelDx": 8,  "labelDy": -8},
+    {"x":  1, "y": 0,                  "style": "filled", "color": "#1f2430", "label": "(1, 0)",    "labelDx": -8, "labelDy": -8}
+  ]
+}
+```
+
 **Note — range $[0, \pi]$, not $[-\pi/2, \pi/2]$.** Arccosine and arcsine use *different* output ranges. Arcsine outputs values from $-\pi/2$ to $\pi/2$; arccosine outputs values from $0$ to $\pi$. Don't conflate them — asking "what's $\arccos(-1/2)$?" is asking "what angle in $[0, \pi]$ has cosine $-1/2$?" — the answer is $2\pi/3$, not $-\pi/3$.
 
 ---
@@ -116,6 +206,23 @@ $$\text{domain of } \cos^{-1} = [-1, 1], \qquad \text{range of } \cos^{-1} = [0,
 The tangent function can be made one-to-one by restricting it to $(-\pi/2, \pi/2)$ — the interval between consecutive vertical asymptotes.
 
 > **Figure 23 — $y = \tan x$ restricted to $(-\pi/2, \pi/2)$.** Ascending curve from $-\infty$ (near $x = -\pi/2^+$) through the origin up to $+\infty$ (near $x = \pi/2^-$). Vertical asymptotes at $x = \pm \pi/2$ (shown as dashed lines).
+
+```plot
+{
+  "title": "Figure 23 — y = tan x  on  (−π/2, π/2)",
+  "width": 460, "height": 380,
+  "xRange": [-2, 2], "yRange": [-6, 6],
+  "xStep": 0.5235987755982989, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "tan(x)", "domain": [-1.5, 1.5], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -1.5707963267948966, "color": "#888", "dash": "5 4"},
+    {"type": "vertical", "x":  1.5707963267948966, "color": "#888", "dash": "5 4"}
+  ]
+}
+```
 
 > **Definition of arctangent.**
 > $$\tan^{-1} x = y \quad \Longleftrightarrow \quad \tan y = x \ \text{ and } \ -\frac{\pi}{2} < y < \frac{\pi}{2}$$
@@ -159,6 +266,30 @@ $$\text{domain of } \tan^{-1} = \mathbb{R}, \qquad \text{range of } \tan^{-1} = 
 
 > **Figure 25 — $y = \tan^{-1} x = \arctan x$.** Smooth ascending S-curve through the origin. Has **horizontal asymptotes** at $y = \pi/2$ (as $x \to \infty$) and $y = -\pi/2$ (as $x \to -\infty$), shown as dashed horizontal lines. The reflection-across-$y=x$ of Figure 23: vertical asymptotes of $\tan$ become horizontal asymptotes of $\arctan$.
 
+```plot
+{
+  "title": "Figure 25 — y = arctan x",
+  "width": 540, "height": 320,
+  "xRange": [-8, 8], "yRange": [-2, 2],
+  "xStep": 1, "yStep": 0.5235987755982989,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "atan(x)", "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y":  1.5707963267948966, "color": "#888", "dash": "5 4"},
+    {"type": "horizontal", "y": -1.5707963267948966, "color": "#888", "dash": "5 4"}
+  ],
+  "annotations": [
+    {"x": 7.5, "y":  1.65, "text": "y = π/2",  "color": "#666", "anchor": "end", "italic": false},
+    {"x": 7.5, "y": -1.50, "text": "y = −π/2", "color": "#666", "anchor": "end", "italic": false}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}
+  ]
+}
+```
+
 **Useful limits** to internalize now, since they'll come up often:
 
 $$\lim_{x \to \infty} \arctan x = \frac{\pi}{2}, \qquad \lim_{x \to -\infty} \arctan x = -\frac{\pi}{2}$$
@@ -175,6 +306,30 @@ Cosecant, secant, and cotangent have their own inverses, used less frequently. S
 > $$y = \cot^{-1} x \ (x \in \mathbb{R}) \ \Longleftrightarrow \ \cot y = x \ \text{ and } \ y \in (0, \pi)$$
 
 > **Figure 26 — $y = \sec x$ showing the branches used to define $\sec^{-1}$.** Two branches per period, with vertical asymptotes at $x = \pi/2, 3\pi/2, \ldots$. The highlighted portions for the $\sec^{-1}$ restriction: $[0, \pi/2)$ and $[\pi, 3\pi/2)$.
+
+```plot
+{
+  "title": "Figure 26 — y = sec x  with sec⁻¹ branches highlighted",
+  "width": 540, "height": 360,
+  "xRange": [-2, 6], "yRange": [-6, 6],
+  "xStep": 1.5707963267948966, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1/cos(x)", "domain": [-1.50, -1.65], "color": "#bbb", "width": 1.5},
+    {"fn": "1/cos(x)", "domain": [0,    1.50],   "color": "#b04a2f", "width": 2.4},
+    {"fn": "1/cos(x)", "domain": [1.65, 4.55],   "color": "#bbb", "width": 1.5},
+    {"fn": "1/cos(x)", "domain": [3.141592653589793, 4.55],"color": "#b04a2f","width": 2.4}
+  ],
+  "lines": [
+    {"type": "vertical", "x": -1.5707963267948966, "color": "#888", "dash": "5 4"},
+    {"type": "vertical", "x":  1.5707963267948966, "color": "#888", "dash": "5 4"},
+    {"type": "vertical", "x":  4.71238898038469,   "color": "#888", "dash": "5 4"},
+    {"type": "horizontal", "y":  1, "color": "#ddd", "dash": "3 3"},
+    {"type": "horizontal", "y": -1, "color": "#ddd", "dash": "3 3"}
+  ],
+  "caption": "Highlighted branches: [0, π/2) and [π, 3π/2) — Stewart's choice for sec⁻¹."
+}
+```
 
 ### The convention mess
 
