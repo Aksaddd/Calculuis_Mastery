@@ -20,6 +20,32 @@ Then we let $Q$ approach $P$ along the curve $C$ by letting $x$ approach $a$. If
 
 > **Figure 1 — The tangent-as-limit picture.** Curve $y = f(x)$ with two points $P(a, f(a))$ (fixed) and $Q(x, f(x))$ (moving). As $x \to a$, $Q \to P$ and the secant line $PQ$ rotates toward the tangent line $t$ at $P$. **Conceptually:** the tangent is the secant's limiting position.
 
+```plot
+{
+  "title": "Figure 1 — tangent at P as the limiting secant PQ (y = f(x) generic)",
+  "width": 540, "height": 340,
+  "xRange": [-0.5, 4], "yRange": [-0.5, 4.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.3*x*x - 0.1*x + 0.6", "domain": [-0.5, 4], "color": "#1f2430", "width": 2.2}
+  ],
+  "lines": [
+    {"from": [-0.3, 1.86], "to": [4, 0.14], "color": "#2867b2", "width": 1.6},
+    {"from": [-0.3, -0.38], "to": [4, 4.05], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 1, "y": 0.8, "style": "filled", "color": "#b04a2f", "label": "P(a, f(a))", "labelDx": -10, "labelDy": -8, "labelAnchor": "end"},
+    {"x": 3, "y": 3,   "style": "filled", "color": "#2867b2", "label": "Q(x, f(x))", "labelDx": 10,  "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 3.9, "y": 4.3, "text": "tangent t", "color": "#b04a2f", "italic": false, "anchor": "end"},
+    {"x": 3.9, "y": 0.45, "text": "secant PQ", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "As Q slides down the curve toward P, the secant rotates into the tangent t. Slope of t = lim_{x→a} (f(x) − f(a))/(x − a)."
+}
+```
+
 ### Definition 1 — Tangent Line
 
 > **Definition 1.** The **tangent line** to the curve $y = f(x)$ at the point $P(a, f(a))$ is the line through $P$ with slope
@@ -52,6 +78,54 @@ We sometimes refer to the slope of the tangent line to a curve at a point as the
 
 > **Figure 2 — Zooming in on $(1, 1)$ for $y = x^2$.** Three viewing rectangles, each zooming closer to the point: $[0, 2] \times [0, 2]$, $[0.5, 1.5] \times [0.5, 1.5]$, $[0.9, 1.1] \times [0.9, 1.1]$. As we zoom in, the parabola becomes nearly indistinguishable from a straight line with slope 2. **Conceptually: at sufficiently small scale, smooth curves are locally linear.**
 
+```plot
+{
+  "title": "Figure 2(i) — y = x² in window [0, 2] × [0, 2]",
+  "width": 420, "height": 260,
+  "xRange": [0, 2], "yRange": [0, 2],
+  "xStep": 0.5, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x",      "domain": [0, 2],   "color": "#b04a2f", "width": 2.2},
+    {"fn": "2*x - 1",  "domain": [0, 2],   "color": "#2867b2", "width": 1.6, "dash": "3 3"}
+  ],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430", "label": "(1, 1)", "labelDx": 8, "labelDy": -6}],
+  "caption": "Full shape of the parabola; tangent y = 2x − 1 shown dashed."
+}
+```
+
+```plot
+{
+  "title": "Figure 2(ii) — zoom [0.5, 1.5] × [0.5, 1.5]",
+  "width": 420, "height": 260,
+  "xRange": [0.5, 1.5], "yRange": [0.5, 1.5],
+  "xStep": 0.25, "yStep": 0.25,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x",     "domain": [0.5, 1.5], "color": "#b04a2f", "width": 2.2},
+    {"fn": "2*x - 1", "domain": [0.5, 1.5], "color": "#2867b2", "width": 1.6, "dash": "3 3"}
+  ],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430"}],
+  "caption": "Parabola and tangent have started to blend."
+}
+```
+
+```plot
+{
+  "title": "Figure 2(iii) — zoom [0.9, 1.1] × [0.9, 1.1]",
+  "width": 420, "height": 260,
+  "xRange": [0.9, 1.1], "yRange": [0.9, 1.1],
+  "xStep": 0.05, "yStep": 0.05,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x",     "domain": [0.9, 1.1], "color": "#b04a2f", "width": 2.2},
+    {"fn": "2*x - 1", "domain": [0.9, 1.1], "color": "#2867b2", "width": 1.6, "dash": "3 3"}
+  ],
+  "points": [{"x": 1, "y": 1, "style": "filled", "color": "#1f2430"}],
+  "caption": "Indistinguishable by eye — smooth curves are locally linear, and that slope is the derivative f'(1) = 2."
+}
+```
+
 *Margin note: TEC Visual 2.7 shows an animation of Figure 2.*
 
 **This "locally linear" property is the core intuition behind derivatives.** Essentially every calculation in Chapter 3 (chain rule, product rule, implicit differentiation) uses this intuition in the form "linearize, compute, combine." In applied math, the linearization is called the *tangent-line approximation* and in numerical methods it's the basis of Newton's method, Euler's method, and the Taylor expansion.
@@ -67,6 +141,33 @@ $$m_{PQ} = \frac{f(a + h) - f(a)}{h}$$
 $$\tag{2} m = \lim_{h \to 0}\frac{f(a + h) - f(a)}{h}$$
 
 > **Figure 3 — The $h$-based version of the same picture.** Point $P(a, f(a))$ and moving point $Q(a + h, f(a + h))$. The horizontal distance from $P$ to $Q$ is exactly $h$; the vertical change is $f(a + h) - f(a)$. As $h \to 0$, $Q$ slides toward $P$ and the secant approaches the tangent.
+
+```plot
+{
+  "title": "Figure 3 — the h-version: horizontal run h, vertical rise f(a+h) − f(a)",
+  "width": 540, "height": 340,
+  "xRange": [-0.5, 4], "yRange": [-0.5, 4.5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.3*x*x - 0.1*x + 0.6", "domain": [-0.5, 4], "color": "#1f2430", "width": 2.2}
+  ],
+  "lines": [
+    {"from": [-0.3, 1.86], "to": [4, 0.14], "color": "#2867b2", "width": 1.6},
+    {"type": "vertical",   "x": 3, "yRange": [0.8, 3],   "color": "#888", "dash": "3 3"},
+    {"type": "horizontal", "y": 0.8, "xRange": [1, 3],   "color": "#888", "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 1, "y": 0.8, "style": "filled", "color": "#b04a2f", "label": "P(a, f(a))",          "labelDx": -10, "labelDy": -8, "labelAnchor": "end"},
+    {"x": 3, "y": 3,   "style": "filled", "color": "#2867b2", "label": "Q(a + h, f(a + h))",  "labelDx": 10,  "labelDy": -8}
+  ],
+  "annotations": [
+    {"x": 2,   "y": 0.45, "text": "h",                    "color": "#1f2430", "italic": true,  "anchor": "middle"},
+    {"x": 3.25, "y": 1.95,"text": "f(a + h) − f(a)",      "color": "#1f2430", "italic": false, "anchor": "start"}
+  ],
+  "caption": "Slope of PQ = rise/run = (f(a + h) − f(a))/h. Let h → 0 and you get the derivative f′(a)."
+}
+```
 
 **When to use which formula.** Both Definition 1 and Equation 2 give the same answer; they're related by the substitution $x = a + h$. Use whichever is algebraically easier:
 - **Definition 1** (with $x \to a$) is natural when $f$ is easy to factor in $(x - a)$.
@@ -95,6 +196,27 @@ which simplifies to:
 $$x + 3y - 6 = 0$$
 
 > **Figure 4 — The hyperbola $y = 3/x$ and its tangent line at $(3, 1)$.** Standard rectangular hyperbola in the first quadrant; the tangent line $x + 3y = 6$ cuts through the point $(3, 1)$ with negative slope $-1/3$. Line $PQ$ has slope $-1/3$; the line crosses axes at $(6, 0)$ and $(0, 2)$.
+
+```plot
+{
+  "title": "Figure 4 — y = 3/x, tangent at (3, 1) has slope −1/3",
+  "width": 520, "height": 340,
+  "xRange": [0, 8], "yRange": [-0.5, 4],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "3/x",     "domain": [0.4, 8], "color": "#b04a2f", "width": 2.2, "samples": 400},
+    {"fn": "2 - x/3", "domain": [0, 8],   "color": "#2867b2", "width": 2, "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 3, "y": 1, "style": "filled", "color": "#1f2430", "label": "(3, 1)", "labelDx": 10, "labelDy": -6}
+  ],
+  "annotations": [
+    {"x": 7.5, "y": -0.3, "text": "tangent: x + 3y = 6", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "Just one point of contact: the line y = 2 − x/3 touches the hyperbola only at (3, 1)."
+}
+```
 
 **The computation pattern.** $3/(3 + h) - 1 = (3 - 3 - h)/(3 + h) = -h/(3 + h)$. Cancel the $h$. Plug in $h = 0$. **This factor-h-then-cancel move is the bread and butter of every derivative calculation in Chapter 3** — it's how you handle the "$0/0$" limit that appears in every difference quotient.
 
@@ -243,6 +365,28 @@ $$y - (-6) = -2(x - 3) \implies y + 6 = -2x + 6 \implies y = -2x$$
 **So the tangent line is $y = -2x$.**
 
 > **Figure 7 — Graph of $y = x^2 - 8x + 9$ and its tangent line at $(3, -6)$.** The parabola opens upward (minimum somewhere around $x = 4$); the tangent line $y = -2x$ passes through the origin and hits the parabola at $(3, -6)$ with negative slope. The line just touches — doesn't cross — the parabola at that one point.
+
+```plot
+{
+  "title": "Figure 7 — y = x² − 8x + 9 and its tangent y = −2x at (3, −6)",
+  "width": 540, "height": 340,
+  "xRange": [-1, 8], "yRange": [-12, 6],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x - 8*x + 9", "domain": [-1, 8], "color": "#b04a2f", "width": 2.2},
+    {"fn": "-2*x",          "domain": [-1, 8], "color": "#2867b2", "width": 2,   "dash": "3 3"}
+  ],
+  "points": [
+    {"x": 3, "y": -6, "style": "filled", "color": "#1f2430", "label": "(3, −6)", "labelDx": 10, "labelDy": 14},
+    {"x": 4, "y": -7, "style": "filled", "color": "#5b6477", "label": "vertex (4, −7)", "labelDx": 10, "labelDy": 14}
+  ],
+  "annotations": [
+    {"x": 7.8, "y": -10, "text": "tangent y = −2x",  "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "f′(3) = 2(3) − 8 = −2. The tangent at (3, −6) is y − (−6) = −2(x − 3), i.e. y = −2x."
+}
+```
 
 **This is how derivative machinery streamlines tangent-line calculation.** Instead of computing a new limit for each tangent (as in Example 2 where we redid all the work), we compute $f'(a)$ once as a function of $a$, then plug in. **Reusability is the whole point.** Once you have the derivative as a function, every tangent line is a fill-in-the-blank.
 

@@ -41,6 +41,28 @@ We now have two interpretations of $f'(a)$ that are geometrically the same:
 
 > **Figure 9 — Comparison of rapid vs. slow change.** At a point $P$ where the derivative is *large*, the curve is *steep* (the tangent has high slope) — so the $y$-values change rapidly as $x$ changes. At a point $Q$ where the derivative is *small*, the curve is *relatively flat* — $y$-values change slowly. **Conceptually: steep ⟷ large derivative ⟷ rapid change; flat ⟷ small derivative ⟷ slow change.**
 
+```plot
+{
+  "title": "Figure 9 — steep tangent (large rate) vs. flat tangent (small rate)",
+  "width": 540, "height": 320,
+  "xRange": [0, 5], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + 2*sin(0.9*x - 0.5)", "domain": [0, 5], "color": "#1f2430", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"from": [0.2, -0.1], "to": [2.2, 4.5],  "color": "#b04a2f", "width": 2},
+    {"from": [2.6, 4.0],  "to": [4.7, 4.39], "color": "#2867b2", "width": 2}
+  ],
+  "points": [
+    {"x": 1.2, "y": 2.3, "style": "filled", "color": "#b04a2f", "label": "P (large f′)", "labelDx": -10, "labelDy": 14, "labelAnchor": "end"},
+    {"x": 3.65,"y": 4.2, "style": "filled", "color": "#2867b2", "label": "Q (small f′)", "labelDx": 10,  "labelDy": -8}
+  ],
+  "caption": "Near P the tangent is nearly vertical — a small change in x produces a large change in y. Near Q the tangent is almost flat — changes in y barely register."
+}
+```
+
 ### Velocity as a rate of change
 
 In particular, if $s = f(t)$ is the position function of a particle that moves along a straight line, then $f'(a)$ is the **rate of change of the displacement $s$** with respect to the time $t$. In other words, $f'(a)$ is the **velocity** of the particle at time $t = a$. The **speed** of the particle is the absolute value of the velocity: $|f'(a)|$.
