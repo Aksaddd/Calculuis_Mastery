@@ -87,6 +87,23 @@ because $\sin(\pi/6) = \tfrac{1}{2}$ and $\pi/6 \in [-\pi/2, \pi/2]$.
 
 > **Figure 19 — Right triangle for Example 12(b).** Angle $\theta$ at the lower-left vertex; opposite side of length 1 (vertical leg); hypotenuse of length 3 (slanting side). The adjacent side (horizontal leg) is to be computed.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-label="Right triangle with hypotenuse 3, opposite side 1, adjacent side 2√2">
+  <g fill="none" stroke="#1f2430" stroke-width="2" stroke-linejoin="round">
+    <polygon points="50,190 310,190 310,97.5" fill="#fdfcf6"/>
+    <polyline points="296,190 296,176 310,176" stroke-width="1.4"/>
+  </g>
+  <g font-family="'Times New Roman', Times, serif" font-size="16" font-style="italic" fill="#1f2430">
+    <text x="180" y="208" text-anchor="middle">2√2  (adjacent)</text>
+    <text x="320" y="146" text-anchor="start">1  (opposite)</text>
+    <text x="165" y="132" text-anchor="middle" fill="#b04a2f">3  (hypotenuse)</text>
+    <path d="M 80 190 A 30 30 0 0 0 73.5 177" fill="none" stroke="#b04a2f" stroke-width="1.4"/>
+    <text x="86" y="182" font-size="17" fill="#b04a2f">θ</text>
+  </g>
+</svg>
+<figcaption>sin θ = 1/3 places θ in a right triangle with opposite 1 and hypotenuse 3. Pythagoras gives the adjacent side 2√2, so tan θ = 1/(2√2).</figcaption>
+</figure>
+
 By the Pythagorean theorem:
 
 $$\text{adjacent} = \sqrt{3^2 - 1^2} = \sqrt{9 - 1} = \sqrt{8} = 2\sqrt{2}$$

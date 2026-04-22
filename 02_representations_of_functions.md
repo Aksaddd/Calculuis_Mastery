@@ -413,6 +413,25 @@ A rectangular storage container with an open top has a volume of $10 \text{ m}^3
 
 > **Figure 12.** An open-top rectangular box (perspective drawing). Width labeled $w$, length labeled $2w$, height labeled $h$.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" role="img" aria-label="Open-top rectangular box with width w, length 2w, and height h">
+  <g fill="none" stroke="#1f2430" stroke-width="1.8" stroke-linejoin="round">
+    <polygon points="80,220 320,220 320,90 80,90" fill="#fdfcf6"/>
+    <polyline points="80,90 140,40 380,40 320,90"/>
+    <polyline points="320,220 380,170 380,40"/>
+    <line x1="140" y1="40" x2="140" y2="170" stroke-dasharray="4 3"/>
+    <line x1="140" y1="170" x2="80"  y2="220" stroke-dasharray="4 3"/>
+    <line x1="140" y1="170" x2="380" y2="170" stroke-dasharray="4 3"/>
+  </g>
+  <g font-family="'Times New Roman', Times, serif" font-size="16" font-style="italic" fill="#1f2430">
+    <text x="200" y="238" text-anchor="middle">2w</text>
+    <text x="345" y="135" text-anchor="start">h</text>
+    <text x="365" y="65"  text-anchor="start">w</text>
+  </g>
+</svg>
+<figcaption>Open-top rectangular storage container. Width w runs front-to-back, length 2w runs left-to-right, height h is the depth of the container.</figcaption>
+</figure>
+
 **Set up the cost.**
 
 - Area of base: $(2w)(w) = 2w^2$. Cost of base: $10 \cdot 2w^2 = 20w^2$.

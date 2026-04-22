@@ -304,6 +304,34 @@ Figure 9 shows graphs of the number of hours of daylight as functions of the tim
 >
 > *Source: Lucia C. Harrison,* Daylight, Twilight, Darkness and Time *(New York: Silver, Burdett, 1935) page 40.*
 
+```plot
+{
+  "title": "Figure 9 — daylight hours across the year at five latitudes",
+  "width": 580, "height": 340,
+  "xRange": [0, 370], "yRange": [4, 20.5],
+  "xStep": 30, "yStep": 2,
+  "xLabel": "day of year (t)", "yLabel": "hours of daylight",
+  "curves": [
+    {"fn": "12 + 1.4*sin(2*PI*(x - 80)/365)", "domain": [0, 365], "color": "#2867b2", "width": 2, "samples": 400},
+    {"fn": "12 + 2.0*sin(2*PI*(x - 80)/365)", "domain": [0, 365], "color": "#3a8f6a", "width": 2, "samples": 400},
+    {"fn": "12 + 2.8*sin(2*PI*(x - 80)/365)", "domain": [0, 365], "color": "#b04a2f", "width": 2.4, "samples": 400},
+    {"fn": "12 + 3.8*sin(2*PI*(x - 80)/365)", "domain": [0, 365], "color": "#8a5db2", "width": 2, "samples": 400},
+    {"fn": "12 + 5.5*sin(2*PI*(x - 80)/365)", "domain": [0, 365], "color": "#c08a1f", "width": 2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 12, "color": "#bbb", "dash": "3 3"}
+  ],
+  "annotations": [
+    {"x": 370, "y": 17.8, "text": "60°N", "color": "#c08a1f", "italic": false, "anchor": "end"},
+    {"x": 370, "y": 16.0, "text": "50°N", "color": "#8a5db2", "italic": false, "anchor": "end"},
+    {"x": 370, "y": 14.9, "text": "40°N", "color": "#b04a2f", "italic": false, "anchor": "end"},
+    {"x": 370, "y": 14.1, "text": "30°N", "color": "#3a8f6a", "italic": false, "anchor": "end"},
+    {"x": 370, "y": 13.5, "text": "20°N", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "All latitudes meet at 12 hours at the spring (t ≈ 80) and fall equinoxes. The higher the latitude, the wider the summer-to-winter swing."
+}
+```
+
 ***Solution.*** Each curve resembles a **shifted and stretched sine function**. We build the 40°N model step-by-step.
 
 **Step 1 — Amplitude.** From the 40°N (blue) curve: daylight ranges from about 14.8 hours on June 21 to 9.2 hours on December 21. The amplitude is half the range:

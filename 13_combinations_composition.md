@@ -71,6 +71,31 @@ The procedure is called **composition**. The new function is *composed* of the t
 
 > **Figure 11 — The $f \circ g$ machine.** A vertical stack: an input $x$ drops into the $g$ machine; the intermediate output $g(x)$ exits $g$ and feeds into the $f$ machine; the final output $f(g(x))$ emerges at the bottom. An external label "$f \circ g$" wraps the whole stack, indicating that the combined $f \circ g$ machine **applies $g$ first, then $f$**.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 440" role="img" aria-label="Composition machine: x feeds g, then f">
+  <defs>
+    <marker id="fig11-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2430"/>
+    </marker>
+  </defs>
+  <g font-family="'Times New Roman', Times, serif" fill="#1f2430">
+    <rect x="40" y="30" width="300" height="370" rx="14" fill="#fffcf2" stroke="#b08a3e" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="320" y="50" font-size="14" font-style="italic" fill="#b08a3e" text-anchor="end">f ∘ g</text>
+    <text x="190" y="78"  font-size="22" font-style="italic" text-anchor="middle">x</text>
+    <line x1="190" y1="90" x2="190" y2="130" stroke="#1f2430" stroke-width="2" marker-end="url(#fig11-arr)"/>
+    <rect x="120" y="135" width="140" height="75" rx="8" fill="#fdfcf6" stroke="#1f2430" stroke-width="2"/>
+    <text x="190" y="185" font-size="40" font-style="italic" text-anchor="middle" fill="#b04a2f">g</text>
+    <line x1="190" y1="215" x2="190" y2="245" stroke="#1f2430" stroke-width="2" marker-end="url(#fig11-arr)"/>
+    <text x="190" y="265" font-size="20" font-style="italic" text-anchor="middle">g(x)</text>
+    <rect x="120" y="280" width="140" height="75" rx="8" fill="#fdfcf6" stroke="#1f2430" stroke-width="2"/>
+    <text x="190" y="330" font-size="40" font-style="italic" text-anchor="middle" fill="#b04a2f">f</text>
+    <line x1="190" y1="360" x2="190" y2="390" stroke="#1f2430" stroke-width="2" marker-end="url(#fig11-arr)"/>
+    <text x="190" y="418" font-size="20" font-style="italic" text-anchor="middle">f(g(x))</text>
+  </g>
+</svg>
+<figcaption>Inner machine g runs first (on input x), producing g(x). Outer machine f consumes g(x) and produces f(g(x)) = (f ∘ g)(x).</figcaption>
+</figure>
+
 ### Formal definition
 
 > **Definition.** Given two functions $f$ and $g$, the **composite function** $f \circ g$ (also called the **composition** of $f$ and $g$) is defined by

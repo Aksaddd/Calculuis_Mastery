@@ -336,9 +336,67 @@ are called **bullet-nose curves**. Graph some of these curves to see why. What h
 
 > **Figure provided:** Two identical-looking low-frequency sine curves, the left labeled $y = \sin 96x$ and the right labeled $y = \sin 2x$, both showing about 2 periods across $[0, 2\pi]$ on the TI-83. In reality $\sin 96x$ has 96/2 = 48 periods on this interval.
 
+```plot
+{
+  "title": "What the TI-83 draws for both sin 96x and sin 2x (two periods on [0, 2π])",
+  "width": 540, "height": 260,
+  "xRange": [0, 6.283185], "yRange": [-1.2, 1.2],
+  "xStep": 1.5707963, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(2*x)", "domain": [0, 6.283185], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "caption": "Identical-looking. But only one of these is actually sin 2x — the other is sin 96x aliased to the same 95-pixel sampling grid."
+}
+```
+
+```plot
+{
+  "title": "The TRUE shape of y = sin 96x on [0, 2π] — 48 complete periods",
+  "width": 540, "height": 260,
+  "xRange": [0, 6.283185], "yRange": [-1.2, 1.2],
+  "xStep": 1.5707963, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(96*x)", "domain": [0, 6.283185], "color": "#2867b2", "width": 0.9, "samples": 8000}
+  ],
+  "caption": "What the function actually does: 48 oscillations per 2π. The TI-83's 95-pixel grid samples the wrong way and collapses this onto sin 2x."
+}
+```
+
 **36.** The first graph in the figure is that of $y = \sin 45x$ as displayed by a TI-83 graphing calculator. It is inaccurate and so, to help explain its appearance, we replot the curve in dot mode in the second graph.
 
 > **Figure provided:** Left — a dense but uneven waveform labeled "$y = \sin 45x$" on $[0, 2\pi]$. Right — the same function in dot mode, showing scattered dot patterns suggesting two envelope curves.
+
+```plot
+{
+  "title": "What the TI-83 draws for y = sin 45x in connected mode",
+  "width": 540, "height": 260,
+  "xRange": [0, 6.283185], "yRange": [-1.2, 1.2],
+  "xStep": 1.5707963, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sin(45*x)", "domain": [0, 6.283185], "color": "#b04a2f", "width": 1.0, "samples": 3000}
+  ],
+  "caption": "Dense zig-zag — connecting the 95 sampled points produces an uneven waveform, not the clean 45/2π ≈ 7.2-period curve you'd want."
+}
+```
+
+```plot
+{
+  "title": "In dot mode: two envelope curves emerge",
+  "width": 540, "height": 260,
+  "xRange": [0, 6.283185], "yRange": [-1.2, 1.2],
+  "xStep": 1.5707963, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"data": [[0,0],[0.0668,0.1333],[0.1337,-0.2642],[0.2005,0.3904],[0.2674,-0.5096],[0.3342,0.6197],[0.4011,-0.7188],[0.4679,0.8051],[0.5347,-0.8769],[0.6016,0.9332],[0.6684,-0.9728],[0.7353,0.995],[0.8021,-0.9994],[0.869,0.9861],[0.9358,-0.9551],[1.0026,0.9071],[1.0695,-0.8429],[1.1363,0.7637],[1.2032,-0.6708],[1.27,0.5659],[1.3368,-0.451],[1.4037,0.328],[1.4705,-0.1992],[1.5374,0.0668],[1.6042,0.0668],[1.6711,-0.1992],[1.7379,0.328],[1.8047,-0.451],[1.8716,0.5659],[1.9384,-0.6708],[2.0053,0.7637],[2.0721,-0.8429],[2.139,0.9071],[2.2058,-0.9551],[2.2726,0.9861],[2.3395,-0.9994],[2.4063,0.995],[2.4732,-0.9728],[2.54,0.9332],[2.6069,-0.8769],[2.6737,0.8051],[2.7405,-0.7188],[2.8074,0.6197],[2.8742,-0.5096],[2.9411,0.3904],[3.0079,-0.2642],[3.0748,0.1333],[3.1416,0],[3.2084,-0.1333],[3.2753,0.2642],[3.3421,-0.3904],[3.409,0.5096],[3.4758,-0.6197],[3.5426,0.7188],[3.6095,-0.8051],[3.6763,0.8769],[3.7432,-0.9332],[3.81,0.9728],[3.8769,-0.995],[3.9437,0.9994],[4.0105,-0.9861],[4.0774,0.9551],[4.1442,-0.9071],[4.2111,0.8429],[4.2779,-0.7637],[4.3448,0.6708],[4.4116,-0.5659],[4.4784,0.451],[4.5453,-0.328],[4.6121,0.1992],[4.679,-0.0668],[4.7458,-0.0668],[4.8127,0.1992],[4.8795,-0.328],[4.9463,0.451],[5.0132,-0.5659],[5.08,0.6708],[5.1469,-0.7637],[5.2137,0.8429],[5.2805,-0.9071],[5.3474,0.9551],[5.4142,-0.9861],[5.4811,0.9994],[5.5479,-0.995],[5.6148,0.9728],[5.6816,-0.9332],[5.7484,0.8769],[5.8153,-0.8051],[5.8821,0.7188],[5.949,-0.6197],[6.0158,0.5096],[6.0827,-0.3904],[6.1495,0.2642],[6.2163,-0.1333],[6.2832,0]], "mode": "scatter", "color": "#5b6477", "pointStyle": "filled", "r": 1.8},
+    {"fn": "sin(4*x)",  "domain": [0, 6.283185], "color": "#2867b2", "width": 1.4, "samples": 400, "dash": "3 3"},
+    {"fn": "-sin(4*x)", "domain": [0, 6.283185], "color": "#2867b2", "width": 1.4, "samples": 400, "dash": "3 3"}
+  ],
+  "caption": "The sampled values land on two dashed envelope curves ±sin 4x. (Envelope freq = |45 − 49·1| = 4 since 49 ≈ 95/2 is the Nyquist rate.)"
+}
+```
 
 What two sine curves does the calculator appear to be plotting? Show that each point on the graph of $y = \sin 45x$ that the TI-83 chooses to plot is in fact on one of these two curves. (The TI-83's graphing window is 95 pixels wide.)
 

@@ -119,6 +119,45 @@ $$2^{\sqrt{3}} \approx 3.321997$$
 
 > **Figure 4.** Three panels showing (a) $y = a^x$ with $0 < a < 1$: decaying curve through $(0, 1)$; (b) $y = 1^x$: horizontal line; (c) $y = a^x$ with $a > 1$: growing curve through $(0, 1)$.
 
+```plot
+{
+  "title": "Figure 4(a) — y = aˣ, 0 < a < 1 (here a = 1/2)",
+  "width": 420, "height": 260,
+  "xRange": [-3, 3], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "pow(0.5, x)", "domain": [-3, 3], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -6}],
+  "caption": "Decaying: values fall as x increases; x-axis is a horizontal asymptote as x → ∞."
+}
+```
+
+```plot
+{
+  "title": "Figure 4(b) — y = 1ˣ (constant)",
+  "width": 420, "height": 260,
+  "xRange": [-3, 3], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "1", "domain": [-3, 3], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -6}],
+  "caption": "Degenerate case: 1ˣ = 1 for every x."
+}
+```
+
+```plot
+{
+  "title": "Figure 4(c) — y = aˣ, a > 1 (here a = 2)",
+  "width": 420, "height": 260,
+  "xRange": [-3, 3], "yRange": [-0.5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [{"fn": "pow(2, x)", "domain": [-3, 3], "color": "#b04a2f", "width": 2.2}],
+  "points": [{"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 8, "labelDy": -6}],
+  "caption": "Growing: values rise as x increases; x-axis is a horizontal asymptote as x → −∞."
+}
+```
+
 **Key facts for any $a > 0$ with $a \neq 1$:**
 
 $$\text{domain} = \mathbb{R} = (-\infty, \infty), \qquad \text{range} = (0, \infty)$$
