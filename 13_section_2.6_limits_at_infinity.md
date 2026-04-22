@@ -33,6 +33,29 @@ as $x$ becomes large. Table of values (to six decimal places):
 
 > **Figure 1 — Graph of $y = (x^2 - 1)/(x^2 + 1)$.** The curve has a global minimum at $(0, -1)$, rises symmetrically, and flattens out — approaching the horizontal line $y = 1$ from below as $|x|$ grows. **Conceptually: the curve "levels off" toward $y = 1$ for large $|x|$.**
 
+```plot
+{
+  "title": "Figure 1 — y = (x² − 1)/(x² + 1) approaches y = 1 at both ends",
+  "width": 540, "height": 320,
+  "xRange": [-8, 8], "yRange": [-1.3, 1.5],
+  "xStep": 2, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "(x*x - 1)/(x*x + 1)", "domain": [-8, 8], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 1, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": -1, "style": "filled", "color": "#1f2430", "label": "(0, −1)", "labelDx": 10, "labelDy": 14}
+  ],
+  "annotations": [
+    {"x": 7.5, "y": 1.2, "text": "y = 1", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "Both ends of the curve press against y = 1 — the single horizontal asymptote for x → ±∞."
+}
+```
+
 **As $x$ grows larger and larger**, the values of $f(x)$ get closer and closer to 1. In fact, **we can make $f(x)$ as close to 1 as we like by taking $x$ sufficiently large.** Symbolic notation:
 
 $$\lim_{x \to \infty}\frac{x^2 - 1}{x^2 + 1} = 1$$
@@ -61,6 +84,43 @@ $$\lim_{x \to \infty}\frac{x^2 - 1}{x^2 + 1} = 1$$
 >
 > **All three qualify as $\lim_{x \to \infty}f(x) = L$.** The definition doesn't care about the *shape* of the approach; only that $f(x)$ can be made arbitrarily close to $L$.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Three shapes of approach to a horizontal asymptote">
+  <style>
+    .ax { stroke: #1f2430; stroke-width: 1.2; }
+    .as { stroke: #2867b2; stroke-width: 1.4; stroke-dasharray: 4 3; }
+    .cv { stroke: #b04a2f; stroke-width: 2.2; fill: none; }
+    .lb { font: italic 12px 'Times New Roman', Times, serif; fill: #1f2430; }
+    .cap { font: italic 11px Helvetica, Arial, sans-serif; fill: #5b6477; }
+  </style>
+  <g transform="translate(20 20)">
+    <text class="cap" x="110" y="-4" text-anchor="middle">from below</text>
+    <line class="ax" x1="10" y1="170" x2="220" y2="170"/>
+    <line class="ax" x1="10" y1="10"  x2="10"  y2="170"/>
+    <line class="as" x1="10" y1="55"  x2="220" y2="55"/>
+    <path class="cv" d="M 15 150 Q 70 100, 140 70 T 218 58"/>
+    <text class="lb" x="225" y="58">y = L</text>
+  </g>
+  <g transform="translate(260 20)">
+    <text class="cap" x="110" y="-4" text-anchor="middle">from above</text>
+    <line class="ax" x1="10" y1="170" x2="220" y2="170"/>
+    <line class="ax" x1="10" y1="10"  x2="10"  y2="170"/>
+    <line class="as" x1="10" y1="115" x2="220" y2="115"/>
+    <path class="cv" d="M 15 30 Q 70 80, 140 102 T 218 112"/>
+    <text class="lb" x="225" y="118">y = L</text>
+  </g>
+  <g transform="translate(500 20)">
+    <text class="cap" x="110" y="-4" text-anchor="middle">oscillatory</text>
+    <line class="ax" x1="10" y1="170" x2="220" y2="170"/>
+    <line class="ax" x1="10" y1="10"  x2="10"  y2="170"/>
+    <line class="as" x1="10" y1="90"  x2="220" y2="90"/>
+    <path class="cv" d="M 15 140 C 40 40, 70 140, 95 70 S 150 115, 180 80 S 215 100, 220 90"/>
+    <text class="lb" x="225" y="93">y = L</text>
+  </g>
+</svg>
+<figcaption>The shape of the approach doesn't matter. Monotone from below, monotone from above, oscillatory — all three give lim<sub>x→∞</sub> f(x) = L.</figcaption>
+</figure>
+
 ---
 
 ## Definition 2 — Limit at Infinity (Negative Direction)
@@ -74,6 +134,35 @@ For behavior as $x$ becomes large negative:
 Reads as "the limit of $f(x)$, as $x$ approaches negative infinity, is $L$."
 
 > **Figure 3 — Two ways the graph can approach $y = L$ as $x \to -\infty$.** Mirror-image of Figure 2; the approach happens on the left side of the graph.
+
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" role="img" aria-label="Two shapes of approach to a horizontal asymptote as x → −∞">
+  <style>
+    .ax { stroke: #1f2430; stroke-width: 1.2; }
+    .as { stroke: #2867b2; stroke-width: 1.4; stroke-dasharray: 4 3; }
+    .cv { stroke: #b04a2f; stroke-width: 2.2; fill: none; }
+    .lb { font: italic 12px 'Times New Roman', Times, serif; fill: #1f2430; }
+    .cap { font: italic 11px Helvetica, Arial, sans-serif; fill: #5b6477; }
+  </style>
+  <g transform="translate(20 20)">
+    <text class="cap" x="110" y="-4" text-anchor="middle">from below, as x → −∞</text>
+    <line class="ax" x1="10" y1="170" x2="220" y2="170"/>
+    <line class="ax" x1="215" y1="10" x2="215" y2="170"/>
+    <line class="as" x1="10" y1="55" x2="220" y2="55"/>
+    <path class="cv" d="M 10 60 Q 70 65, 120 85 T 210 150"/>
+    <text class="lb" x="5" y="58" text-anchor="end">L</text>
+  </g>
+  <g transform="translate(260 20)">
+    <text class="cap" x="110" y="-4" text-anchor="middle">from above, as x → −∞</text>
+    <line class="ax" x1="10" y1="170" x2="220" y2="170"/>
+    <line class="ax" x1="215" y1="10" x2="215" y2="170"/>
+    <line class="as" x1="10" y1="115" x2="220" y2="115"/>
+    <path class="cv" d="M 10 110 Q 70 105, 120 90 T 210 30"/>
+    <text class="lb" x="5" y="118" text-anchor="end">L</text>
+  </g>
+</svg>
+<figcaption>For x → −∞ the approach happens on the far left. Monotone from below, from above, or oscillatory — all give lim<sub>x→−∞</sub> f(x) = L.</figcaption>
+</figure>
 
 ---
 
@@ -94,6 +183,28 @@ This follows from the fact that $x = \pm\pi/2$ are vertical asymptotes of the gr
 
 > **Figure 4 — Graph of $y = \arctan x$.** Bounded monotonically increasing S-shape, flattening toward $y = \pi/2$ as $x \to +\infty$ and toward $y = -\pi/2$ as $x \to -\infty$. Two horizontal asymptotes visible.
 
+```plot
+{
+  "title": "Figure 4 — y = arctan x has two horizontal asymptotes, y = ±π/2",
+  "width": 520, "height": 320,
+  "xRange": [-12, 12], "yRange": [-2.2, 2.2],
+  "xStep": 3, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "atan(x)", "domain": [-12, 12], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y":  1.5707963, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": -1.5707963, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 11, "y":  1.78,  "text": "y = π/2",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 11, "y": -1.78,  "text": "y = −π/2", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "The inverse of the bijection tan: (−π/2, π/2) → ℝ. Bounded, monotone, never reaches the asymptotes."
+}
+```
+
 **Horizontal asymptotes summary.** $\arctan$ is bounded: its range is $(-\pi/2, \pi/2)$. Approaches both bounds but never reaches them. **In quant finance, $\arctan$ shows up as a "squashing function" that maps the real line to a bounded range** — useful in logistic-like transformations, sigmoid alternatives, and bounded-parameter models.
 
 ---
@@ -105,6 +216,34 @@ Find the infinite limits, limits at infinity, and asymptotes for the function $f
 > **Figure 5 — Graph of $f$.** A curve over multiple intervals with visible features:
 > - Vertical asymptotes at $x = -1$ and $x = 2$ (graph goes to $\pm\infty$ there).
 > - Horizontal leveling: approaches $y = 2$ as $x \to -\infty$ and $y = 4$ as $x \to \infty$.
+
+```plot
+{
+  "title": "Figure 5 — four asymptotes (two vertical, two horizontal)",
+  "width": 560, "height": 360,
+  "xRange": [-6, 6], "yRange": [-8, 10],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + 1.2/(x + 1)",   "domain": [-6, -1.2], "color": "#b04a2f", "width": 2.2, "samples": 500},
+    {"fn": "3 + 0.5*(x - 0.5)/((x + 1)*(x - 2))",   "domain": [-0.8, 1.85], "color": "#b04a2f", "width": 2.2, "samples": 500},
+    {"fn": "4 - 1/(x - 2)",     "domain": [2.15, 6], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "vertical",   "x": -1, "color": "#2867b2", "dash": "4 4"},
+    {"type": "vertical",   "x":  2, "color": "#2867b2", "dash": "4 4"},
+    {"type": "horizontal", "y":  2, "color": "#2867b2", "dash": "4 4"},
+    {"type": "horizontal", "y":  4, "color": "#2867b2", "dash": "4 4"}
+  ],
+  "annotations": [
+    {"x": -5.5, "y": 2.5, "text": "y = 2",  "color": "#2867b2", "italic": false},
+    {"x":  5.5, "y": 4.5, "text": "y = 4",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": -1,   "y": -7,  "text": "x = −1", "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x":  2,   "y": -7,  "text": "x = 2",  "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Vertical asymptotes x = −1, x = 2. Horizontal asymptotes y = 2 (as x → −∞) and y = 4 (as x → ∞)."
+}
+```
 
 ***Solution.***
 
@@ -141,6 +280,21 @@ Similar reasoning for large negative $x$:
 $$\lim_{x \to -\infty}\frac{1}{x} = 0$$
 
 > **Figure 6 — Graph of $y = 1/x$ (the equilateral hyperbola).** Two branches, each approaching the $x$-axis as asymptote for large $|x|$, and the $y$-axis as asymptote as $x \to 0$. Classic picture.
+
+```plot
+{
+  "title": "Figure 6 — y = 1/x: both axes are asymptotes",
+  "width": 520, "height": 340,
+  "xRange": [-5, 5], "yRange": [-5, 5],
+  "xStep": 1, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1/x", "domain": [-5, -0.21], "color": "#b04a2f", "width": 2.2, "samples": 600},
+    {"fn": "1/x", "domain": [0.21, 5],   "color": "#b04a2f", "width": 2.2, "samples": 600}
+  ],
+  "caption": "Vertical asymptote x = 0 (y → ±∞). Horizontal asymptote y = 0 (y → 0 as |x| → ∞)."
+}
+```
 
 **The line $y = 0$ (the $x$-axis) is a horizontal asymptote** of $y = 1/x$. (Also, $x = 0$ is a vertical asymptote.)
 
@@ -193,6 +347,26 @@ $$= \frac{3}{5}$$
 
 > **Figure 7 — Graph of $y = (3x^2 - x - 2)/(5x^2 + 4x + 1)$.** The curve levels off to the horizontal line $y = 0.6$ in both directions. A little dip near the origin, but for $|x| > 2$ or so, the curve is already very close to $0.6$.
 
+```plot
+{
+  "title": "Figure 7 — (3x² − x − 2)/(5x² + 4x + 1) → 3/5",
+  "width": 520, "height": 320,
+  "xRange": [-8, 8], "yRange": [-2, 2],
+  "xStep": 2, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "(3*x*x - x - 2)/(5*x*x + 4*x + 1)", "domain": [-8, 8], "color": "#b04a2f", "width": 2.2, "samples": 600}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 0.6, "color": "#2867b2", "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 7.5, "y": 0.82, "text": "y = 3/5", "color": "#2867b2", "italic": false, "anchor": "end"}
+  ],
+  "caption": "Equal degrees in numerator and denominator → limit at ∞ equals the ratio of leading coefficients."
+}
+```
+
 **The shortcut (once you've seen the pattern).** For $P(x)/Q(x)$ rational with $\deg P = p$ and $\deg Q = q$:
 
 | Degree relationship | Limit at $\pm\infty$ |
@@ -240,6 +414,31 @@ So $x = 5/3$ is a vertical asymptote.
 
 > **Figure 8 — Graph of $y = \sqrt{2x^2+1}/(3x-5)$.** Two horizontal asymptotes at $y = \pm\sqrt{2}/3 \approx \pm 0.471$ and a vertical asymptote at $x = 5/3$. The curve has three branches.
 
+```plot
+{
+  "title": "Figure 8 — y = √(2x²+1)/(3x−5): sign flip creates two horizontal asymptotes",
+  "width": 520, "height": 340,
+  "xRange": [-10, 10], "yRange": [-3, 3],
+  "xStep": 2, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(2*x*x + 1)/(3*x - 5)", "domain": [-10, 1.57], "color": "#b04a2f", "width": 2.2, "samples": 600},
+    {"fn": "sqrt(2*x*x + 1)/(3*x - 5)", "domain": [1.8, 10],   "color": "#b04a2f", "width": 2.2, "samples": 600}
+  ],
+  "lines": [
+    {"type": "horizontal", "y":  0.4714, "color": "#2867b2", "dash": "4 3"},
+    {"type": "horizontal", "y": -0.4714, "color": "#2867b2", "dash": "4 3"},
+    {"type": "vertical",   "x":  1.6667, "color": "#2867b2", "dash": "4 4"}
+  ],
+  "annotations": [
+    {"x": 9.5, "y":  0.65, "text": "y = √2/3",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 9.5, "y": -0.65, "text": "y = −√2/3", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 1.67, "y": -2.7, "text": "x = 5/3",   "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "√(x²) = |x|, so the sign of x flips the horizontal asymptote. The two ends level off at opposite heights."
+}
+```
+
 **The trap in Example 4** — many students forget $\sqrt{x^2} = |x|$, not $x$. For $x < 0$, we get a sign flip, giving a *different* horizontal asymptote on the negative side. **Always check signs when working with radicals at $\pm\infty$.**
 
 ---
@@ -267,6 +466,26 @@ $$\lim_{x \to \infty}\frac{1/x}{\sqrt{1 + 1/x^2} + 1} = \frac{0}{\sqrt{1} + 1} =
 $\blacksquare$
 
 > **Figure 9 — Graph of $y = \sqrt{x^2+1} - x$.** Decreasing curve that starts at $y = 1$ (at $x = 0$) and slowly approaches $y = 0$ as $x \to \infty$. The $x$-axis is a horizontal asymptote.
+
+```plot
+{
+  "title": "Figure 9 — y = √(x² + 1) − x → 0 as x → ∞",
+  "width": 520, "height": 300,
+  "xRange": [0, 10], "yRange": [-0.2, 1.3],
+  "xStep": 1, "yStep": 0.25,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "sqrt(x*x + 1) - x", "domain": [0, 10], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 0, "color": "#2867b2", "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "An ∞ − ∞ form that's actually finite. Rationalizing turns it into 1/(√(x² + 1) + x), which clearly decays to 0."
+}
+```
 
 **The pattern.** Whenever you have an "$\infty - \infty$" form with radicals (like $\sqrt{\text{stuff}} - x$ or $\sqrt{f(x)} - \sqrt{g(x)}$), **multiply by the conjugate to convert it to a quotient**, then apply the standard limit-at-infinity technique.
 
@@ -297,6 +516,26 @@ $$\tag{6} \lim_{x \to -\infty}e^x = 0$$
 **The values of $e^x$ approach 0 very rapidly** — even at $x = -10$, $e^x \approx 5 \times 10^{-5}$.
 
 > **Figure 10 — Graph of $y = e^x$.** Starts from the $x$-axis on the far left (asymptotic), passes through $(0, 1)$, and grows rapidly to the upper right.
+
+```plot
+{
+  "title": "Figure 10 — y = eˣ has horizontal asymptote y = 0 as x → −∞",
+  "width": 520, "height": 320,
+  "xRange": [-6, 3], "yRange": [-1, 18],
+  "xStep": 1, "yStep": 2,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "exp(x)", "domain": [-6, 3], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 0, "color": "#2867b2", "dash": "4 3"}
+  ],
+  "points": [
+    {"x": 0, "y": 1, "style": "filled", "color": "#1f2430", "label": "(0, 1)", "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "Never negative, never zero — but hugs the x-axis arbitrarily closely as x → −∞."
+}
+```
 
 ---
 
@@ -337,6 +576,23 @@ $\displaystyle \lim_{x \to \infty}x^3 = \infty$: $x^3$ becomes arbitrarily large
 $\displaystyle \lim_{x \to -\infty}x^3 = -\infty$: $x^3$ becomes arbitrarily large negative (odd-power $\Rightarrow$ sign-preserving).
 
 > **Figure 11 — Graph of $y = x^3$.** S-shape. Descends from $-\infty$ on the lower left, passes through origin, rises to $+\infty$ on the upper right. Monotonically increasing everywhere.
+
+```plot
+{
+  "title": "Figure 11 — y = x³ heads to ±∞ on both ends",
+  "width": 500, "height": 320,
+  "xRange": [-3, 3], "yRange": [-28, 28],
+  "xStep": 1, "yStep": 7,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x*x", "domain": [-3, 3], "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 0, "y": 0, "style": "filled", "color": "#1f2430"}
+  ],
+  "caption": "Odd-degree monomial: one end → −∞, the other → +∞."
+}
+```
 
 ### Example 9 — $\infty - \infty$ as a trap
 
@@ -396,6 +652,26 @@ $$\lim_{x \to \infty}f(x) = +\infty \qquad \lim_{x \to -\infty}f(x) = +\infty$$
 - Far right: $f \to +\infty$.
 
 > **Figure 13 — Rough sketch.** Polynomial with the characteristic "W"-shape for this even-degree case: up on both ends, valley between $x = -1$ and $x = 1$ (where it hits $y = -16$ at $x = 0$), and a touch-point at $x = 2$ where the curve kisses the $x$-axis before shooting back up.
+
+```plot
+{
+  "title": "Figure 13 — y = (x − 2)⁴(x + 1)³(x − 1)",
+  "width": 540, "height": 340,
+  "xRange": [-2, 3], "yRange": [-40, 40],
+  "xStep": 1, "yStep": 10,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "pow(x - 2, 4) * pow(x + 1, 3) * (x - 1)", "domain": [-2, 3], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "points": [
+    {"x": -1, "y": 0,   "style": "filled", "color": "#1f2430", "label": "(−1, 0)",  "labelDx": -8, "labelDy": -10, "labelAnchor": "end"},
+    {"x": 1,  "y": 0,   "style": "filled", "color": "#1f2430", "label": "(1, 0)",   "labelDx": 10, "labelDy": 14},
+    {"x": 2,  "y": 0,   "style": "filled", "color": "#1f2430", "label": "(2, 0) — touch", "labelDx": 10, "labelDy": 14},
+    {"x": 0,  "y": -16, "style": "filled", "color": "#1f2430", "label": "(0, −16)", "labelDx": 10, "labelDy": -6}
+  ],
+  "caption": "Degree 8, positive leading coefficient: both ends → +∞. Odd-multiplicity roots at −1 and 1 flip sign; even-multiplicity root at 2 only touches."
+}
+```
 
 **The three-ingredient polynomial sketching method:**
 1. **$x$-intercepts and their multiplicities** (for sign-change / touch behavior).

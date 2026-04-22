@@ -32,7 +32,55 @@ Section 2.6 Part A used intuitive language ("$x$ sufficiently large"). Now we ma
 
 > **Figure 14 — The ε-N game visualized.** Horizontal band at heights $L - \varepsilon$ to $L + \varepsilon$ — the output tolerance. Beyond a vertical threshold at $x = N$, the graph of $f$ stays entirely within this band. **Conceptually:** for any output tolerance $\varepsilon$, we find a far-enough-right threshold $N$ such that the curve has "entered" the band and stays there.
 
+```plot
+{
+  "title": "Figure 14 — the ε-N game: past x = N the curve stays inside the ε-band",
+  "width": 560, "height": 320,
+  "xRange": [0, 12], "yRange": [0, 4],
+  "xStep": 2, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + 1.5/(x + 0.5)", "domain": [0.05, 12], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.4, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.6, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 4,   "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 11.5, "y": 2.55, "text": "L + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 11.5, "y": 1.75, "text": "L − ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 4,    "y": 0.2,  "text": "N",     "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "For every output tolerance ε, some threshold N exists past which the curve is trapped inside the ε-band forever."
+}
+```
+
 > **Figure 15 — Smaller ε requires larger N.** A tighter horizontal band requires the curve to get closer to $L$; this typically requires looking further to the right.
+
+```plot
+{
+  "title": "Figure 15 — tighter ε forces larger N",
+  "width": 560, "height": 320,
+  "xRange": [0, 12], "yRange": [0, 4],
+  "xStep": 2, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + 1.5/(x + 0.5)", "domain": [0.05, 12], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.15, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.85, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 9.5,  "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 11.5, "y": 2.3,  "text": "L + ε'", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 11.5, "y": 1.7,  "text": "L − ε'", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 9.5,  "y": 0.2,  "text": "N'",     "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Narrower ε' ⇒ larger N' — have to look further to the right before the curve is close enough."
+}
+```
 
 **Smaller $\varepsilon$ → larger $N$.** The inverse relationship between the tolerance demand and the threshold response is the same "cost of precision" theme as ε-δ.
 
@@ -50,6 +98,30 @@ A precise version for the negative direction:
 **Same grammar as Definition 7**, but the input-side constraint is "$x < N$" (far to the *left*) instead of "$x > N$" (far to the *right*).
 
 > **Figure 16 — The ε-N game for $-\infty$.** Same ε-band, but now the constraint is $x < N$ (the threshold marks the right edge, and we look at behavior to its left).
+
+```plot
+{
+  "title": "Figure 16 — ε-N for x → −∞: past N to the left, curve stays in the band",
+  "width": 560, "height": 320,
+  "xRange": [-12, 0], "yRange": [0, 4],
+  "xStep": 2, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "2 + 1.5/(-x + 0.5)", "domain": [-12, -0.05], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 2.4, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 1.6, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": -4,  "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": -0.5, "y": 2.55, "text": "L + ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": -0.5, "y": 1.75, "text": "L − ε", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": -4,   "y": 0.2,  "text": "N",     "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Same idea as Figure 14, but the responder's threshold is on the left — we require x < N instead of x > N."
+}
+```
 
 ---
 
@@ -75,6 +147,30 @@ In other words, for $\varepsilon = 0.1$ we can choose $N = 7$ (or any larger num
 
 > **Figure 17 — The graphical verification.** Horizontal lines at $y = 0.5$ and $y = 0.7$; the curve enters between them around $x = 6.7$ and stays inside.
 
+```plot
+{
+  "title": "Figure 17 — (3x² − x − 2)/(5x² + 4x + 1) enters the ε-band near x = 6.7",
+  "width": 540, "height": 320,
+  "xRange": [0, 15], "yRange": [-1.5, 1.5],
+  "xStep": 2, "yStep": 0.5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "(3*x*x - x - 2)/(5*x*x + 4*x + 1)", "domain": [0, 15], "color": "#b04a2f", "width": 2.2, "samples": 500}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 0.7, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "horizontal", "y": 0.5, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x": 7,   "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 14.5, "y": 0.85, "text": "y = 0.7", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 14.5, "y": 0.35, "text": "y = 0.5", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 7,    "y": -1.3, "text": "N = 7",   "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "For ε = 0.1 about 3/5, N = 7 works — past x = 7 the curve is locked between 0.5 and 0.7."
+}
+```
+
 ---
 
 ### Example 13 — Prove $\lim_{x \to \infty}\dfrac{1}{x} = 0$ using Definition 7
@@ -95,6 +191,36 @@ By Definition 7, $\lim_{x \to \infty}(1/x) = 0$. $\blacksquare$
 
 > **Figure 18 — Three values of $\varepsilon$ and the corresponding $N$.** For $\varepsilon = 1$, $N = 1$. For $\varepsilon = 0.2$, $N = 5$. For $\varepsilon = 0.1$, $N = 10$. **Tightening the output tolerance by 10× requires moving the threshold 10× further right** — the linear relationship $N = 1/\varepsilon$.
 
+```plot
+{
+  "title": "Figure 18 — y = 1/x: three ε's pair with three N's (N = 1/ε)",
+  "width": 560, "height": 320,
+  "xRange": [0, 14], "yRange": [-0.3, 1.3],
+  "xStep": 2, "yStep": 0.25,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "1/x", "domain": [0.8, 14], "color": "#b04a2f", "width": 2.2, "samples": 400}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 1,   "color": "#b04a2f", "dash": "2 2"},
+    {"type": "horizontal", "y": 0.2, "color": "#2867b2", "dash": "2 2"},
+    {"type": "horizontal", "y": 0.1, "color": "#2867b2", "dash": "2 2"},
+    {"type": "vertical",   "x": 1,   "color": "#b04a2f", "dash": "2 2"},
+    {"type": "vertical",   "x": 5,   "color": "#2867b2", "dash": "2 2"},
+    {"type": "vertical",   "x": 10,  "color": "#2867b2", "dash": "2 2"}
+  ],
+  "annotations": [
+    {"x": 13.5, "y": 1.1,  "text": "ε = 1",    "color": "#b04a2f", "italic": false, "anchor": "end"},
+    {"x": 13.5, "y": 0.26, "text": "ε = 0.2",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 13.5, "y": 0.14, "text": "ε = 0.1",  "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 1,    "y": -0.2, "text": "N = 1",    "color": "#b04a2f", "italic": false, "anchor": "middle"},
+    {"x": 5,    "y": -0.2, "text": "N = 5",    "color": "#2867b2", "italic": false, "anchor": "middle"},
+    {"x": 10,   "y": -0.2, "text": "N = 10",   "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Shrink ε by 10× and N grows by 10×. The dependence N = 1/ε is the exact response-scaling summary of the tail rate."
+}
+```
+
 **The "response scaling" diagnoses the tail behavior.** $N = 1/\varepsilon$ means $1/x$ approaches 0 at rate exactly $1/x$. For $1/x^2$, we'd need $N = 1/\sqrt{\varepsilon}$ — faster-decaying tail. **Response scaling is a quantitative summary of asymptotic rate.**
 
 ---
@@ -111,6 +237,28 @@ The last piece: what "$\lim_{x\to\infty}f = \infty$" precisely means. The output
 **Reading.** The challenger demands $f(x)$ exceed $M$ (a large threshold); you respond with $N$ such that $x > N$ forces $f(x) > M$.
 
 > **Figure 19 — The $M$-$N$ game.** Horizontal line $y = M$ drawn high up; vertical line $x = N$. For $x$ to the right of $N$, the graph of $f$ stays above $y = M$.
+
+```plot
+{
+  "title": "Figure 19 — lim_{x→∞} f = ∞: above M for all x past N",
+  "width": 540, "height": 320,
+  "xRange": [0, 10], "yRange": [0, 25],
+  "xStep": 1, "yStep": 5,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "0.25*x*x", "domain": [0, 10], "color": "#b04a2f", "width": 2.2}
+  ],
+  "lines": [
+    {"type": "horizontal", "y": 12, "color": "#2867b2", "width": 1.4, "dash": "4 3"},
+    {"type": "vertical",   "x":  7, "color": "#2867b2", "width": 1.4, "dash": "4 3"}
+  ],
+  "annotations": [
+    {"x": 9.5, "y": 13,  "text": "y = M", "color": "#2867b2", "italic": false, "anchor": "end"},
+    {"x": 7,   "y": 1,   "text": "N",     "color": "#2867b2", "italic": false, "anchor": "middle"}
+  ],
+  "caption": "Past x = N, the curve lives entirely above y = M. Raise M and you'll need a larger N."
+}
+```
 
 Similar definitions apply when $\infty$ is replaced by $-\infty$ — the patient can deduce them by symmetry. (See Exercise 70.)
 
