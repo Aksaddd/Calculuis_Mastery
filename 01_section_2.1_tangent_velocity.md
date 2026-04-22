@@ -33,6 +33,32 @@ For a circle, Euclid's definition works: a tangent is a line that intersects the
 > - **(a) Circle with tangent line $t$** passing through the circle at exactly one point. Euclid's definition works here.
 > - **(b) General curve with two lines through a point $P$:** line $l$ passes *through* $P$ and hits the curve again at some other point (not a tangent); line $t$ at $P$ appears to "just touch" the curve there but also happens to hit the curve at another point $C$. So "touches once" fails to characterize tangency — the second line $t$ should still be called a tangent at $P$, but it technically intersects more than once.
 
+<figure class="plot-figure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 260" role="img" aria-label="Left: circle with tangent. Right: curve where the 'touches once' rule fails.">
+  <g transform="translate(20 10)">
+    <text x="140" y="18" font-size="12" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">(a) circle</text>
+    <circle cx="140" cy="140" r="70" fill="none" stroke="#1f2430" stroke-width="2"/>
+    <line x1="30" y1="70" x2="250" y2="70" stroke="#b04a2f" stroke-width="2"/>
+    <text x="255" y="74" font-size="17" font-style="italic" font-family="'Times New Roman', Times, serif" fill="#b04a2f">t</text>
+    <circle cx="140" cy="70" r="3" fill="#1f2430"/>
+    <text x="137" y="85" font-size="12" font-style="italic" text-anchor="end" font-family="'Times New Roman', Times, serif" fill="#1f2430">P</text>
+  </g>
+  <g transform="translate(320 10)">
+    <text x="140" y="18" font-size="12" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" fill="#5b6477" font-style="italic">(b) general curve</text>
+    <path d="M 20 60 C 70 60, 90 220, 140 140 C 190 60, 210 220, 260 200" fill="none" stroke="#1f2430" stroke-width="2"/>
+    <line x1="20" y1="210" x2="260" y2="80" stroke="#2867b2" stroke-width="1.8" stroke-dasharray="5 4"/>
+    <text x="268" y="82" font-size="17" font-style="italic" font-family="'Times New Roman', Times, serif" fill="#2867b2">l</text>
+    <line x1="30" y1="170" x2="250" y2="130" stroke="#b04a2f" stroke-width="2"/>
+    <text x="258" y="132" font-size="17" font-style="italic" font-family="'Times New Roman', Times, serif" fill="#b04a2f">t</text>
+    <circle cx="140" cy="140" r="4" fill="#1f2430"/>
+    <text x="145" y="156" font-size="13" font-style="italic" font-family="'Times New Roman', Times, serif" fill="#1f2430">P</text>
+    <circle cx="228" cy="156" r="4" fill="#1f2430"/>
+    <text x="235" y="153" font-size="13" font-style="italic" font-family="'Times New Roman', Times, serif" fill="#1f2430">C</text>
+  </g>
+</svg>
+<figcaption>On a circle, "intersects once" nails tangency. On a general curve it doesn't — line <em>t</em> is the tangent at <em>P</em> even though it meets the curve again at <em>C</em>.</figcaption>
+</figure>
+
 **So what's the right definition?** We'll build it: a tangent line is the line whose **slope is the limit of the slopes of secant lines** as the second point approaches the first.
 
 ---
@@ -88,6 +114,38 @@ $$m = \lim_{Q \to P} m_{PQ} \quad \text{and} \quad \lim_{x \to 1} \frac{x^2 - 1}
 $$y - 1 = 2(x - 1) \quad \text{or} \quad \boxed{\; y = 2x - 1 \;}$$
 
 > **Figure 3 — The limiting process, illustrated.** Six small graphs showing the parabola $y = x^2$ with the point $P$ fixed and the point $Q$ sliding toward $P$ along the curve. The three panels on the top row show $Q$ approaching $P$ from the right (with the secant line $PQ$ rotating toward the tangent position). The three on the bottom row show $Q$ approaching $P$ from the left. In both cases, the secant line $PQ$ rotates about $P$ and approaches the tangent line $t$ as $Q \to P$.
+
+```plot
+{
+  "title": "Figure 3 — secants rotating toward the tangent as Q → P",
+  "width": 540, "height": 400,
+  "xRange": [-0.5, 2.5], "yRange": [-0.5, 5],
+  "xStep": 0.5, "yStep": 1,
+  "xLabel": "x", "yLabel": "y",
+  "curves": [
+    {"fn": "x*x", "domain": [-0.5, 2.3], "color": "#1f2430", "width": 2.2}
+  ],
+  "lines": [
+    {"from": [0, -0.5],     "to": [2.5, 3.25], "color": "#b9d2e8", "width": 1.4},
+    {"from": [0.21, -0.5],  "to": [2.5, 3.85], "color": "#7caed6", "width": 1.4},
+    {"from": [0.286, -0.5], "to": [2.5, 4.15], "color": "#7caed6", "width": 1.4},
+    {"from": [0.4, -0.5],   "to": [2.5, 4.75], "color": "#b9d2e8", "width": 1.4},
+    {"from": [0.25, -0.5],  "to": [2.5, 4],    "color": "#b04a2f", "width": 2.3}
+  ],
+  "points": [
+    {"x": 0.5, "y": 0.25, "style": "open",  "color": "#2867b2"},
+    {"x": 0.9, "y": 0.81, "style": "open",  "color": "#2867b2"},
+    {"x": 1.1, "y": 1.21, "style": "open",  "color": "#2867b2"},
+    {"x": 1.5, "y": 2.25, "style": "open",  "color": "#2867b2"},
+    {"x": 1,   "y": 1,    "style": "filled","color": "#b04a2f", "label": "P(1, 1)", "labelDx": -8, "labelDy": -10, "labelAnchor": "end"}
+  ],
+  "annotations": [
+    {"x": 1.9,  "y": 3.7, "text": "tangent t", "color": "#b04a2f"},
+    {"x": 2.25, "y": 2.7, "text": "secants PQ", "color": "#2867b2"}
+  ],
+  "caption": "Each pale blue line is a secant through P(1, 1) and some Q on the parabola. As Q slides toward P, the secant rotates toward the orange tangent line y = 2x − 1."
+}
+```
 
 *Margin note: TEC In Visual 2.1 you can see how the process in Figure 3 works for additional functions.*
 
@@ -199,6 +257,32 @@ $$m_{PQ} = \frac{4.9(a + h)^2 - 4.9\,a^2}{(a + h) - a}$$
 > **Figure 5 — The geometric picture.** Two side-by-side graphs of $s = 4.9\,t^2$.
 > - **Left:** A secant line through $P(a, \ldots)$ and $Q(a+h, \ldots)$, with slope labeled "slope of secant = average velocity."
 > - **Right:** The tangent line at $P$, with slope labeled "slope of tangent = instantaneous velocity."
+
+```plot
+{
+  "title": "Figure 5 — secant slope (avg velocity) vs. tangent slope (instantaneous velocity)",
+  "width": 560, "height": 380,
+  "xRange": [0, 7.5], "yRange": [-15, 260],
+  "xStep": 1, "yStep": 50,
+  "xLabel": "t (seconds)", "yLabel": "s (meters)",
+  "curves": [
+    {"fn": "4.9 * x * x", "domain": [0, 7.3], "color": "#1f2430", "width": 2.2}
+  ],
+  "lines": [
+    {"from": [2.72, 0], "to": [7.5, 257.75], "color": "#2867b2", "width": 1.8, "dash": "6 4"},
+    {"from": [2.5, 0],  "to": [7.5, 245],    "color": "#b04a2f", "width": 2.2}
+  ],
+  "points": [
+    {"x": 5, "y": 122.5, "style": "filled", "color": "#1f2430", "label": "P(5, 122.5)", "labelDx": -8, "labelDy": 14, "labelAnchor": "end"},
+    {"x": 6, "y": 176.4, "style": "open",   "color": "#2867b2", "label": "Q(5 + h, s(5 + h))", "labelDx": 10, "labelDy": -6}
+  ],
+  "annotations": [
+    {"x": 6.9, "y": 232, "text": "tangent — instantaneous velocity",            "color": "#b04a2f", "anchor": "end"},
+    {"x": 6.9, "y": 205, "text": "secant PQ — average velocity on [5, 5 + h]",   "color": "#2867b2", "anchor": "end"}
+  ],
+  "caption": "Slope of the secant PQ = average velocity over [5, 5 + h]. As h → 0, Q slides down to P and the secant slope approaches the tangent slope = instantaneous velocity at t = 5."
+}
+```
 
 ### The unifying conceptual move
 
